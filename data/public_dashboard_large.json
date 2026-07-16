@@ -1,6 +1,6 @@
 {
-  "updated_at": "2026-07-16T08:15:46.618767",
-  "published_at_utc": "2026-07-16T15:15:46Z",
+  "updated_at": "2026-07-16T08:31:20.527804",
+  "published_at_utc": "2026-07-16T15:31:20Z",
   "profile": "LARGE",
   "strategy": "APM_SWING",
   "shadow_only": false,
@@ -54,12 +54,12 @@
     "XLV"
   ],
   "account": {
-    "equity": 2034.19,
-    "buying_power": 2817.9,
+    "equity": 2029.42,
+    "buying_power": 2813.13,
     "inception_equity": 1000.0,
     "ytd_start_equity": 1000.0,
-    "since_inception_pnl_dollars": 1034.19,
-    "asof": "2026-07-16T15:15:45Z"
+    "since_inception_pnl_dollars": 1029.42,
+    "asof": "2026-07-16T15:31:19Z"
   },
   "summary": {
     "leaderboard_count": 20,
@@ -85,7 +85,7 @@
     "profit_factor_r": 3.366,
     "gross_profit_r": 5.79,
     "gross_loss_r": 1.72,
-    "max_drawdown_pct_est": 0.383
+    "max_drawdown_pct_est": 0.617
   },
   "monthly_performance": [],
   "leaderboard": [
@@ -892,56 +892,60 @@
   ],
   "bear_defense": {
     "active": false,
-    "avg_context_score": 54.227,
-    "avg_short_score": 79.93,
+    "avg_context_score": 0.0,
+    "avg_short_score": 0.0,
     "candidate_level": "NORMAL",
     "confirm_runs_required": 5,
     "consecutive_derisk_runs": 0,
     "consecutive_risk_off_runs": 0,
     "consecutive_switch_runs": 0,
-    "data_quality_ok": true,
-    "density_score": 25.0,
+    "data_quality_ok": false,
+    "density_score": 0.0,
     "derisk_candidate": false,
     "derisk_runs_required": 3,
-    "eligible_count": 1,
+    "eligible_count": 0,
     "enabled": true,
-    "expected_symbols_count": 32,
-    "failed_fraction": 0.0,
-    "failed_symbols_count": 0,
-    "level": "NORMAL",
+    "expected_symbols_count": 42,
+    "failed_fraction": 0.0238,
+    "failed_symbols_count": 1,
+    "level": "DATA_GUARD",
     "liquidity_switch": false,
-    "long_loss_risk": 90.0,
-    "long_risk_ok": true,
-    "long_signal_count": 2,
-    "long_signal_participation": 0.1,
-    "new_long_loss_risk": 90.0,
+    "long_loss_risk": 55.0,
+    "long_risk_ok": false,
+    "long_signal_count": 0,
+    "long_signal_participation": 0.0,
+    "new_long_loss_risk": 0.0,
     "open_long_loss_risk": {
       "open_long_count": 2,
-      "open_long_loss_risk": 50.0,
+      "open_long_loss_risk": 55.0,
       "positions": {
         "ABBV": {
-          "reasons": [],
-          "risk": 50.0
+          "reasons": [
+            "record unavailable"
+          ],
+          "risk": 55.0
         },
         "BAC": {
-          "reasons": [],
-          "risk": 50.0
+          "reasons": [
+            "record unavailable"
+          ],
+          "risk": 55.0
         }
       }
     },
-    "participation": 0.05,
-    "reason": "APM_BEAR_DEFENSE score=51.9; shorts=1/20; participation=0.05; long_loss_risk=90.0",
+    "participation": 0.0,
+    "reason": "APM_BEAR_DEFENSE score=5.5; shorts=0/0; participation=0.00; long_loss_risk=55.0; data guard failed=1/42 max=0.15",
     "risk_off_candidate": false,
     "risk_off_runs_required": 2,
-    "score": 51.856,
+    "score": 5.5,
     "strong_breadth_ok": false,
-    "strong_signals_ok": true,
+    "strong_signals_ok": false,
     "switch_candidate": false,
-    "ts_utc": "2026-07-16T15:15:01Z",
-    "valid_count": 20
+    "ts_utc": "2026-07-16T15:30:01Z",
+    "valid_count": 0
   },
   "broker_exposure_audit": {
-    "ts_utc": "2026-07-16T15:15:45Z",
+    "ts_utc": "2026-07-16T15:31:19Z",
     "status": "OK",
     "positions": [
       {
@@ -949,7 +953,7 @@
         "side": "LONG",
         "qty": 3.0,
         "entry_px": 251.9846,
-        "current_px": 251.9861,
+        "current_px": 251.235,
         "classification": "APM_MANAGED"
       },
       {
@@ -957,20 +961,20 @@
         "side": "LONG",
         "qty": 8.0,
         "entry_px": 61.7499,
-        "current_px": 61.815,
+        "current_px": 61.5,
         "classification": "APM_MANAGED"
       }
     ]
   },
   "live_account_balance_check": {
-    "checked_at_utc": "2026-07-16T15:15:45Z",
+    "checked_at_utc": "2026-07-16T15:31:19Z",
     "source": "ALPACA_LIVE",
     "snapshot_ok": true,
-    "account_balance": 2034.19,
-    "trading_balance": 2817.9,
-    "effective_trading_balance": 2817.9,
+    "account_balance": 2029.42,
+    "trading_balance": 2813.13,
+    "effective_trading_balance": 2813.13,
     "cash_balance": 783.71,
-    "margin_multiple": 1.3853,
+    "margin_multiple": 1.3862,
     "broker_multiplier": 2.0,
     "broker_status": "ACTIVE",
     "account_blocked": false,
@@ -978,12 +982,12 @@
     "transfers_blocked": false,
     "user_suspended": false,
     "shorting_enabled": true,
-    "regt_buying_power": 2817.9,
+    "regt_buying_power": 2813.13,
     "daytrading_buying_power": null,
-    "non_marginable_buying_power": 1408.94,
-    "initial_margin": 625.24,
-    "maintenance_margin": 375.14,
-    "long_market_value": 1250.48,
+    "non_marginable_buying_power": 1406.56,
+    "initial_margin": 622.85,
+    "maintenance_margin": 373.71,
+    "long_market_value": 1245.71,
     "short_market_value": 0.0,
     "margin_snapshot_ok": true,
     "account_entry_block_reason": null,
@@ -1215,11 +1219,11 @@
       "side": "LONG",
       "qty": 3.0,
       "entry_px": 251.9846,
-      "exit_px": 251.9861,
-      "current_px": 251.9861,
-      "R_realized": 0.000119,
-      "pnl_pct": 0.000595,
-      "pnl_dollars": 0.0,
+      "exit_px": 251.235,
+      "current_px": 251.235,
+      "R_realized": -0.059496,
+      "pnl_pct": -0.297478,
+      "pnl_dollars": -2.25,
       "entry_model": "Swing",
       "reason": "OPEN",
       "broker_account": "Live Trading Account",
@@ -1231,11 +1235,11 @@
       "side": "LONG",
       "qty": 8.0,
       "entry_px": 61.7499,
-      "exit_px": 61.815,
-      "current_px": 61.815,
-      "R_realized": 0.021085,
-      "pnl_pct": 0.105425,
-      "pnl_dollars": 0.52,
+      "exit_px": 61.5,
+      "current_px": 61.5,
+      "R_realized": -0.080939,
+      "pnl_pct": -0.404697,
+      "pnl_dollars": -2.0,
       "entry_model": "Swing",
       "reason": "OPEN",
       "broker_account": "Live Trading Account",
@@ -1436,9 +1440,9 @@
       "drawdown_pct": 0.0
     },
     {
-      "ts": "2026-07-16T15:15:45",
-      "equity": 2034.19,
-      "drawdown_pct": -0.3834
+      "ts": "2026-07-16T15:31:19",
+      "equity": 2029.42,
+      "drawdown_pct": -0.617
     }
   ],
   "drawdown_curve": [
@@ -1451,8 +1455,8 @@
       "drawdown_pct": 0.0
     },
     {
-      "ts": "2026-07-16T15:15:45",
-      "drawdown_pct": -0.3834
+      "ts": "2026-07-16T15:31:19",
+      "drawdown_pct": -0.617
     }
   ],
   "positioning": {
@@ -1468,18 +1472,18 @@
   "strategy_lanes": [
     "APM_REAL_ACCOUNT_SWING"
   ],
-  "source_updated_at_max": "2026-07-16T08:15:45",
+  "source_updated_at_max": "2026-07-16T08:31:19",
   "broker_accounts": {
     "apm_swing": {
       "label": "Live Trading Account",
       "profile": "APM_REAL_ACCOUNT_SWING",
       "public_reset_start": "2026-07-14T15:30:00Z",
-      "equity": 2034.19,
-      "buying_power": 2817.9,
+      "equity": 2029.42,
+      "buying_power": 2813.13,
       "inception_equity": 1000.0,
       "ytd_start_equity": 1000.0,
-      "since_inception_pnl_dollars": 1034.19,
-      "asof": "2026-07-16T15:15:45Z"
+      "since_inception_pnl_dollars": 1029.42,
+      "asof": "2026-07-16T15:31:19Z"
     }
   },
   "account_views": {
@@ -1491,12 +1495,12 @@
         "label": "Live Trading Account",
         "profile": "APM_REAL_ACCOUNT_SWING",
         "public_reset_start": "2026-07-14T15:30:00Z",
-        "equity": 2034.19,
-        "buying_power": 2817.9,
+        "equity": 2029.42,
+        "buying_power": 2813.13,
         "inception_equity": 1000.0,
         "ytd_start_equity": 1000.0,
-        "since_inception_pnl_dollars": 1034.19,
-        "asof": "2026-07-16T15:15:45Z"
+        "since_inception_pnl_dollars": 1029.42,
+        "asof": "2026-07-16T15:31:19Z"
       },
       "performance": {
         "closed_trades_count": 4,
@@ -1512,7 +1516,7 @@
         "profit_factor_r": 3.366,
         "gross_profit_r": 5.79,
         "gross_loss_r": 1.72,
-        "max_drawdown_pct_est": 0.383
+        "max_drawdown_pct_est": 0.617
       },
       "summary": {
         "leaderboard_count": 20,
@@ -1899,11 +1903,11 @@
           "side": "LONG",
           "qty": 3.0,
           "entry_px": 251.9846,
-          "exit_px": 251.9861,
-          "current_px": 251.9861,
-          "R_realized": 0.000119,
-          "pnl_pct": 0.000595,
-          "pnl_dollars": 0.0,
+          "exit_px": 251.235,
+          "current_px": 251.235,
+          "R_realized": -0.059496,
+          "pnl_pct": -0.297478,
+          "pnl_dollars": -2.25,
           "entry_model": "Swing",
           "reason": "OPEN",
           "broker_account": "Live Trading Account",
@@ -1915,11 +1919,11 @@
           "side": "LONG",
           "qty": 8.0,
           "entry_px": 61.7499,
-          "exit_px": 61.815,
-          "current_px": 61.815,
-          "R_realized": 0.021085,
-          "pnl_pct": 0.105425,
-          "pnl_dollars": 0.52,
+          "exit_px": 61.5,
+          "current_px": 61.5,
+          "R_realized": -0.080939,
+          "pnl_pct": -0.404697,
+          "pnl_dollars": -2.0,
           "entry_model": "Swing",
           "reason": "OPEN",
           "broker_account": "Live Trading Account",
@@ -1938,9 +1942,9 @@
           "drawdown_pct": 0.0
         },
         {
-          "ts": "2026-07-16T15:15:45+00:00",
-          "equity": 2034.19,
-          "drawdown_pct": -0.3834
+          "ts": "2026-07-16T15:31:19+00:00",
+          "equity": 2029.42,
+          "drawdown_pct": -0.617
         }
       ],
       "drawdown_curve": [
@@ -1953,13 +1957,13 @@
           "drawdown_pct": 0.0
         },
         {
-          "ts": "2026-07-16T15:15:45+00:00",
-          "drawdown_pct": -0.3834
+          "ts": "2026-07-16T15:31:19+00:00",
+          "drawdown_pct": -0.617
         }
       ],
       "monthly_performance": [],
-      "updated_at": "2026-07-16T08:15:45",
-      "published_at_utc": "2026-07-16T15:15:45Z"
+      "updated_at": "2026-07-16T08:31:19",
+      "published_at_utc": "2026-07-16T15:31:19Z"
     }
   },
   "public_reset_starts": {
