@@ -1,0 +1,159 @@
+{
+  "current_month": "2026-07",
+  "display_month": "July 2026",
+  "execution_enabled": false,
+  "generated_at_utc": "2026-07-23T17:42:27Z",
+  "months": [
+    {
+      "added_at_utc": "2026-07-23T17:22:32Z",
+      "available_marks": 10,
+      "combined_equal_weight_return_pct": -0.251,
+      "display_month": "July 2026",
+      "expected_marks": 10,
+      "long_sleeve_return_pct": -0.0083,
+      "longs": [
+        {
+          "added_price": 42.58,
+          "company": "Cognizant",
+          "current_price": 42.505,
+          "current_price_as_of_utc": "2026-07-23T17:22:57Z",
+          "mark_status": "SCHEDULER_MARK",
+          "rank": 1,
+          "return_pct": -0.1761,
+          "sector": "Information Technology",
+          "side": "LONG",
+          "symbol": "CTSH"
+        },
+        {
+          "added_price": 25.795,
+          "company": "Brown\u2013Forman",
+          "current_price": 25.615,
+          "current_price_as_of_utc": "2026-07-23T17:22:57Z",
+          "mark_status": "SCHEDULER_MARK",
+          "rank": 2,
+          "return_pct": -0.6978,
+          "sector": "Consumer Staples",
+          "side": "LONG",
+          "symbol": "BF.B"
+        },
+        {
+          "added_price": 74.035,
+          "company": "Zoetis",
+          "current_price": 73.985,
+          "current_price_as_of_utc": "2026-07-23T17:22:57Z",
+          "mark_status": "SCHEDULER_MARK",
+          "rank": 3,
+          "return_pct": -0.0675,
+          "sector": "Health Care",
+          "side": "LONG",
+          "symbol": "ZTS"
+        },
+        {
+          "added_price": 110.21,
+          "company": "Lululemon Athletica",
+          "current_price": 111.22,
+          "current_price_as_of_utc": "2026-07-23T17:22:57Z",
+          "mark_status": "SCHEDULER_MARK",
+          "rank": 4,
+          "return_pct": 0.9164,
+          "sector": "Consumer Discretionary",
+          "side": "LONG",
+          "symbol": "LULU"
+        },
+        {
+          "added_price": 61.73,
+          "company": "Bristol Myers Squibb",
+          "current_price": 61.72,
+          "current_price_as_of_utc": "2026-07-23T17:22:57Z",
+          "mark_status": "SCHEDULER_MARK",
+          "rank": 5,
+          "return_pct": -0.0162,
+          "sector": "Health Care",
+          "side": "LONG",
+          "symbol": "BMY"
+        }
+      ],
+      "mark_as_of_utc": "2026-07-23T17:22:57Z",
+      "mark_status": "COMPLETE",
+      "screen_month": "2026-07",
+      "short_sleeve_return_pct": -0.4937,
+      "shorts": [
+        {
+          "added_price": 8.605,
+          "company": "Paramount Skydance Corporation",
+          "current_price": 8.585,
+          "current_price_as_of_utc": "2026-07-23T17:22:57Z",
+          "mark_status": "SCHEDULER_MARK",
+          "rank": 1,
+          "return_pct": 0.2324,
+          "sector": "Communication Services",
+          "side": "SHORT",
+          "symbol": "PSKY"
+        },
+        {
+          "added_price": 100.49,
+          "company": "Robinhood Markets",
+          "current_price": 102.785,
+          "current_price_as_of_utc": "2026-07-23T17:22:57Z",
+          "mark_status": "SCHEDULER_MARK",
+          "rank": 2,
+          "return_pct": -2.2838,
+          "sector": "Financials",
+          "side": "SHORT",
+          "symbol": "HOOD"
+        },
+        {
+          "added_price": 125.11,
+          "company": "Iron Mountain",
+          "current_price": 125.88,
+          "current_price_as_of_utc": "2026-07-23T17:22:57Z",
+          "mark_status": "SCHEDULER_MARK",
+          "rank": 3,
+          "return_pct": -0.6155,
+          "sector": "Real Estate",
+          "side": "SHORT",
+          "symbol": "IRM"
+        },
+        {
+          "added_price": 79.5,
+          "company": "Est\u00e9e Lauder Companies (The)",
+          "current_price": 79.44,
+          "current_price_as_of_utc": "2026-07-23T17:22:57Z",
+          "mark_status": "SCHEDULER_MARK",
+          "rank": 4,
+          "return_pct": 0.0755,
+          "sector": "Consumer Staples",
+          "side": "SHORT",
+          "symbol": "EL"
+        },
+        {
+          "added_price": 97.86,
+          "company": "Ventas",
+          "current_price": 97.74,
+          "current_price_as_of_utc": "2026-07-23T17:22:57Z",
+          "mark_status": "SCHEDULER_MARK",
+          "rank": 5,
+          "return_pct": 0.1226,
+          "sector": "Real Estate",
+          "side": "SHORT",
+          "symbol": "VTR"
+        }
+      ],
+      "source_artifact_sha256": "0ebcb6283fc6eff2956c18b9035b8f95b921a680b4a8215e590f7291e4b9704d"
+    }
+  ],
+  "refresh_cadence_minutes": 15,
+  "research_only": true,
+  "return_methodology": {
+    "added_price": "Atlas PM current_price frozen on first website publication for the month",
+    "current_price": "latest APM scheduler mark; no additional provider request",
+    "long_return": "(current_price - added_price) / added_price",
+    "short_return": "(added_price - current_price) / added_price",
+    "sleeve_return": "equal-weight arithmetic mean of available constituent returns"
+  },
+  "schema_version": "spinoza.atlas_pulse_tracker.v1",
+  "warnings": [
+    "Research tracker only; not investment advice or a trade instruction.",
+    "Short returns omit borrow availability, fees, recalls, dividends owed, slippage, and financing."
+  ]
+}

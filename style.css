@@ -275,6 +275,117 @@ td{color:#0b1f3a}
 .return-negative{color:#b42318;font-weight:700}
 .return-neutral{color:var(--muted);font-weight:700}
 
+.atlas-panel{
+  overflow:visible;
+  border-color:#bfd4f2;
+  background:
+    linear-gradient(135deg, rgba(232,241,255,.72), rgba(255,255,255,.96) 34%),
+    var(--card);
+}
+.atlas-panel-head{
+  display:flex;
+  align-items:flex-start;
+  justify-content:space-between;
+  gap:24px;
+  padding-bottom:18px;
+}
+.atlas-panel-head .eyebrow{margin-bottom:8px}
+.atlas-status{
+  flex:0 0 auto;
+  min-width:190px;
+  padding:12px 14px;
+  border:1px solid #bfd4f2;
+  border-radius:8px;
+  background:#fff;
+}
+.atlas-status span,
+.atlas-status small{
+  display:block;
+  color:var(--muted);
+  font-size:11px;
+}
+.atlas-status span{
+  text-transform:uppercase;
+  letter-spacing:.04em;
+}
+.atlas-status strong{
+  display:block;
+  margin:7px 0 5px;
+  font-size:14px;
+}
+.atlas-sleeves{
+  display:grid;
+  grid-template-columns:1fr;
+  gap:12px;
+  padding:0 18px 18px;
+}
+.atlas-sleeve{
+  overflow:hidden;
+  border:1px solid var(--line);
+  border-radius:8px;
+  background:#fff;
+}
+.atlas-sleeve-long{border-top:4px solid #16803a}
+.atlas-sleeve-short{border-top:4px solid #b42318}
+.atlas-sleeve-head{
+  min-height:138px;
+  display:flex;
+  justify-content:space-between;
+  align-items:flex-start;
+  gap:14px;
+  padding:16px;
+}
+.atlas-sleeve-head h3{
+  margin:6px 0 0;
+  font-size:21px;
+  line-height:1.25;
+}
+.atlas-sleeve-head p{
+  margin:8px 0 0;
+  color:var(--muted);
+  font-size:13px;
+  line-height:1.45;
+}
+.atlas-side-label{
+  color:#46658a;
+  font-size:10px;
+  font-weight:700;
+  letter-spacing:.05em;
+  text-transform:uppercase;
+}
+.atlas-sleeve-return{
+  white-space:nowrap;
+  padding:8px 10px;
+  border:1px solid #dbe9fb;
+  border-radius:8px;
+  background:#f8fbff;
+  font-size:19px;
+}
+.atlas-table-wrap{max-height:none}
+.atlas-table{min-width:760px}
+.atlas-table td{vertical-align:middle}
+.atlas-ticker{font-size:14px}
+.atlas-company,
+.atlas-sector{display:block}
+.atlas-sector{
+  margin-top:3px;
+  color:var(--muted);
+  font-size:10px;
+}
+.atlas-footnote{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:18px;
+  margin:0 18px 18px;
+  padding:12px 14px;
+  border:1px solid #dbe9fb;
+  border-radius:8px;
+  background:#f8fbff;
+}
+.atlas-footnote strong{white-space:nowrap;font-size:14px}
+.atlas-footnote span{color:var(--muted);font-size:12px;line-height:1.45}
+
 .research-gateway-grid{
   margin-top:14px;
   display:grid;
@@ -548,6 +659,7 @@ td{color:#0b1f3a}
   .kpi-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
   .viz-grid{grid-template-columns:1fr}
   .strategy-grid{grid-template-columns:1fr}
+  .atlas-sleeves{grid-template-columns:1fr}
   .research-gateway-grid{grid-template-columns:1fr}
   .catalog-grid{grid-template-columns:1fr}
   .contact-grid{grid-template-columns:1fr}
@@ -558,5 +670,9 @@ td{color:#0b1f3a}
   .kpi-grid{grid-template-columns:1fr}
   .account-metrics .kpi-grid{grid-template-columns:1fr}
   .panel-head h2{font-size:26px}
+  .atlas-panel-head,
+  .atlas-footnote{align-items:flex-start;flex-direction:column}
+  .atlas-status{width:100%}
+  .atlas-sleeve-head{min-height:0;flex-direction:column}
   .catalog-title{font-size:35px}
 }
