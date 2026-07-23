@@ -25,6 +25,7 @@
       </a>
       <nav class="nav-links" aria-label="Primary">
         <a href="#dashboard">Dashboard</a>
+        <a href="#atlas-pulse">Atlas Pulse</a>
         <a href="#research">Research</a>
         <a href="#contact">Contact</a>
         <a href="#disclaimer">Disclaimer</a>
@@ -132,6 +133,88 @@
                 <tr><td colspan="5" class="empty">Waiting for performance data...</td></tr>
               </tbody>
             </table>
+          </div>
+        </section>
+      </div>
+    </section>
+
+    <section id="atlas-pulse" class="section section-tight">
+      <div class="container">
+        <section class="panel atlas-panel">
+          <div class="panel-head atlas-panel-head">
+            <div>
+              <p class="eyebrow">KPM Atlas Pulse</p>
+              <h2>Monthly Research Tracker</h2>
+              <p>Atlas selects the monthly research universe; APM supplies the scheduler marks used to track each name from its frozen added price.</p>
+            </div>
+            <div class="atlas-status">
+              <span>Tracker status</span>
+              <strong id="atlas_tracker_status">Waiting for data</strong>
+              <small id="atlas_tracker_updated">-</small>
+            </div>
+          </div>
+
+          <div class="atlas-sleeves">
+            <article class="atlas-sleeve atlas-sleeve-long">
+              <div class="atlas-sleeve-head">
+                <div>
+                  <span class="atlas-side-label">Long sleeve</span>
+                  <h3 id="atlas_long_title">Spinoza Research Top 5 Longs</h3>
+                  <p>Positive when a selected stock rises above its monthly added price.</p>
+                </div>
+                <strong id="atlas_long_return" class="atlas-sleeve-return">-</strong>
+              </div>
+              <div class="table-wrap atlas-table-wrap">
+                <table class="atlas-table">
+                  <thead>
+                    <tr>
+                      <th>Rank</th>
+                      <th>Ticker</th>
+                      <th>Company / Sector</th>
+                      <th>Added</th>
+                      <th>Current</th>
+                      <th>Return Since Added</th>
+                    </tr>
+                  </thead>
+                  <tbody id="atlas_long_body">
+                    <tr><td colspan="6" class="empty">Waiting for the monthly long basket...</td></tr>
+                  </tbody>
+                </table>
+              </div>
+            </article>
+
+            <article class="atlas-sleeve atlas-sleeve-short">
+              <div class="atlas-sleeve-head">
+                <div>
+                  <span class="atlas-side-label">Short sleeve</span>
+                  <h3 id="atlas_short_title">Spinoza Research Top 5 Shorts</h3>
+                  <p>Positive when a selected stock falls below its monthly added price.</p>
+                </div>
+                <strong id="atlas_short_return" class="atlas-sleeve-return">-</strong>
+              </div>
+              <div class="table-wrap atlas-table-wrap">
+                <table class="atlas-table">
+                  <thead>
+                    <tr>
+                      <th>Rank</th>
+                      <th>Ticker</th>
+                      <th>Company / Sector</th>
+                      <th>Added</th>
+                      <th>Current</th>
+                      <th>Return Since Added</th>
+                    </tr>
+                  </thead>
+                  <tbody id="atlas_short_body">
+                    <tr><td colspan="6" class="empty">Waiting for the monthly short basket...</td></tr>
+                  </tbody>
+                </table>
+              </div>
+            </article>
+          </div>
+
+          <div class="atlas-footnote">
+            <strong id="atlas_combined_return">Combined equal-weight tracker: -</strong>
+            <span>Research-only performance geometry. No position size, order, borrow availability, financing, fees, slippage, or broker execution is represented.</span>
           </div>
         </section>
       </div>
@@ -404,6 +487,84 @@
       const cls = ret > 0 ? "return-positive" : (ret < 0 ? "return-negative" : "return-neutral");
       const sign = ret > 0 ? "+" : "";
       return `<span class="${cls}">${sign}${fPct(ret, 2)}</span>`;
+    }
+    function escapeHtml(value){
+      return String(value ?? "")
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;")
+        .replace(/'/g, "&#039;");
+    }
+    function atlasReturnMarkup(value){
+      const result = toFiniteOrNull(value);
+      if (result === null) return '<span class="return-neutral">-</span>';
+      const cls = result > 0 ? "return-positive" : (result < 0 ? "return-negative" : "return-neutral");
+      return `<span class="${cls}">${result > 0 ? "+" : ""}${fPct(result, 2)}</span>`;
+    }
+    function renderAtlasRows(rows, bodyId){
+      const body = document.getElementById(bodyId);
+      if (!body) return;
+      if (!Array.isArray(rows) || !rows.length){
+        body.innerHTML = '<tr><td colspan="6" class="empty">Monthly tracker data unavailable.</td></tr>';
+        return;
+      }
+      body.innerHTML = rows.map((row) => {
+        const company = escapeHtml(row.company || row.symbol || "");
+        const sector = escapeHtml(row.sector || "Unclassified");
+        return `<tr>
+          <td>${escapeHtml(row.rank ?? "")}</td>
+          <td><strong class="atlas-ticker">${escapeHtml(row.symbol || "")}</strong></td>
+          <td><span class="atlas-company">${company}</span><small class="atlas-sector">${sector}</small></td>
+          <td>${fMoney(row.added_price)}</td>
+          <td>${fMoney(row.current_price)}</td>
+          <td>${atlasReturnMarkup(row.return_pct)}</td>
+        </tr>`;
+      }).join("");
+    }
+    function renderAtlasPulseTracker(tracker){
+      const months = Array.isArray(tracker && tracker.months) ? tracker.months : [];
+      const currentMonth = String((tracker && tracker.current_month) || "");
+      const active = months.find((month) => String(month.screen_month || "") === currentMonth) || months[months.length - 1];
+      if (!active){
+        setText("atlas_tracker_status", "Data unavailable");
+        return;
+      }
+      const label = String(active.display_month || tracker.display_month || "Current Month");
+      setText("atlas_long_title", `Spinoza Research Top 5 Longs for ${label}`);
+      setText("atlas_short_title", `Spinoza Research Top 5 Shorts for ${label}`);
+      const longReturn = atlasReturnMarkup(active.long_sleeve_return_pct);
+      const shortReturn = atlasReturnMarkup(active.short_sleeve_return_pct);
+      const combinedReturn = atlasReturnMarkup(active.combined_equal_weight_return_pct);
+      const longEl = document.getElementById("atlas_long_return");
+      const shortEl = document.getElementById("atlas_short_return");
+      const combinedEl = document.getElementById("atlas_combined_return");
+      if (longEl) longEl.innerHTML = longReturn;
+      if (shortEl) shortEl.innerHTML = shortReturn;
+      if (combinedEl) combinedEl.innerHTML = `Combined equal-weight tracker: ${combinedReturn}`;
+      setText(
+        "atlas_tracker_status",
+        `${Number(active.available_marks) || 0}/${Number(active.expected_marks) || 10} marks · ${String(active.mark_status || "PARTIAL")}`
+      );
+      setText("atlas_tracker_updated", `Updated ${fUpdatedAt(tracker.generated_at_utc || active.mark_as_of_utc)}`);
+      renderAtlasRows(active.longs, "atlas_long_body");
+      renderAtlasRows(active.shorts, "atlas_short_body");
+    }
+    async function loadAtlasPulseTracker(){
+      try{
+        const dashboardResponse = await fetch("data/public_dashboard.json?tracker_ts=" + Date.now(), { cache: "no-store" });
+        if (!dashboardResponse.ok) throw new Error("HTTP " + dashboardResponse.status);
+        const dashboard = await dashboardResponse.json();
+        let tracker = dashboard.atlas_pulse_tracker;
+        if (!tracker){
+          const trackerResponse = await fetch("data/atlas_pulse_tracker.json?ts=" + Date.now(), { cache: "no-store" });
+          if (!trackerResponse.ok) throw new Error("HTTP " + trackerResponse.status);
+          tracker = await trackerResponse.json();
+        }
+        renderAtlasPulseTracker(tracker);
+      }catch(e){
+        setText("atlas_tracker_status", "Tracker data unavailable");
+      }
     }
     function signedDrawdownPct(v){
       const n = toFiniteOrNull(v);
@@ -1591,7 +1752,9 @@
     }
 
     loadDashboard();
+    loadAtlasPulseTracker();
     setInterval(loadDashboard, 10000);
+    setInterval(loadAtlasPulseTracker, 60000);
   </script>
 </body>
 </html>
