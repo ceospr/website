@@ -613,6 +613,7 @@
       const profile = String((r && (r.broker_profile || r.profile)) || "").trim().toUpperCase().replace(/\s+/g, "_");
       const account = String((r && (r.broker_account || r.account || r.account_label)) || "").trim().toUpperCase().replace(/\s+/g, "_");
       const dt = r && (r.daytrade_mode === true || String(r.daytrade_mode).toLowerCase() === "true");
+      if (["MANUAL", "EXTERNAL", "BROKER_MANUAL"].includes(norm)) return "Manual";
       if (
         dt
         || norm.includes("INTRADAY")
