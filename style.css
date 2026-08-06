@@ -159,6 +159,12 @@ a{color:inherit}
 .account-metrics .kpi{
   box-shadow:none;
 }
+.metrics-status{
+  margin:10px 0 0;
+  color:var(--muted);
+  font-size:13px;
+  line-height:1.45;
+}
 .data-stamp{
   margin:12px 0 0;
   color:var(--muted);

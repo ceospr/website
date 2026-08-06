@@ -105,6 +105,7 @@
               <article class="kpi"><span>Win Rate</span><strong id="apm_swing_shadow_win_rate">-</strong></article>
               <article class="kpi"><span>Closed Trades</span><strong id="apm_swing_shadow_closed_trades">-</strong></article>
             </div>
+            <p class="metrics-status" id="apm_swing_shadow_metrics_status">Loading reporting-period status...</p>
           </section>
         </div>
         <p class="data-stamp">Last Updated <strong id="updated_at">-</strong></p>
@@ -719,10 +720,10 @@
       });
     }
 
-    function renderTrades(rows, { suppressReturn = false } = {}){
+    function renderTrades(rows, { suppressReturn = false, emptyMessage = "No completed trade history yet." } = {}){
       const tbody = document.querySelector("#trade_table tbody");
       if (!Array.isArray(rows) || rows.length === 0){
-        tbody.innerHTML = '<tr><td colspan="9" class="empty">No trade history yet.</td></tr>';
+        tbody.innerHTML = `<tr><td colspan="9" class="empty">${escapeHtml(emptyMessage)}</td></tr>`;
         return;
       }
       const last = uniqueTradeRowsForDisplay(rows).slice(-80).reverse();
@@ -1079,12 +1080,12 @@
       });
     }
 
-    function renderMonthlyTable(rows){
+    function renderMonthlyTable(rows, emptyMessage = "Monthly performance feed unavailable."){
       const tbody = document.getElementById("monthly_table_body");
       if (!tbody) return;
 
       if (!Array.isArray(rows) || rows.length === 0){
-        tbody.innerHTML = '<tr><td colspan="5" class="empty">Monthly performance feed unavailable.</td></tr>';
+        tbody.innerHTML = `<tr><td colspan="5" class="empty">${escapeHtml(emptyMessage)}</td></tr>`;
         return;
       }
 
@@ -1312,19 +1313,27 @@
       }
 
       const resetStartEquity = toFiniteOrNull(acct.inception_equity) ?? toFiniteOrNull(acct.ytd_start_equity);
-      if (options.resetFlat && currentEquity !== null && resetStartEquity !== null && resetStartEquity > 0){
+      const asofDay = dateKeyFromRawTimestamp(acct.asof);
+      const resetDay = dateKeyFromRawTimestamp(acct.public_reset_start || view.public_reset_start);
+      if (
+        options.resetFlat
+        && asofDay
+        && resetDay === asofDay
+        && currentEquity !== null
+        && resetStartEquity !== null
+        && resetStartEquity > 0
+      ){
         return pctFromBase(currentEquity, resetStartEquity);
       }
 
-      if (!Array.isArray(equitySeries) || equitySeries.length < 2){
-        const tradingDayPnlReturn = dailyReturnFromTradingDayPnl(view, currentEquity);
-        if (tradingDayPnlReturn !== null) return tradingDayPnlReturn;
-      }
+      const seriesReturn = dailyReturnFromEquitySeries(equitySeries, currentEquity, asofDay);
+      if (seriesReturn !== null) return seriesReturn;
+      if (options.strictDaily) return null;
 
-      const openPnlReturn = dailyReturnFromOpenPnl(view, currentEquity);
-      if (options.resetFlat && openPnlReturn !== null) return openPnlReturn;
+      const tradingDayPnlReturn = dailyReturnFromTradingDayPnl(view, currentEquity);
+      if (tradingDayPnlReturn !== null) return tradingDayPnlReturn;
 
-      return dailyReturnFromEquitySeries(equitySeries, currentEquity, dateKeyFromRawTimestamp(acct.asof));
+      return dailyReturnFromOpenPnl(view, currentEquity);
     }
 
     function maxDrawdownMetric(perf, monthlyRows, minDrawdown){
@@ -1502,24 +1511,23 @@
         view,
         dailyEquitySeries.length ? dailyEquitySeries : equitySeries,
         currentEquity,
-        { resetFlat }
+        { resetFlat, strictDaily: prefix === "apm_swing_shadow" }
       );
-      const fallbackDrawdown = dailyReturn !== null ? Math.min(0, dailyReturn) : null;
+      const fallbackDrawdown = sinceInceptionReturn !== null ? Math.min(0, sinceInceptionReturn) : null;
       const currentDrawdown = drawdownSeries.length ? drawdownSeries[drawdownSeries.length - 1].value : fallbackDrawdown;
       const minDrawdown = drawdownSeries.length ? Math.min(...drawdownSeries.map(x => Number(x.value)).filter(Number.isFinite)) : fallbackDrawdown;
       const maxDrawdown = maxDrawdownMetric(perf, monthlyRows, minDrawdown);
 
-      const freshReset = useResetScopedBaseline && isFreshResetView(view);
-      setText(`${prefix}_since_inception_return`, freshReset ? "-" : fPct(sinceInceptionReturn, 2));
-      setText(`${prefix}_ytd_return`, freshReset ? "-" : fPct(ytdReturn, 2));
-      setText(`${prefix}_daily_return`, freshReset ? "-" : fPct(dailyReturn, 2));
+      setText(`${prefix}_since_inception_return`, fPct(sinceInceptionReturn, 2));
+      setText(`${prefix}_ytd_return`, fPct(ytdReturn, 2));
+      setText(`${prefix}_daily_return`, fPct(dailyReturn, 2));
       setText(`${prefix}_current_equity`, currentEquity === null ? "-" : fMoney(currentEquity));
-      setText(`${prefix}_max_drawdown_pct`, freshReset ? "-" : fPct(maxDrawdown, 2));
-      setText(`${prefix}_current_drawdown_pct`, freshReset ? "-" : fPct(currentDrawdown, 2));
-      setText(`${prefix}_sharpe_ratio`, freshReset ? "-" : fNum(perf.sharpe_like, 3));
-      setText(`${prefix}_sortino_ratio`, freshReset ? "-" : fNum(perf.sortino_ratio, 3));
-      setText(`${prefix}_profit_factor`, freshReset ? "-" : fNum(perf.profit_factor_r, 3));
-      setText(`${prefix}_win_rate`, freshReset ? "-" : fPct(perf.win_rate_pct ?? perf.recent_trades_win_rate_pct, 1));
+      setText(`${prefix}_max_drawdown_pct`, fPct(maxDrawdown, 2));
+      setText(`${prefix}_current_drawdown_pct`, fPct(currentDrawdown, 2));
+      setText(`${prefix}_sharpe_ratio`, fNum(perf.sharpe_like, 3));
+      setText(`${prefix}_sortino_ratio`, fNum(perf.sortino_ratio, 3));
+      setText(`${prefix}_profit_factor`, fNum(perf.profit_factor_r, 3));
+      setText(`${prefix}_win_rate`, fPct(perf.win_rate_pct ?? perf.recent_trades_win_rate_pct, 1));
       setText(`${prefix}_closed_trades`, Number.isFinite(Number(perf.closed_trades_count)) ? String(Number(perf.closed_trades_count)) : "-");
 
       return { equitySeries, drawdownSeries, summary };
@@ -1609,6 +1617,14 @@
           : [];
         const freshApmReset = isFreshResetView(apmSwingShadowView);
         const monthlyRows = freshApmReset ? [] : (liveMonthlyRows.length ? liveMonthlyRows : fallbackMonthlyRows());
+        const resetStart = apmSwingShadowView.public_reset_start || PUBLIC_DASHBOARD_START_ISO;
+        const resetLabel = fUpdatedAt(resetStart);
+        setText(
+          "apm_swing_shadow_metrics_status",
+          freshApmReset
+            ? `Equity metrics are live from the ${resetLabel} public reporting reset. Trade statistics will populate after the first completed post-reset trade.`
+            : `Performance metrics use public activity recorded since ${resetLabel}.`
+        );
 
         setText("updated_at", fUpdatedAt(d.published_at_utc || d.updated_at));
 
@@ -1621,7 +1637,7 @@
             toFiniteOrNull(acct.since_inception_pnl_dollars)
             ?? ((currentEquity !== null && inceptionEquity !== null) ? (currentEquity - inceptionEquity) : null)
           );
-        setText("run_pnl", noActivity || freshApmReset ? "-" : fMoney(sinceInceptionPnl));
+        setText("run_pnl", noActivity ? "-" : fMoney(sinceInceptionPnl));
 
         renderInteractiveLineChart("intraday_equity_curve_chart", intradayMetrics.equitySeries, {
           stroke: "#c67627",
@@ -1680,10 +1696,19 @@
           tooltipLabel: (v) => `${apmSwingShadowLabel} drawdown: ${fPct(v, 2)}`
         });
 
-        renderMonthlyTable(monthlyRows);
+        renderMonthlyTable(
+          monthlyRows,
+          freshApmReset
+            ? `No completed trades since the public reporting reset (${resetLabel}).`
+            : "Monthly performance feed unavailable."
+        );
 
-        renderOpenPositions(openPositionsLive, { suppressReturn: freshApmReset });
-        renderTrades(executionHistory, { suppressReturn: freshApmReset });
+        renderOpenPositions(openPositionsLive);
+        renderTrades(executionHistory, {
+          emptyMessage: freshApmReset
+            ? `No completed trades since the public reporting reset (${resetLabel}).`
+            : "No completed trade history yet."
+        });
       }catch(e){
         setText("updated_at", "Dashboard data unavailable");
         setAccountVisible("intraday", { missing: true });
