@@ -1,6 +1,6 @@
 {
-  "updated_at": "2026-08-07T12:45:45.660061",
-  "published_at_utc": "2026-08-07T19:45:45Z",
+  "updated_at": "2026-08-07T13:10:18.854972",
+  "published_at_utc": "2026-08-07T20:10:18Z",
   "profile": "LARGE",
   "strategy": "APM_SWING",
   "shadow_only": false,
@@ -9,24 +9,25 @@
   "universe": [
     "MP",
     "FCX",
-    "CMCSA",
-    "WBD",
     "PFE",
-    "BMY",
-    "BAC",
-    "MCHP",
-    "NEE",
-    "CF",
     "INTC",
     "C",
-    "FXI",
     "IBIT",
-    "KRE",
-    "XLV",
-    "GDX",
-    "SLV",
-    "XLF",
-    "XLE"
+    "NVDA",
+    "AAPL",
+    "AMZN",
+    "GOOGL",
+    "MSFT",
+    "AMD",
+    "BAC",
+    "JPM",
+    "WMT",
+    "XOM",
+    "CVX",
+    "JNJ",
+    "TSLA",
+    "V",
+    "PLTR"
   ],
   "benchmark": "SPY",
   "relative_strength_mode": "factor",
@@ -34,17 +35,24 @@
     "SQQQ",
     "XLB",
     "QQQ",
+    "SMH",
+    "XLF",
+    "XLK",
+    "XLY",
     "XLC",
-    "SMH"
+    "XLP",
+    "XLE",
+    "USO",
+    "XLV"
   ],
   "account": {
-    "equity": 2123.88,
-    "buying_power": 2680.71,
+    "equity": 2124.62,
+    "buying_power": 2681.45,
     "inception_equity": 2111.39,
     "ytd_start_equity": 2111.39,
-    "previous_close_equity": 2100.98,
-    "since_inception_pnl_dollars": 12.49,
-    "asof": "2026-08-07T12:45:32"
+    "previous_close_equity": null,
+    "since_inception_pnl_dollars": 13.23,
+    "asof": "2026-08-07T19:59:57Z"
   },
   "summary": {
     "leaderboard_count": 20,
@@ -70,7 +78,7 @@
     "profit_factor_r": null,
     "gross_profit_r": null,
     "gross_loss_r": null,
-    "max_drawdown_pct_est": 0.0
+    "max_drawdown_pct_est": 0.683
   },
   "monthly_performance": [],
   "leaderboard": [
@@ -1316,21 +1324,27 @@
     }
   ],
   "bear_defense": {
-    "enabled": true,
-    "level": "NORMAL",
-    "candidate_level": "NORMAL",
     "active": false,
-    "liquidity_switch": false,
-    "risk_off_candidate": false,
-    "derisk_candidate": false,
-    "switch_candidate": false,
-    "score": 7.5,
-    "participation": 0.0,
-    "eligible_count": 0,
-    "valid_count": 20,
-    "avg_short_score": 0.0,
     "avg_context_score": 0.0,
+    "avg_short_score": 0.0,
+    "candidate_level": "NORMAL",
+    "confirm_runs_required": 5,
+    "consecutive_derisk_runs": 0,
+    "consecutive_risk_off_runs": 0,
+    "consecutive_switch_runs": 0,
+    "data_quality_ok": true,
     "density_score": 0.0,
+    "derisk_candidate": false,
+    "derisk_runs_required": 3,
+    "eligible_count": 0,
+    "enabled": true,
+    "expected_symbols_count": 26,
+    "failed_fraction": 0.0,
+    "failed_symbols_count": 0,
+    "level": "NORMAL",
+    "liquidity_switch": false,
+    "long_loss_risk": 75.0,
+    "long_risk_ok": true,
     "long_signal_count": 5,
     "long_signal_participation": 0.25,
     "new_long_loss_risk": 75.0,
@@ -1339,34 +1353,28 @@
       "open_long_loss_risk": 50.0,
       "positions": {
         "FCX": {
-          "risk": 50.0,
-          "reasons": []
+          "reasons": [],
+          "risk": 50.0
         },
         "XLV": {
-          "risk": 50.0,
-          "reasons": []
+          "reasons": [],
+          "risk": 50.0
         }
       }
     },
-    "long_loss_risk": 75.0,
-    "expected_symbols_count": 26,
-    "failed_symbols_count": 0,
-    "failed_fraction": 0.0,
-    "data_quality_ok": true,
+    "participation": 0.0,
+    "reason": "APM_BEAR_DEFENSE score=7.5; shorts=0/20; participation=0.00; long_loss_risk=75.0",
+    "risk_off_candidate": false,
+    "risk_off_runs_required": 2,
+    "score": 7.5,
     "strong_breadth_ok": false,
     "strong_signals_ok": false,
-    "long_risk_ok": true,
-    "risk_off_runs_required": 2,
-    "derisk_runs_required": 3,
-    "confirm_runs_required": 5,
-    "consecutive_risk_off_runs": 0,
-    "consecutive_derisk_runs": 0,
-    "consecutive_switch_runs": 0,
+    "switch_candidate": false,
     "ts_utc": "2026-08-07T19:45:02Z",
-    "reason": "APM_BEAR_DEFENSE score=7.5; shorts=0/20; participation=0.00; long_loss_risk=75.0"
+    "valid_count": 20
   },
   "broker_exposure_audit": {
-    "ts_utc": "2026-08-07T19:45:31Z",
+    "ts_utc": "2026-08-07T19:59:57Z",
     "status": "OK",
     "positions": [
       {
@@ -1374,7 +1382,7 @@
         "side": "LONG",
         "qty": 13.0,
         "entry_px": 69.15,
-        "current_px": 69.59,
+        "current_px": 69.63,
         "classification": "APM_MANAGED"
       },
       {
@@ -1382,20 +1390,20 @@
         "side": "LONG",
         "qty": 4.0,
         "entry_px": 163.8798,
-        "current_px": 165.6,
+        "current_px": 165.67,
         "classification": "APM_MANAGED"
       }
     ]
   },
   "live_account_balance_check": {
-    "checked_at_utc": "2026-08-07T19:45:31Z",
+    "checked_at_utc": "2026-08-07T19:59:57Z",
     "source": "ALPACA_LIVE",
     "snapshot_ok": true,
-    "account_balance": 2123.88,
-    "trading_balance": 2680.71,
-    "effective_trading_balance": 2680.71,
+    "account_balance": 2124.62,
+    "trading_balance": 2681.45,
+    "effective_trading_balance": 2681.45,
     "cash_balance": 556.83,
-    "margin_multiple": 1.2622,
+    "margin_multiple": 1.2621,
     "broker_multiplier": 2.0,
     "broker_status": "ACTIVE",
     "account_blocked": false,
@@ -1403,12 +1411,12 @@
     "transfers_blocked": false,
     "user_suspended": false,
     "shorting_enabled": true,
-    "regt_buying_power": 2680.71,
+    "regt_buying_power": 2681.45,
     "daytrading_buying_power": null,
-    "non_marginable_buying_power": 1340.35,
-    "initial_margin": 783.53,
-    "maintenance_margin": 470.12,
-    "long_market_value": 1567.05,
+    "non_marginable_buying_power": 1340.72,
+    "initial_margin": 783.9,
+    "maintenance_margin": 470.34,
+    "long_market_value": 1567.79,
     "short_market_value": 0.0,
     "margin_snapshot_ok": true,
     "account_entry_block_reason": null,
@@ -1423,123 +1431,145 @@
     "max_gross_overnight_exposure_multiple": 1.5
   },
   "last_margin_entry_check": {
-    "checked_at_utc": "2026-08-07T19:45:31Z",
-    "symbol": "XLF",
-    "side": "LONG",
-    "entry_margin_mode": "NORMAL",
-    "qty": 12,
-    "price": 57.625,
-    "candidate_notional": 691.5,
+    "allowed": false,
     "asset": {
-      "symbol": "XLF",
-      "status": "ACTIVE",
       "active": true,
-      "tradable": true,
-      "marginable": true,
-      "shortable": true,
+      "asset_snapshot_ok": true,
       "easy_to_borrow": true,
       "maintenance_margin_requirement": 0.3,
-      "asset_snapshot_ok": true
+      "marginable": true,
+      "shortable": true,
+      "status": "ACTIVE",
+      "symbol": "XLF",
+      "tradable": true
     },
-    "marginable": true,
-    "initial_margin_rate": 0.5,
+    "block_code": "STRESSED_EQUITY_ELIGIBILITY_BUFFER",
     "candidate_initial_margin": 345.75,
-    "current_initial_margin": 783.53,
-    "projected_initial_margin": 1129.28,
-    "overnight_regt_buying_power_used": 2680.71,
-    "daytrading_buying_power_ignored": null,
-    "non_marginable_buying_power": 1340.35,
-    "cash_balance": 556.83,
-    "current_maintenance_margin": 470.12,
     "candidate_maintenance": {
-      "side": "LONG",
-      "price": 57.625,
-      "qty": 12.0,
-      "market_value": 691.5,
-      "pdf_rule": "LONG_GT_6_30_PCT",
-      "pdf_rate": 0.3,
-      "pdf_requirement": 207.45,
       "broker_rate": 0.3,
       "concentration_applies": false,
       "effective_rate": 0.3,
-      "effective_requirement": 207.45
+      "effective_requirement": 207.45,
+      "market_value": 691.5,
+      "pdf_rate": 0.3,
+      "pdf_requirement": 207.45,
+      "pdf_rule": "LONG_GT_6_30_PCT",
+      "price": 57.625,
+      "qty": 12.0,
+      "side": "LONG"
     },
-    "projected_maintenance_margin": 677.57,
-    "projected_maintenance_utilization": 0.319025,
-    "max_projected_maintenance_utilization": 0.8,
-    "current_gross_exposure": 1567.05,
-    "projected_gross_exposure": 2258.55,
-    "projected_gross_exposure_multiple": 1.063408,
-    "max_gross_overnight_exposure_multiple": 1.5,
-    "projected_margin_debit": 134.67,
-    "estimated_daily_margin_interest": null,
-    "interest_annual_rate": null,
-    "concentration_share": 0.30617,
-    "concentration_applies": false,
+    "candidate_notional": 691.5,
     "candidate_stop_risk": 21.04,
+    "cash_balance": 556.83,
+    "checked_at_utc": "2026-08-07T19:45:31Z",
+    "concentration_applies": false,
+    "concentration_share": 0.30617,
+    "current_gross_exposure": 1567.05,
+    "current_initial_margin": 783.53,
+    "current_maintenance_margin": 470.12,
+    "daytrading_buying_power_ignored": null,
+    "eligibility_buffer": 106.19,
+    "entry_margin_mode": "NORMAL",
+    "estimated_daily_margin_interest": null,
     "existing_position_stress": 235.06,
     "existing_position_stress_pct": 0.15,
-    "total_modeled_stop_risk": 256.09,
-    "margin_excess": 1446.31,
-    "required_maintenance_headroom": 530.97,
+    "full_stressed_equity_eligibility_passed": false,
+    "initial_margin_rate": 0.5,
+    "interest_annual_rate": null,
+    "limited_short_plan": null,
+    "limited_shorts_enabled": true,
+    "limited_shorts_max_equity_pct": 0.1,
+    "limited_shorts_max_notional": 250.0,
     "maintenance_headroom_pct": 0.25,
     "maintenance_stop_risk_multiple": 2.0,
-    "stressed_equity": 1867.79,
+    "margin_excess": 1446.31,
+    "marginable": true,
+    "max_gross_overnight_exposure_multiple": 1.5,
+    "max_projected_maintenance_utilization": 0.8,
+    "non_marginable_buying_power": 1340.35,
+    "overnight_regt_buying_power_used": 2680.71,
+    "price": 57.625,
+    "projected_gross_exposure": 2258.55,
+    "projected_gross_exposure_multiple": 1.063408,
+    "projected_initial_margin": 1129.28,
+    "projected_maintenance_margin": 677.57,
+    "projected_maintenance_utilization": 0.319025,
+    "projected_margin_debit": 134.67,
+    "qty": 12,
+    "reason": "margin/short-funded entry fails the configured stressed-equity eligibility buffer (1867.79 < 2106.19)",
+    "required_maintenance_headroom": 530.97,
     "required_stressed_equity": 2106.19,
-    "eligibility_buffer": 106.19,
-    "uses_margin_or_short_privilege": true,
-    "limited_shorts_enabled": true,
-    "limited_shorts_max_notional": 250.0,
-    "limited_shorts_max_equity_pct": 0.1,
-    "full_stressed_equity_eligibility_passed": false,
+    "side": "LONG",
+    "stressed_equity": 1867.79,
     "stressed_equity_eligibility_bypass": false,
-    "limited_short_plan": null,
-    "allowed": false,
-    "block_code": "STRESSED_EQUITY_ELIGIBILITY_BUFFER",
-    "reason": "margin/short-funded entry fails the configured stressed-equity eligibility buffer (1867.79 < 2106.19)"
+    "symbol": "XLF",
+    "total_modeled_stop_risk": 256.09,
+    "uses_margin_or_short_privilege": true
   },
   "trade_history": [],
   "open_positions_live": [
     {
-      "ts_utc": "2026-08-07T12:45:32",
-      "broker_account": "Live Trading Account",
-      "broker_profile": "APM_REAL_ACCOUNT_SWING",
+      "ts_utc": "2026-08-05T16:15:49Z",
       "symbol": "FCX",
       "side": "LONG",
       "qty": 13.0,
       "entry_px": 69.15,
-      "exit_px": 69.59,
-      "current_px": 69.59,
-      "R_realized": null,
-      "pnl_pct": 0.6362979031091797,
-      "entry_model": "Swing"
+      "exit_px": 69.63,
+      "current_px": 69.63,
+      "R_realized": 0.138829,
+      "pnl_pct": 0.694143,
+      "pnl_dollars": 6.24,
+      "entry_model": "Swing",
+      "reason": "OPEN",
+      "broker_account": "Live Trading Account",
+      "broker_profile": "APM_REAL_ACCOUNT_SWING"
     },
     {
-      "ts_utc": "2026-08-07T12:45:32",
-      "broker_account": "Live Trading Account",
-      "broker_profile": "APM_REAL_ACCOUNT_SWING",
+      "ts_utc": "2026-08-05T16:15:50Z",
       "symbol": "XLV",
       "side": "LONG",
       "qty": 4.0,
       "entry_px": 163.8798,
-      "exit_px": 165.595,
-      "current_px": 165.595,
-      "R_realized": null,
-      "pnl_pct": 1.0466207549679767,
-      "entry_model": "Swing"
+      "exit_px": 165.67,
+      "current_px": 165.67,
+      "R_realized": 0.243244,
+      "pnl_pct": 1.092386,
+      "pnl_dollars": 7.16,
+      "entry_model": "Swing",
+      "reason": "OPEN",
+      "broker_account": "Live Trading Account",
+      "broker_profile": "APM_REAL_ACCOUNT_SWING"
     }
   ],
   "recent_executions": [],
   "equity_curve": [
     {
-      "ts": "2026-08-07T19:45:32",
-      "equity": 2123.88,
+      "ts": "2026-08-05T20:00:00",
+      "equity": 2115.29,
+      "drawdown_pct": 0.0
+    },
+    {
+      "ts": "2026-08-06T19:59:57",
+      "equity": 2100.84,
+      "drawdown_pct": -0.6831
+    },
+    {
+      "ts": "2026-08-07T19:59:57",
+      "equity": 2124.62,
       "drawdown_pct": 0.0
     }
   ],
   "drawdown_curve": [
     {
-      "ts": "2026-08-07T19:45:32",
+      "ts": "2026-08-05T20:00:00",
+      "drawdown_pct": 0.0
+    },
+    {
+      "ts": "2026-08-06T19:59:57",
+      "drawdown_pct": -0.6831
+    },
+    {
+      "ts": "2026-08-07T19:59:57",
       "drawdown_pct": 0.0
     }
   ],
@@ -1553,314 +1583,22 @@
     "dynamic_position_base": "buying_power",
     "manual_position_policy": "ignore"
   },
-  "equity_curve_r": [
-    {
-      "ts": "2026-07-02 14:02:07+00:00",
-      "cum_r": -4.414,
-      "r": -4.414
-    },
-    {
-      "ts": "2026-07-06 14:18:39+00:00",
-      "cum_r": -8.136,
-      "r": -3.722
-    },
-    {
-      "ts": "2026-07-06 14:18:39+00:00",
-      "cum_r": -9.898,
-      "r": -1.763
-    },
-    {
-      "ts": "2026-07-06 16:08:11+00:00",
-      "cum_r": -4.931,
-      "r": 4.968
-    },
-    {
-      "ts": "2026-07-06 17:52:06+00:00",
-      "cum_r": -5.055,
-      "r": -0.124
-    },
-    {
-      "ts": "2026-07-06 18:03:27+00:00",
-      "cum_r": -5.066,
-      "r": -0.012
-    },
-    {
-      "ts": "2026-07-06 18:04:30+00:00",
-      "cum_r": -5.146,
-      "r": -0.08
-    },
-    {
-      "ts": "2026-07-06 19:40:21+00:00",
-      "cum_r": -5.635,
-      "r": -0.489
-    },
-    {
-      "ts": "2026-07-06 19:41:13+00:00",
-      "cum_r": -5.392,
-      "r": 0.243
-    },
-    {
-      "ts": "2026-07-06 19:41:15+00:00",
-      "cum_r": -3.689,
-      "r": 1.703
-    },
-    {
-      "ts": "2026-07-06 19:41:16+00:00",
-      "cum_r": -4.812,
-      "r": -1.123
-    },
-    {
-      "ts": "2026-07-06 19:41:42+00:00",
-      "cum_r": -5.299,
-      "r": -0.487
-    },
-    {
-      "ts": "2026-07-06 19:41:48+00:00",
-      "cum_r": -4.571,
-      "r": 0.728
-    },
-    {
-      "ts": "2026-07-07 14:11:20+00:00",
-      "cum_r": -7.689,
-      "r": -3.118
-    },
-    {
-      "ts": "2026-07-07 14:11:20+00:00",
-      "cum_r": -11.016,
-      "r": -3.327
-    },
-    {
-      "ts": "2026-07-07 14:11:20+00:00",
-      "cum_r": -13.973,
-      "r": -2.957
-    },
-    {
-      "ts": "2026-07-07 19:30:21+00:00",
-      "cum_r": -19.053,
-      "r": -5.079
-    },
-    {
-      "ts": "2026-07-08 13:30:14+00:00",
-      "cum_r": -22.565,
-      "r": -3.513
-    },
-    {
-      "ts": "2026-07-08 14:02:09+00:00",
-      "cum_r": -27.465,
-      "r": -4.899
-    },
-    {
-      "ts": "2026-07-08 14:04:13+00:00",
-      "cum_r": -29.664,
-      "r": -2.2
-    },
-    {
-      "ts": "2026-07-08 14:04:15+00:00",
-      "cum_r": -31.248,
-      "r": -1.583
-    },
-    {
-      "ts": "2026-07-10 16:52:05+00:00",
-      "cum_r": -35.383,
-      "r": -4.135
-    },
-    {
-      "ts": "2026-07-14 14:58:45+00:00",
-      "cum_r": -33.036,
-      "r": 2.347
-    },
-    {
-      "ts": "2026-07-15 13:50:23+00:00",
-      "cum_r": -31.033,
-      "r": 2.003
-    },
-    {
-      "ts": "2026-07-15 13:50:33+00:00",
-      "cum_r": -30.165,
-      "r": 0.868
-    },
-    {
-      "ts": "2026-07-15 14:24:18+00:00",
-      "cum_r": -29.541,
-      "r": 0.624
-    },
-    {
-      "ts": "2026-07-15 14:24:19+00:00",
-      "cum_r": -29.415,
-      "r": 0.126
-    },
-    {
-      "ts": "2026-07-15 14:24:21+00:00",
-      "cum_r": -29.44,
-      "r": -0.025
-    },
-    {
-      "ts": "2026-07-16 14:16:44+00:00",
-      "cum_r": -29.599,
-      "r": -0.16
-    },
-    {
-      "ts": "2026-07-16 14:16:49+00:00",
-      "cum_r": -30.49,
-      "r": -0.891
-    },
-    {
-      "ts": "2026-07-17 16:52:02+00:00",
-      "cum_r": -31.051,
-      "r": -0.561
-    },
-    {
-      "ts": "2026-07-20 19:06:54+00:00",
-      "cum_r": -32.986,
-      "r": -1.935
-    },
-    {
-      "ts": "2026-07-20 19:06:56+00:00",
-      "cum_r": -35.295,
-      "r": -2.309
-    },
-    {
-      "ts": "2026-07-20 19:06:59+00:00",
-      "cum_r": -35.917,
-      "r": -0.621
-    },
-    {
-      "ts": "2026-07-20 19:07:01+00:00",
-      "cum_r": -35.954,
-      "r": -0.037
-    },
-    {
-      "ts": "2026-07-20 19:08:05+00:00",
-      "cum_r": -35.543,
-      "r": 0.411
-    },
-    {
-      "ts": "2026-07-20 19:08:12+00:00",
-      "cum_r": -39.285,
-      "r": -3.743
-    },
-    {
-      "ts": "2026-07-24 13:51:14+00:00",
-      "cum_r": -34.976,
-      "r": 4.31
-    },
-    {
-      "ts": "2026-07-24 13:51:14+00:00",
-      "cum_r": -30.669,
-      "r": 4.307
-    },
-    {
-      "ts": "2026-07-27 13:42:30+00:00",
-      "cum_r": -32.717,
-      "r": -2.048
-    },
-    {
-      "ts": "2026-07-29 13:49:09+00:00",
-      "cum_r": -27.759,
-      "r": 4.958
-    },
-    {
-      "ts": "2026-07-31 17:30:41+00:00",
-      "cum_r": -31.059,
-      "r": -3.3
-    },
-    {
-      "ts": "2026-08-03 18:02:24+00:00",
-      "cum_r": -29.529,
-      "r": 1.53
-    },
-    {
-      "ts": "2026-08-03 18:02:33+00:00",
-      "cum_r": -32.158,
-      "r": -2.629
-    },
-    {
-      "ts": "2026-08-03 18:02:33+00:00",
-      "cum_r": -33.039,
-      "r": -0.881
-    },
-    {
-      "ts": "2026-08-03 18:03:47+00:00",
-      "cum_r": -36.125,
-      "r": -3.087
-    },
-    {
-      "ts": "2026-08-03 18:03:47+00:00",
-      "cum_r": -38.871,
-      "r": -2.746
-    },
-    {
-      "ts": "2026-08-03 18:03:47+00:00",
-      "cum_r": -40.589,
-      "r": -1.718
-    },
-    {
-      "ts": "2026-08-03 18:03:47+00:00",
-      "cum_r": -42.318,
-      "r": -1.729
-    },
-    {
-      "ts": "2026-08-03 18:20:41+00:00",
-      "cum_r": -42.254,
-      "r": 0.064
-    },
-    {
-      "ts": "2026-08-04 13:30:02+00:00",
-      "cum_r": -46.18,
-      "r": -3.926
-    },
-    {
-      "ts": "2026-08-04 13:30:02+00:00",
-      "cum_r": -44.449,
-      "r": 1.731
-    },
-    {
-      "ts": "2026-08-04 13:30:02+00:00",
-      "cum_r": -42.667,
-      "r": 1.782
-    },
-    {
-      "ts": "2026-08-04 18:48:28+00:00",
-      "cum_r": -43.281,
-      "r": -0.614
-    },
-    {
-      "ts": "2026-08-05 16:02:22+00:00",
-      "cum_r": -43.125,
-      "r": 0.156
-    },
-    {
-      "ts": "2026-08-05 16:02:24+00:00",
-      "cum_r": -42.632,
-      "r": 0.492
-    },
-    {
-      "ts": "2026-08-05 16:02:26+00:00",
-      "cum_r": -43.249,
-      "r": -0.616
-    },
-    {
-      "ts": "2026-08-05 16:02:35+00:00",
-      "cum_r": -39.103,
-      "r": 4.146
-    }
-  ],
   "strategy_lanes": [
     "APM_REAL_ACCOUNT_SWING"
   ],
-  "source_updated_at_max": "2026-08-07T12:45:32.401653",
+  "source_updated_at_max": "2026-08-07T12:59:57",
   "broker_accounts": {
     "apm_swing": {
       "label": "Live Trading Account",
       "profile": "APM_REAL_ACCOUNT_SWING",
       "public_reset_start": "2026-08-05T16:10:00Z",
-      "equity": 2123.88,
-      "buying_power": 2680.71,
+      "equity": 2124.62,
+      "buying_power": 2681.45,
       "inception_equity": 2111.39,
       "ytd_start_equity": 2111.39,
-      "previous_close_equity": 2100.98,
-      "since_inception_pnl_dollars": 12.49,
-      "asof": "2026-08-07T12:45:32"
+      "previous_close_equity": null,
+      "since_inception_pnl_dollars": 13.23,
+      "asof": "2026-08-07T19:59:57Z"
     }
   },
   "account_views": {
@@ -1872,17 +1610,17 @@
         "label": "Live Trading Account",
         "profile": "APM_REAL_ACCOUNT_SWING",
         "public_reset_start": "2026-08-05T16:10:00Z",
-        "equity": 2123.88,
-        "buying_power": 2680.71,
+        "equity": 2124.62,
+        "buying_power": 2681.45,
         "inception_equity": 2111.39,
         "ytd_start_equity": 2111.39,
-        "previous_close_equity": 2100.98,
-        "since_inception_pnl_dollars": 12.49,
-        "asof": "2026-08-07T12:45:32"
+        "previous_close_equity": null,
+        "since_inception_pnl_dollars": 13.23,
+        "asof": "2026-08-07T19:59:57Z"
       },
       "performance": {
         "closed_trades_count": 0,
-        "max_drawdown_pct_est": 0.0
+        "max_drawdown_pct_est": 0.683
       },
       "summary": {
         "leaderboard_count": 20,
@@ -1890,9 +1628,7 @@
         "open_positions_count": 2,
         "recent_trades_count": 0,
         "top_ticker": "PFE",
-        "top_score": 78.51,
-        "open_long_count": 2,
-        "open_short_count": 0
+        "top_score": 78.51
       },
       "positioning": {
         "long_short_ratio": null,
@@ -1908,50 +1644,72 @@
       "recent_executions": [],
       "open_positions_live": [
         {
-          "ts_utc": "2026-08-07T12:45:32",
-          "broker_account": "Live Trading Account",
-          "broker_profile": "APM_REAL_ACCOUNT_SWING",
+          "ts_utc": "2026-08-05T16:15:49Z",
           "symbol": "FCX",
           "side": "LONG",
           "qty": 13.0,
           "entry_px": 69.15,
-          "exit_px": 69.59,
-          "current_px": 69.59,
-          "R_realized": null,
-          "pnl_pct": 0.6362979031091797,
-          "entry_model": "Swing"
+          "exit_px": 69.63,
+          "current_px": 69.63,
+          "R_realized": 0.138829,
+          "pnl_pct": 0.694143,
+          "pnl_dollars": 6.24,
+          "entry_model": "Swing",
+          "reason": "OPEN",
+          "broker_account": "Live Trading Account",
+          "broker_profile": "APM_REAL_ACCOUNT_SWING"
         },
         {
-          "ts_utc": "2026-08-07T12:45:32",
-          "broker_account": "Live Trading Account",
-          "broker_profile": "APM_REAL_ACCOUNT_SWING",
+          "ts_utc": "2026-08-05T16:15:50Z",
           "symbol": "XLV",
           "side": "LONG",
           "qty": 4.0,
           "entry_px": 163.8798,
-          "exit_px": 165.595,
-          "current_px": 165.595,
-          "R_realized": null,
-          "pnl_pct": 1.0466207549679767,
-          "entry_model": "Swing"
+          "exit_px": 165.67,
+          "current_px": 165.67,
+          "R_realized": 0.243244,
+          "pnl_pct": 1.092386,
+          "pnl_dollars": 7.16,
+          "entry_model": "Swing",
+          "reason": "OPEN",
+          "broker_account": "Live Trading Account",
+          "broker_profile": "APM_REAL_ACCOUNT_SWING"
         }
       ],
       "equity_curve": [
         {
-          "ts": "2026-08-07T19:45:32+00:00",
-          "equity": 2123.88,
+          "ts": "2026-08-05T20:00:00+00:00",
+          "equity": 2115.29,
+          "drawdown_pct": 0.0
+        },
+        {
+          "ts": "2026-08-06T19:59:57+00:00",
+          "equity": 2100.84,
+          "drawdown_pct": -0.6831
+        },
+        {
+          "ts": "2026-08-07T19:59:57+00:00",
+          "equity": 2124.62,
           "drawdown_pct": 0.0
         }
       ],
       "drawdown_curve": [
         {
-          "ts": "2026-08-07T19:45:32+00:00",
+          "ts": "2026-08-05T20:00:00+00:00",
+          "drawdown_pct": 0.0
+        },
+        {
+          "ts": "2026-08-06T19:59:57+00:00",
+          "drawdown_pct": -0.6831
+        },
+        {
+          "ts": "2026-08-07T19:59:57+00:00",
           "drawdown_pct": 0.0
         }
       ],
       "monthly_performance": [],
-      "updated_at": "2026-08-07T12:45:32.401653",
-      "published_at_utc": "2026-08-07T19:45:32Z"
+      "updated_at": "2026-08-07T12:59:57",
+      "published_at_utc": "2026-08-07T19:59:57Z"
     }
   },
   "public_reset_starts": {
@@ -1966,7 +1724,7 @@
     "current_month": "2026-08",
     "display_month": "August 2026",
     "execution_enabled": false,
-    "generated_at_utc": "2026-08-07T19:45:45Z",
+    "generated_at_utc": "2026-08-07T20:10:19Z",
     "months": [
       {
         "added_at_utc": "2026-07-23T17:22:32Z",
