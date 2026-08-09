@@ -816,7 +816,7 @@
       if (sameMoney(currentEquity, inceptionEquity)) return true;
 
       const curveEquities = (Array.isArray(view.equity_curve) ? view.equity_curve : [])
-        .map((pt) => toFiniteOrNull(pt && pt.equity))
+        .map((pt) => toFiniteOrNull(pt && (pt.performance_equity ?? pt.equity)))
         .filter((v) => v !== null && v > 0);
       if (!curveEquities.length || inceptionEquity <= 0) return false;
 
@@ -852,7 +852,10 @@
     function activeAccountEquitySeries(rows, acct){
       if (!Array.isArray(rows) || rows.length < 2) return rows;
       const base = toFiniteOrNull(acct.inception_equity) ?? toFiniteOrNull(acct.ytd_start_equity);
-      const currentEquity = toFiniteOrNull(acct.equity);
+      const usesPerformanceEquity = rows.some((pt) => pt && pt.performanceAdjusted);
+      const currentEquity = usesPerformanceEquity
+        ? (toFiniteOrNull(acct.performance_equity) ?? toFiniteOrNull(acct.equity))
+        : toFiniteOrNull(acct.equity);
       if (base === null || base <= 0) return rows;
 
       const resetTolerance = Math.max(25, base * 0.001);
@@ -891,12 +894,14 @@
 
       const rows = brokerCurve.map((pt) => {
         const tsMs = toTimestampMs(pt && pt.ts);
-        const eq = Number(pt && pt.equity);
+        const performanceEquity = toFiniteOrNull(pt && pt.performance_equity);
+        const eq = performanceEquity ?? Number(pt && pt.equity);
         const dd = Number(pt && pt.drawdown_pct);
         return {
           tsMs,
           value: eq,
-          drawdownPct: Number.isFinite(dd) ? dd : null
+          drawdownPct: Number.isFinite(dd) ? dd : null,
+          performanceAdjusted: performanceEquity !== null
         };
       }).filter((pt) => Number.isFinite(pt.tsMs) && Number.isFinite(pt.value));
 
@@ -1505,8 +1510,12 @@
         : null;
       const inceptionEquity = resetStartEquity ?? toFiniteOrNull(acct.inception_equity);
       const ytdStartEquity = resetStartEquity ?? toFiniteOrNull(acct.ytd_start_equity) ?? inceptionEquity;
-      const sinceInceptionReturn = pctFromBase(currentEquity, inceptionEquity);
-      const ytdReturn = pctFromBase(currentEquity, ytdStartEquity);
+      const sinceInceptionReturn = toFiniteOrNull(
+        acct.since_inception_return_pct ?? perf.since_inception_return_pct ?? view.since_inception_return_pct
+      ) ?? pctFromBase(currentEquity, inceptionEquity);
+      const ytdReturn = toFiniteOrNull(
+        acct.ytd_return_pct ?? perf.ytd_return_pct ?? view.ytd_return_pct
+      ) ?? pctFromBase(currentEquity, ytdStartEquity);
       const dailyReturn = dailyReturnFromView(
         view,
         dailyEquitySeries.length ? dailyEquitySeries : equitySeries,
@@ -1602,11 +1611,11 @@
           .map(({ view, resetStartEquity }) => {
             const account = view.account || {};
             const equity = toFiniteOrNull(account.equity);
+            const direct = toFiniteOrNull(account.since_inception_pnl_dollars);
+            if (direct !== null) return direct;
             if (equity !== null && Number.isFinite(resetStartEquity) && resetStartEquity > 0){
               return equity - resetStartEquity;
             }
-            const direct = toFiniteOrNull(account.since_inception_pnl_dollars);
-            if (direct !== null) return direct;
             const inception = toFiniteOrNull(account.inception_equity);
             return equity !== null && inception !== null ? equity - inception : null;
           })
@@ -1619,9 +1628,12 @@
         const monthlyRows = freshApmReset ? [] : (liveMonthlyRows.length ? liveMonthlyRows : fallbackMonthlyRows());
         const resetStart = apmSwingShadowView.public_reset_start || PUBLIC_DASHBOARD_START_ISO;
         const resetLabel = fUpdatedAt(resetStart);
+        const externalFlowCount = toFiniteOrNull((apmSwingShadowView.account || {}).cash_flow_event_count) ?? 0;
         setText(
           "apm_swing_shadow_metrics_status",
-          freshApmReset
+          externalFlowCount > 0
+            ? `Current Equity reflects the live broker balance; returns and P&L exclude recorded external cash flows since ${resetLabel}.`
+            : freshApmReset
             ? `Equity metrics are live from the ${resetLabel} public reporting reset. Trade statistics will populate after the first completed post-reset trade.`
             : `Performance metrics use public activity recorded since ${resetLabel}.`
         );
