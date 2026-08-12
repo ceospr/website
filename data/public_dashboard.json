@@ -1,6 +1,6 @@
 {
-  "updated_at": "2026-08-12T12:46:11.128445",
-  "published_at_utc": "2026-08-12T19:46:11Z",
+  "updated_at": "2026-08-12T13:20:12.163629",
+  "published_at_utc": "2026-08-12T20:20:12Z",
   "profile": "LARGE",
   "strategy": "APM_SWING",
   "shadow_only": false,
@@ -46,14 +46,14 @@
     "XLV"
   ],
   "account": {
-    "equity": 7096.35,
+    "equity": 7102.07,
     "cash": 2468.12,
-    "buying_power": 9564.47,
+    "buying_power": 9570.19,
     "inception_equity": 2111.39,
     "ytd_start_equity": 2111.39,
     "previous_close_equity": 7073.08,
-    "since_inception_pnl_dollars": -15.04,
-    "ytd_pnl_dollars": -15.04,
+    "since_inception_pnl_dollars": -9.32,
+    "ytd_pnl_dollars": -9.32,
     "net_external_cash_flow": 5000.0,
     "net_contributed_capital": 7111.39,
     "ytd_net_contributed_capital": 7111.39,
@@ -74,14 +74,14 @@
         "provenance": "FIRST_OBSERVED_POST_FLOW"
       }
     ],
-    "asof": "2026-08-12T19:45:44Z",
-    "performance_equity": 2096.35,
-    "performance_index": 99.78850829,
-    "since_inception_return_pct": -0.21149171,
-    "ytd_return_pct": -0.21149171,
-    "daily_pnl_dollars": 23.27,
-    "daily_change_dollars": 23.27,
-    "daily_return_pct": 0.32899388
+    "asof": "2026-08-12T19:59:13Z",
+    "performance_equity": 2102.07,
+    "performance_index": 99.86894264,
+    "since_inception_return_pct": -0.13105736,
+    "ytd_return_pct": -0.13105736,
+    "daily_pnl_dollars": 28.99,
+    "daily_change_dollars": 28.99,
+    "daily_return_pct": 0.40986388
   },
   "summary": {
     "leaderboard_count": 21,
@@ -174,18 +174,18 @@
       "earnings_session_distance": null,
       "earnings_provenance": "PERSISTENT_CACHE",
       "gap_lock": {
-        "status": "BLOCKED_GAP_LOCK",
         "active": true,
+        "atr_multiple": 3.293073847527917,
+        "consec_closes": 2,
+        "direction": "UP",
         "enabled": true,
-        "observe": true,
+        "escape_level": 173.4000012857143,
         "gap_date": "2026-08-04",
         "gap_pct": 0.1551532033426184,
-        "atr_multiple": 3.293073847527917,
-        "direction": "UP",
-        "escape_level": 173.4000012857143,
-        "consec_closes": 2,
+        "observe": true,
+        "release_reason": null,
         "sessions_remaining": 10,
-        "release_reason": null
+        "status": "BLOCKED_GAP_LOCK"
       }
     },
     {
@@ -250,18 +250,18 @@
       "earnings_session_distance": null,
       "earnings_provenance": "PERSISTENT_CACHE",
       "gap_lock": {
-        "status": "CLEAR",
         "active": false,
+        "atr_multiple": 4.031371285591317,
+        "consec_closes": 3,
+        "direction": "UP",
         "enabled": true,
-        "observe": true,
+        "escape_level": 476.3117879642857,
         "gap_date": "2026-07-30",
         "gap_pct": 0.1212679335978919,
-        "atr_multiple": 4.031371285591317,
-        "direction": "UP",
-        "escape_level": 476.3117879642857,
-        "consec_closes": 3,
+        "observe": true,
+        "release_reason": "ESCAPE",
         "sessions_remaining": 11,
-        "release_reason": "ESCAPE"
+        "status": "CLEAR"
       }
     },
     {
@@ -326,18 +326,18 @@
       "earnings_session_distance": null,
       "earnings_provenance": "PERSISTENT_CACHE",
       "gap_lock": {
-        "status": "CLEAR",
         "active": false,
+        "atr_multiple": null,
+        "consec_closes": 0,
+        "direction": null,
         "enabled": true,
-        "observe": true,
+        "escape_level": null,
         "gap_date": null,
         "gap_pct": null,
-        "atr_multiple": null,
-        "direction": null,
-        "escape_level": null,
-        "consec_closes": 0,
+        "observe": true,
+        "release_reason": null,
         "sessions_remaining": 15,
-        "release_reason": null
+        "status": "CLEAR"
       }
     },
     {
@@ -402,18 +402,18 @@
       "earnings_session_distance": null,
       "earnings_provenance": "PERSISTENT_CACHE",
       "gap_lock": {
-        "status": "BLOCKED_GAP_LOCK",
         "active": true,
+        "atr_multiple": 4.243294956960043,
+        "consec_closes": 0,
+        "direction": "UP",
         "enabled": true,
-        "observe": true,
+        "escape_level": 283.65822685714284,
         "gap_date": "2026-07-31",
         "gap_pct": 0.12526539278131632,
-        "atr_multiple": 4.243294956960043,
-        "direction": "UP",
-        "escape_level": 283.65822685714284,
-        "consec_closes": 0,
+        "observe": true,
+        "release_reason": null,
         "sessions_remaining": 8,
-        "release_reason": null
+        "status": "BLOCKED_GAP_LOCK"
       }
     },
     {
@@ -478,18 +478,18 @@
       "earnings_session_distance": null,
       "earnings_provenance": "PERSISTENT_CACHE",
       "gap_lock": {
-        "status": "CLEAR",
         "active": false,
+        "atr_multiple": null,
+        "consec_closes": 0,
+        "direction": null,
         "enabled": true,
-        "observe": true,
+        "escape_level": null,
         "gap_date": null,
         "gap_pct": null,
-        "atr_multiple": null,
-        "direction": null,
-        "escape_level": null,
-        "consec_closes": 0,
+        "observe": true,
+        "release_reason": null,
         "sessions_remaining": 15,
-        "release_reason": null
+        "status": "CLEAR"
       }
     },
     {
@@ -554,18 +554,18 @@
       "earnings_session_distance": null,
       "earnings_provenance": "PERSISTENT_CACHE",
       "gap_lock": {
-        "status": "CLEAR",
         "active": false,
+        "atr_multiple": null,
+        "consec_closes": 0,
+        "direction": null,
         "enabled": true,
-        "observe": true,
+        "escape_level": null,
         "gap_date": null,
         "gap_pct": null,
-        "atr_multiple": null,
-        "direction": null,
-        "escape_level": null,
-        "consec_closes": 0,
+        "observe": true,
+        "release_reason": null,
         "sessions_remaining": 15,
-        "release_reason": null
+        "status": "CLEAR"
       }
     },
     {
@@ -630,18 +630,18 @@
       "earnings_session_distance": null,
       "earnings_provenance": "PERSISTENT_CACHE",
       "gap_lock": {
-        "status": "CLEAR",
         "active": false,
+        "atr_multiple": null,
+        "consec_closes": 0,
+        "direction": null,
         "enabled": true,
-        "observe": true,
+        "escape_level": null,
         "gap_date": null,
         "gap_pct": null,
-        "atr_multiple": null,
-        "direction": null,
-        "escape_level": null,
-        "consec_closes": 0,
+        "observe": true,
+        "release_reason": null,
         "sessions_remaining": 15,
-        "release_reason": null
+        "status": "CLEAR"
       }
     },
     {
@@ -706,18 +706,18 @@
       "earnings_session_distance": null,
       "earnings_provenance": "PERSISTENT_CACHE",
       "gap_lock": {
-        "status": "CLEAR",
         "active": false,
+        "atr_multiple": null,
+        "consec_closes": 0,
+        "direction": null,
         "enabled": true,
-        "observe": true,
+        "escape_level": null,
         "gap_date": null,
         "gap_pct": null,
-        "atr_multiple": null,
-        "direction": null,
-        "escape_level": null,
-        "consec_closes": 0,
+        "observe": true,
+        "release_reason": null,
         "sessions_remaining": 15,
-        "release_reason": null
+        "status": "CLEAR"
       }
     },
     {
@@ -782,18 +782,18 @@
       "earnings_session_distance": null,
       "earnings_provenance": "PERSISTENT_CACHE",
       "gap_lock": {
-        "status": "CLEAR",
         "active": false,
+        "atr_multiple": null,
+        "consec_closes": 0,
+        "direction": null,
         "enabled": true,
-        "observe": true,
+        "escape_level": null,
         "gap_date": null,
         "gap_pct": null,
-        "atr_multiple": null,
-        "direction": null,
-        "escape_level": null,
-        "consec_closes": 0,
+        "observe": true,
+        "release_reason": null,
         "sessions_remaining": 15,
-        "release_reason": null
+        "status": "CLEAR"
       }
     },
     {
@@ -858,18 +858,18 @@
       "earnings_session_distance": null,
       "earnings_provenance": "PERSISTENT_CACHE",
       "gap_lock": {
-        "status": "CLEAR",
         "active": false,
+        "atr_multiple": null,
+        "consec_closes": 0,
+        "direction": null,
         "enabled": true,
-        "observe": true,
+        "escape_level": null,
         "gap_date": null,
         "gap_pct": null,
-        "atr_multiple": null,
-        "direction": null,
-        "escape_level": null,
-        "consec_closes": 0,
+        "observe": true,
+        "release_reason": null,
         "sessions_remaining": 15,
-        "release_reason": null
+        "status": "CLEAR"
       }
     },
     {
@@ -934,18 +934,18 @@
       "earnings_session_distance": null,
       "earnings_provenance": "PERSISTENT_CACHE",
       "gap_lock": {
-        "status": "CLEAR",
         "active": false,
+        "atr_multiple": null,
+        "consec_closes": 0,
+        "direction": null,
         "enabled": true,
-        "observe": true,
+        "escape_level": null,
         "gap_date": null,
         "gap_pct": null,
-        "atr_multiple": null,
-        "direction": null,
-        "escape_level": null,
-        "consec_closes": 0,
+        "observe": true,
+        "release_reason": null,
         "sessions_remaining": 15,
-        "release_reason": null
+        "status": "CLEAR"
       }
     },
     {
@@ -1010,18 +1010,18 @@
       "earnings_session_distance": null,
       "earnings_provenance": "PERSISTENT_CACHE",
       "gap_lock": {
-        "status": "CLEAR",
         "active": false,
+        "atr_multiple": null,
+        "consec_closes": 0,
+        "direction": null,
         "enabled": true,
-        "observe": true,
+        "escape_level": null,
         "gap_date": null,
         "gap_pct": null,
-        "atr_multiple": null,
-        "direction": null,
-        "escape_level": null,
-        "consec_closes": 0,
+        "observe": true,
+        "release_reason": null,
         "sessions_remaining": 15,
-        "release_reason": null
+        "status": "CLEAR"
       }
     },
     {
@@ -1086,18 +1086,18 @@
       "earnings_session_distance": null,
       "earnings_provenance": "PERSISTENT_CACHE",
       "gap_lock": {
-        "status": "CLEAR",
         "active": false,
+        "atr_multiple": null,
+        "consec_closes": 0,
+        "direction": null,
         "enabled": true,
-        "observe": true,
+        "escape_level": null,
         "gap_date": null,
         "gap_pct": null,
-        "atr_multiple": null,
-        "direction": null,
-        "escape_level": null,
-        "consec_closes": 0,
+        "observe": true,
+        "release_reason": null,
         "sessions_remaining": 15,
-        "release_reason": null
+        "status": "CLEAR"
       }
     },
     {
@@ -1162,18 +1162,18 @@
       "earnings_session_distance": null,
       "earnings_provenance": "PERSISTENT_CACHE",
       "gap_lock": {
-        "status": "CLEAR",
         "active": false,
+        "atr_multiple": null,
+        "consec_closes": 0,
+        "direction": null,
         "enabled": true,
-        "observe": true,
+        "escape_level": null,
         "gap_date": null,
         "gap_pct": null,
-        "atr_multiple": null,
-        "direction": null,
-        "escape_level": null,
-        "consec_closes": 0,
+        "observe": true,
+        "release_reason": null,
         "sessions_remaining": 15,
-        "release_reason": null
+        "status": "CLEAR"
       }
     },
     {
@@ -1238,18 +1238,18 @@
       "earnings_session_distance": -4,
       "earnings_provenance": "PERSISTENT_CACHE",
       "gap_lock": {
-        "status": "CLEAR",
         "active": false,
+        "atr_multiple": null,
+        "consec_closes": 0,
+        "direction": null,
         "enabled": true,
-        "observe": true,
+        "escape_level": null,
         "gap_date": null,
         "gap_pct": null,
-        "atr_multiple": null,
-        "direction": null,
-        "escape_level": null,
-        "consec_closes": 0,
+        "observe": true,
+        "release_reason": null,
         "sessions_remaining": 15,
-        "release_reason": null
+        "status": "CLEAR"
       }
     },
     {
@@ -1314,18 +1314,18 @@
       "earnings_session_distance": null,
       "earnings_provenance": "PERSISTENT_CACHE",
       "gap_lock": {
-        "status": "BLOCKED_GAP_LOCK",
         "active": true,
+        "atr_multiple": 3.5355138600036025,
+        "consec_closes": 0,
+        "direction": "DOWN",
         "enabled": true,
-        "observe": true,
+        "escape_level": 287.85749775,
         "gap_date": "2026-07-31",
         "gap_pct": -0.08583508040173582,
-        "atr_multiple": 3.5355138600036025,
-        "direction": "DOWN",
-        "escape_level": 287.85749775,
-        "consec_closes": 0,
+        "observe": true,
+        "release_reason": null,
         "sessions_remaining": 8,
-        "release_reason": null
+        "status": "BLOCKED_GAP_LOCK"
       }
     },
     {
@@ -1390,18 +1390,18 @@
       "earnings_session_distance": null,
       "earnings_provenance": "PERSISTENT_CACHE",
       "gap_lock": {
-        "status": "CLEAR",
         "active": false,
+        "atr_multiple": null,
+        "consec_closes": 0,
+        "direction": null,
         "enabled": true,
-        "observe": true,
+        "escape_level": null,
         "gap_date": null,
         "gap_pct": null,
-        "atr_multiple": null,
-        "direction": null,
-        "escape_level": null,
-        "consec_closes": 0,
+        "observe": true,
+        "release_reason": null,
         "sessions_remaining": 15,
-        "release_reason": null
+        "status": "CLEAR"
       }
     },
     {
@@ -1466,18 +1466,18 @@
       "earnings_session_distance": null,
       "earnings_provenance": "PERSISTENT_CACHE",
       "gap_lock": {
-        "status": "CLEAR",
         "active": false,
+        "atr_multiple": null,
+        "consec_closes": 0,
+        "direction": null,
         "enabled": true,
-        "observe": true,
+        "escape_level": null,
         "gap_date": null,
         "gap_pct": null,
-        "atr_multiple": null,
-        "direction": null,
-        "escape_level": null,
-        "consec_closes": 0,
+        "observe": true,
+        "release_reason": null,
         "sessions_remaining": 15,
-        "release_reason": null
+        "status": "CLEAR"
       }
     },
     {
@@ -1542,18 +1542,18 @@
       "earnings_session_distance": null,
       "earnings_provenance": "PERSISTENT_CACHE",
       "gap_lock": {
-        "status": "CLEAR",
         "active": false,
+        "atr_multiple": null,
+        "consec_closes": 0,
+        "direction": null,
         "enabled": true,
-        "observe": true,
+        "escape_level": null,
         "gap_date": null,
         "gap_pct": null,
-        "atr_multiple": null,
-        "direction": null,
-        "escape_level": null,
-        "consec_closes": 0,
+        "observe": true,
+        "release_reason": null,
         "sessions_remaining": 15,
-        "release_reason": null
+        "status": "CLEAR"
       }
     },
     {
@@ -1618,18 +1618,18 @@
       "earnings_session_distance": null,
       "earnings_provenance": "PERSISTENT_CACHE",
       "gap_lock": {
-        "status": "CLEAR",
         "active": false,
+        "atr_multiple": null,
+        "consec_closes": 0,
+        "direction": null,
         "enabled": true,
-        "observe": true,
+        "escape_level": null,
         "gap_date": null,
         "gap_pct": null,
-        "atr_multiple": null,
-        "direction": null,
-        "escape_level": null,
-        "consec_closes": 0,
+        "observe": true,
+        "release_reason": null,
         "sessions_remaining": 15,
-        "release_reason": null
+        "status": "CLEAR"
       }
     }
   ],
@@ -1944,21 +1944,27 @@
     }
   },
   "bear_defense": {
-    "enabled": true,
-    "level": "NORMAL",
-    "candidate_level": "NORMAL",
     "active": false,
-    "liquidity_switch": false,
-    "risk_off_candidate": false,
-    "derisk_candidate": false,
-    "switch_candidate": false,
-    "score": 6.19,
-    "participation": 0.0,
-    "eligible_count": 0,
-    "valid_count": 21,
-    "avg_short_score": 0.0,
     "avg_context_score": 0.0,
+    "avg_short_score": 0.0,
+    "candidate_level": "NORMAL",
+    "confirm_runs_required": 5,
+    "consecutive_derisk_runs": 0,
+    "consecutive_risk_off_runs": 0,
+    "consecutive_switch_runs": 0,
+    "data_quality_ok": true,
     "density_score": 0.0,
+    "derisk_candidate": false,
+    "derisk_runs_required": 3,
+    "eligible_count": 0,
+    "enabled": true,
+    "expected_symbols_count": 34,
+    "failed_fraction": 0.0,
+    "failed_symbols_count": 0,
+    "level": "NORMAL",
+    "liquidity_switch": false,
+    "long_loss_risk": 61.905,
+    "long_risk_ok": false,
     "long_signal_count": 8,
     "long_signal_participation": 0.381,
     "new_long_loss_risk": 61.905,
@@ -1967,44 +1973,38 @@
       "open_long_loss_risk": 51.25,
       "positions": {
         "AMZN": {
-          "risk": 50.0,
-          "reasons": []
+          "reasons": [],
+          "risk": 50.0
         },
         "FCX": {
-          "risk": 50.0,
-          "reasons": []
+          "reasons": [],
+          "risk": 50.0
         },
         "NVDA": {
-          "risk": 50.0,
-          "reasons": []
+          "reasons": [],
+          "risk": 50.0
         },
         "XLV": {
-          "risk": 55.0,
           "reasons": [
             "record unavailable"
-          ]
+          ],
+          "risk": 55.0
         }
       }
     },
-    "long_loss_risk": 61.905,
-    "expected_symbols_count": 34,
-    "failed_symbols_count": 0,
-    "failed_fraction": 0.0,
-    "data_quality_ok": true,
+    "participation": 0.0,
+    "reason": "APM_BEAR_DEFENSE score=6.2; shorts=0/21; participation=0.00; long_loss_risk=61.9",
+    "risk_off_candidate": false,
+    "risk_off_runs_required": 2,
+    "score": 6.19,
     "strong_breadth_ok": false,
     "strong_signals_ok": false,
-    "long_risk_ok": false,
-    "risk_off_runs_required": 2,
-    "derisk_runs_required": 3,
-    "confirm_runs_required": 5,
-    "consecutive_risk_off_runs": 0,
-    "consecutive_derisk_runs": 0,
-    "consecutive_switch_runs": 0,
+    "switch_candidate": false,
     "ts_utc": "2026-08-12T19:45:02Z",
-    "reason": "APM_BEAR_DEFENSE score=6.2; shorts=0/21; participation=0.00; long_loss_risk=61.9"
+    "valid_count": 21
   },
   "broker_exposure_audit": {
-    "ts_utc": "2026-08-12T19:45:42Z",
+    "ts_utc": "2026-08-12T19:59:13Z",
     "status": "OK",
     "positions": [
       {
@@ -2012,7 +2012,7 @@
         "side": "LONG",
         "qty": 6.0,
         "entry_px": 275.445,
-        "current_px": 268.775,
+        "current_px": 267.29,
         "classification": "APM_MANAGED"
       },
       {
@@ -2020,7 +2020,7 @@
         "side": "LONG",
         "qty": 13.0,
         "entry_px": 69.15,
-        "current_px": 69.215,
+        "current_px": 69.19,
         "classification": "APM_MANAGED"
       },
       {
@@ -2028,7 +2028,7 @@
         "side": "LONG",
         "qty": 8.0,
         "entry_px": 221.86,
-        "current_px": 222.28,
+        "current_px": 224.225,
         "classification": "APM_MANAGED"
       },
       {
@@ -2036,20 +2036,20 @@
         "side": "LONG",
         "qty": 2.0,
         "entry_px": 163.8798,
-        "current_px": 168.7605,
+        "current_px": 168.49,
         "classification": "APM_MANAGED"
       }
     ]
   },
   "live_account_balance_check": {
-    "checked_at_utc": "2026-08-12T19:45:43Z",
+    "checked_at_utc": "2026-08-12T19:59:13Z",
     "source": "ALPACA_LIVE",
     "snapshot_ok": true,
-    "account_balance": 7096.35,
-    "trading_balance": 9564.47,
-    "effective_trading_balance": 9564.47,
+    "account_balance": 7102.07,
+    "trading_balance": 9570.19,
+    "effective_trading_balance": 9570.19,
     "cash_balance": 2468.12,
-    "margin_multiple": 1.3478,
+    "margin_multiple": 1.3475,
     "broker_multiplier": 2.0,
     "broker_status": "ACTIVE",
     "account_blocked": false,
@@ -2057,12 +2057,12 @@
     "transfers_blocked": false,
     "user_suspended": false,
     "shorting_enabled": true,
-    "regt_buying_power": 9564.47,
+    "regt_buying_power": 9570.19,
     "daytrading_buying_power": null,
-    "non_marginable_buying_power": 4782.23,
-    "initial_margin": 2314.11,
-    "maintenance_margin": 1388.47,
-    "long_market_value": 4628.23,
+    "non_marginable_buying_power": 4785.09,
+    "initial_margin": 2316.98,
+    "maintenance_margin": 1390.19,
+    "long_market_value": 4633.95,
     "short_market_value": 0.0,
     "margin_snapshot_ok": true,
     "account_entry_block_reason": null,
@@ -2155,60 +2155,68 @@
   "trade_history": [],
   "open_positions_live": [
     {
-      "ts_utc": "2026-08-12T19:45:44Z",
-      "broker_account": "Live Trading Account",
-      "broker_profile": "APM_REAL_ACCOUNT_SWING",
+      "ts_utc": "2026-08-10T14:01:34Z",
       "symbol": "AMZN",
       "side": "LONG",
       "qty": 6.0,
       "entry_px": 275.445,
-      "exit_px": 268.7864,
-      "current_px": 268.7864,
-      "R_realized": null,
-      "pnl_pct": -2.4173973025467803,
-      "entry_model": "Swing"
+      "exit_px": 267.29,
+      "current_px": 267.29,
+      "R_realized": -0.592131,
+      "pnl_pct": -2.960664,
+      "pnl_dollars": -48.93,
+      "entry_model": "Swing",
+      "reason": "OPEN",
+      "broker_account": "Live Trading Account",
+      "broker_profile": "APM_REAL_ACCOUNT_SWING"
     },
     {
-      "ts_utc": "2026-08-12T19:45:44Z",
-      "broker_account": "Live Trading Account",
-      "broker_profile": "APM_REAL_ACCOUNT_SWING",
+      "ts_utc": "2026-08-05T16:15:49Z",
       "symbol": "FCX",
       "side": "LONG",
       "qty": 13.0,
       "entry_px": 69.15,
-      "exit_px": 69.2,
-      "current_px": 69.2,
-      "R_realized": null,
-      "pnl_pct": 0.07230657989876667,
-      "entry_model": "Swing"
+      "exit_px": 69.19,
+      "current_px": 69.19,
+      "R_realized": 0.011569,
+      "pnl_pct": 0.057845,
+      "pnl_dollars": 0.52,
+      "entry_model": "Swing",
+      "reason": "OPEN",
+      "broker_account": "Live Trading Account",
+      "broker_profile": "APM_REAL_ACCOUNT_SWING"
     },
     {
-      "ts_utc": "2026-08-12T19:45:44Z",
-      "broker_account": "Live Trading Account",
-      "broker_profile": "APM_REAL_ACCOUNT_SWING",
+      "ts_utc": "2026-08-10T14:01:34Z",
       "symbol": "NVDA",
       "side": "LONG",
       "qty": 8.0,
       "entry_px": 221.86,
-      "exit_px": 222.26,
-      "current_px": 222.26,
-      "R_realized": null,
-      "pnl_pct": 0.18029387902279692,
-      "entry_model": "Swing"
+      "exit_px": 224.225,
+      "current_px": 224.225,
+      "R_realized": 0.213198,
+      "pnl_pct": 1.065988,
+      "pnl_dollars": 18.92,
+      "entry_model": "Swing",
+      "reason": "OPEN",
+      "broker_account": "Live Trading Account",
+      "broker_profile": "APM_REAL_ACCOUNT_SWING"
     },
     {
-      "ts_utc": "2026-08-12T19:45:44Z",
-      "broker_account": "Live Trading Account",
-      "broker_profile": "APM_REAL_ACCOUNT_SWING",
+      "ts_utc": "2026-08-05T16:15:50Z",
       "symbol": "XLV",
       "side": "LONG",
       "qty": 2.0,
       "entry_px": 163.8798,
-      "exit_px": 168.77,
-      "current_px": 168.77,
-      "R_realized": null,
-      "pnl_pct": 2.984016333922803,
-      "entry_model": "Swing"
+      "exit_px": 168.49,
+      "current_px": 168.49,
+      "R_realized": 0.626411,
+      "pnl_pct": 2.813159,
+      "pnl_dollars": 9.22,
+      "entry_model": "Swing",
+      "reason": "OPEN",
+      "broker_account": "Live Trading Account",
+      "broker_profile": "APM_REAL_ACCOUNT_SWING"
     }
   ],
   "recent_executions": [],
@@ -2249,18 +2257,11 @@
       "drawdown_pct": -2.5514
     },
     {
-      "ts": "2026-08-12T19:45:43",
-      "equity": 7096.35,
-      "raw_equity": 7096.35,
-      "performance_equity": 2096.35,
-      "drawdown_pct": -1.4605
-    },
-    {
-      "ts": "2026-08-12T19:45:44",
-      "equity": 7096.35,
-      "raw_equity": 7096.35,
-      "performance_equity": 2096.35,
-      "drawdown_pct": -1.4605
+      "ts": "2026-08-12T19:59:13",
+      "equity": 7102.07,
+      "raw_equity": 7102.07,
+      "performance_equity": 2102.07,
+      "drawdown_pct": -1.1916
     }
   ],
   "drawdown_curve": [
@@ -2285,12 +2286,8 @@
       "drawdown_pct": -2.5514
     },
     {
-      "ts": "2026-08-12T19:45:43",
-      "drawdown_pct": -1.4605
-    },
-    {
-      "ts": "2026-08-12T19:45:44",
-      "drawdown_pct": -1.4605
+      "ts": "2026-08-12T19:59:13",
+      "drawdown_pct": -1.1916
     }
   ],
   "positioning": {
@@ -2303,325 +2300,33 @@
     "dynamic_position_base": "buying_power",
     "manual_position_policy": "ignore"
   },
-  "equity_curve_r": [
-    {
-      "ts": "2026-07-02 14:02:07+00:00",
-      "cum_r": -4.414,
-      "r": -4.414
-    },
-    {
-      "ts": "2026-07-06 14:18:39+00:00",
-      "cum_r": -8.136,
-      "r": -3.722
-    },
-    {
-      "ts": "2026-07-06 14:18:39+00:00",
-      "cum_r": -9.898,
-      "r": -1.763
-    },
-    {
-      "ts": "2026-07-06 16:08:11+00:00",
-      "cum_r": -4.931,
-      "r": 4.968
-    },
-    {
-      "ts": "2026-07-06 17:52:06+00:00",
-      "cum_r": -5.055,
-      "r": -0.124
-    },
-    {
-      "ts": "2026-07-06 18:03:27+00:00",
-      "cum_r": -5.066,
-      "r": -0.012
-    },
-    {
-      "ts": "2026-07-06 18:04:30+00:00",
-      "cum_r": -5.146,
-      "r": -0.08
-    },
-    {
-      "ts": "2026-07-06 19:40:21+00:00",
-      "cum_r": -5.635,
-      "r": -0.489
-    },
-    {
-      "ts": "2026-07-06 19:41:13+00:00",
-      "cum_r": -5.392,
-      "r": 0.243
-    },
-    {
-      "ts": "2026-07-06 19:41:15+00:00",
-      "cum_r": -3.689,
-      "r": 1.703
-    },
-    {
-      "ts": "2026-07-06 19:41:16+00:00",
-      "cum_r": -4.812,
-      "r": -1.123
-    },
-    {
-      "ts": "2026-07-06 19:41:42+00:00",
-      "cum_r": -5.299,
-      "r": -0.487
-    },
-    {
-      "ts": "2026-07-06 19:41:48+00:00",
-      "cum_r": -4.571,
-      "r": 0.728
-    },
-    {
-      "ts": "2026-07-07 14:11:20+00:00",
-      "cum_r": -7.689,
-      "r": -3.118
-    },
-    {
-      "ts": "2026-07-07 14:11:20+00:00",
-      "cum_r": -11.016,
-      "r": -3.327
-    },
-    {
-      "ts": "2026-07-07 14:11:20+00:00",
-      "cum_r": -13.973,
-      "r": -2.957
-    },
-    {
-      "ts": "2026-07-07 19:30:21+00:00",
-      "cum_r": -19.053,
-      "r": -5.079
-    },
-    {
-      "ts": "2026-07-08 13:30:14+00:00",
-      "cum_r": -22.565,
-      "r": -3.513
-    },
-    {
-      "ts": "2026-07-08 14:02:09+00:00",
-      "cum_r": -27.465,
-      "r": -4.899
-    },
-    {
-      "ts": "2026-07-08 14:04:13+00:00",
-      "cum_r": -29.664,
-      "r": -2.2
-    },
-    {
-      "ts": "2026-07-08 14:04:15+00:00",
-      "cum_r": -31.248,
-      "r": -1.583
-    },
-    {
-      "ts": "2026-07-10 16:52:05+00:00",
-      "cum_r": -35.383,
-      "r": -4.135
-    },
-    {
-      "ts": "2026-07-14 14:58:45+00:00",
-      "cum_r": -33.036,
-      "r": 2.347
-    },
-    {
-      "ts": "2026-07-15 13:50:23+00:00",
-      "cum_r": -31.033,
-      "r": 2.003
-    },
-    {
-      "ts": "2026-07-15 13:50:33+00:00",
-      "cum_r": -30.165,
-      "r": 0.868
-    },
-    {
-      "ts": "2026-07-15 14:24:18+00:00",
-      "cum_r": -29.541,
-      "r": 0.624
-    },
-    {
-      "ts": "2026-07-15 14:24:19+00:00",
-      "cum_r": -29.415,
-      "r": 0.126
-    },
-    {
-      "ts": "2026-07-15 14:24:21+00:00",
-      "cum_r": -29.44,
-      "r": -0.025
-    },
-    {
-      "ts": "2026-07-16 14:16:44+00:00",
-      "cum_r": -29.599,
-      "r": -0.16
-    },
-    {
-      "ts": "2026-07-16 14:16:49+00:00",
-      "cum_r": -30.49,
-      "r": -0.891
-    },
-    {
-      "ts": "2026-07-17 16:52:02+00:00",
-      "cum_r": -31.051,
-      "r": -0.561
-    },
-    {
-      "ts": "2026-07-20 19:06:54+00:00",
-      "cum_r": -32.986,
-      "r": -1.935
-    },
-    {
-      "ts": "2026-07-20 19:06:56+00:00",
-      "cum_r": -35.295,
-      "r": -2.309
-    },
-    {
-      "ts": "2026-07-20 19:06:59+00:00",
-      "cum_r": -35.917,
-      "r": -0.621
-    },
-    {
-      "ts": "2026-07-20 19:07:01+00:00",
-      "cum_r": -35.954,
-      "r": -0.037
-    },
-    {
-      "ts": "2026-07-20 19:08:05+00:00",
-      "cum_r": -35.543,
-      "r": 0.411
-    },
-    {
-      "ts": "2026-07-20 19:08:12+00:00",
-      "cum_r": -39.285,
-      "r": -3.743
-    },
-    {
-      "ts": "2026-07-24 13:51:14+00:00",
-      "cum_r": -34.976,
-      "r": 4.31
-    },
-    {
-      "ts": "2026-07-24 13:51:14+00:00",
-      "cum_r": -30.669,
-      "r": 4.307
-    },
-    {
-      "ts": "2026-07-27 13:42:30+00:00",
-      "cum_r": -32.717,
-      "r": -2.048
-    },
-    {
-      "ts": "2026-07-29 13:49:09+00:00",
-      "cum_r": -27.759,
-      "r": 4.958
-    },
-    {
-      "ts": "2026-07-31 17:30:41+00:00",
-      "cum_r": -31.059,
-      "r": -3.3
-    },
-    {
-      "ts": "2026-08-03 18:02:24+00:00",
-      "cum_r": -29.529,
-      "r": 1.53
-    },
-    {
-      "ts": "2026-08-03 18:02:33+00:00",
-      "cum_r": -32.158,
-      "r": -2.629
-    },
-    {
-      "ts": "2026-08-03 18:02:33+00:00",
-      "cum_r": -33.039,
-      "r": -0.881
-    },
-    {
-      "ts": "2026-08-03 18:03:47+00:00",
-      "cum_r": -36.125,
-      "r": -3.087
-    },
-    {
-      "ts": "2026-08-03 18:03:47+00:00",
-      "cum_r": -38.871,
-      "r": -2.746
-    },
-    {
-      "ts": "2026-08-03 18:03:47+00:00",
-      "cum_r": -40.589,
-      "r": -1.718
-    },
-    {
-      "ts": "2026-08-03 18:03:47+00:00",
-      "cum_r": -42.318,
-      "r": -1.729
-    },
-    {
-      "ts": "2026-08-03 18:20:41+00:00",
-      "cum_r": -42.254,
-      "r": 0.064
-    },
-    {
-      "ts": "2026-08-04 13:30:02+00:00",
-      "cum_r": -46.18,
-      "r": -3.926
-    },
-    {
-      "ts": "2026-08-04 13:30:02+00:00",
-      "cum_r": -44.449,
-      "r": 1.731
-    },
-    {
-      "ts": "2026-08-04 13:30:02+00:00",
-      "cum_r": -42.667,
-      "r": 1.782
-    },
-    {
-      "ts": "2026-08-04 18:48:28+00:00",
-      "cum_r": -43.281,
-      "r": -0.614
-    },
-    {
-      "ts": "2026-08-05 16:02:22+00:00",
-      "cum_r": -43.125,
-      "r": 0.156
-    },
-    {
-      "ts": "2026-08-05 16:02:24+00:00",
-      "cum_r": -42.632,
-      "r": 0.492
-    },
-    {
-      "ts": "2026-08-05 16:02:26+00:00",
-      "cum_r": -43.249,
-      "r": -0.616
-    },
-    {
-      "ts": "2026-08-05 16:02:35+00:00",
-      "cum_r": -39.103,
-      "r": 4.146
-    }
-  ],
   "strategy_lanes": [
     "APM_REAL_ACCOUNT_SWING"
   ],
-  "source_updated_at_max": "2026-08-12T12:45:44.339452",
+  "source_updated_at_max": "2026-08-12T12:59:13",
   "broker_accounts": {
     "apm_swing": {
       "label": "Live Trading Account",
       "profile": "APM_REAL_ACCOUNT_SWING",
       "public_reset_start": "2026-08-05T16:10:00Z",
-      "equity": 7096.35,
+      "equity": 7102.07,
       "cash": 2468.12,
-      "buying_power": 9564.47,
-      "regt_buying_power": 9564.47,
+      "buying_power": 9570.19,
+      "regt_buying_power": 9570.19,
       "inception_equity": 2111.39,
       "ytd_start_equity": 2111.39,
       "previous_close_equity": 7073.08,
-      "since_inception_pnl_dollars": -15.04,
-      "ytd_pnl_dollars": -15.04,
+      "since_inception_pnl_dollars": -9.32,
+      "ytd_pnl_dollars": -9.32,
       "net_external_cash_flow": 5000.0,
       "net_contributed_capital": 7111.39,
       "ytd_net_contributed_capital": 7111.39,
-      "performance_equity": 2096.35,
-      "performance_index": 99.78850829,
-      "since_inception_return_pct": -0.21149171,
-      "ytd_return_pct": -0.21149171,
-      "daily_pnl_dollars": 23.27,
-      "daily_return_pct": 0.32899388,
+      "performance_equity": 2102.07,
+      "performance_index": 99.86894264,
+      "since_inception_return_pct": -0.13105736,
+      "ytd_return_pct": -0.13105736,
+      "daily_pnl_dollars": 28.99,
+      "daily_return_pct": 0.40986388,
       "cash_flow_event_count": 1,
       "cash_flow_ledger_schema_version": 1,
       "cash_flow_ledger_policy": "APPEND_ONLY",
@@ -2639,7 +2344,7 @@
           "provenance": "FIRST_OBSERVED_POST_FLOW"
         }
       ],
-      "asof": "2026-08-12T19:45:44Z"
+      "asof": "2026-08-12T19:59:13Z"
     }
   },
   "account_views": {
@@ -2651,24 +2356,24 @@
         "label": "Live Trading Account",
         "profile": "APM_REAL_ACCOUNT_SWING",
         "public_reset_start": "2026-08-05T16:10:00Z",
-        "equity": 7096.35,
+        "equity": 7102.07,
         "cash": 2468.12,
-        "buying_power": 9564.47,
-        "regt_buying_power": 9564.47,
+        "buying_power": 9570.19,
+        "regt_buying_power": 9570.19,
         "inception_equity": 2111.39,
         "ytd_start_equity": 2111.39,
         "previous_close_equity": 7073.08,
-        "since_inception_pnl_dollars": -15.04,
-        "ytd_pnl_dollars": -15.04,
+        "since_inception_pnl_dollars": -9.32,
+        "ytd_pnl_dollars": -9.32,
         "net_external_cash_flow": 5000.0,
         "net_contributed_capital": 7111.39,
         "ytd_net_contributed_capital": 7111.39,
-        "performance_equity": 2096.35,
-        "performance_index": 99.78850829,
-        "since_inception_return_pct": -0.21149171,
-        "ytd_return_pct": -0.21149171,
-        "daily_pnl_dollars": 23.27,
-        "daily_return_pct": 0.32899388,
+        "performance_equity": 2102.07,
+        "performance_index": 99.86894264,
+        "since_inception_return_pct": -0.13105736,
+        "ytd_return_pct": -0.13105736,
+        "daily_pnl_dollars": 28.99,
+        "daily_return_pct": 0.40986388,
         "cash_flow_event_count": 1,
         "cash_flow_ledger_schema_version": 1,
         "cash_flow_ledger_policy": "APPEND_ONLY",
@@ -2686,7 +2391,7 @@
             "provenance": "FIRST_OBSERVED_POST_FLOW"
           }
         ],
-        "asof": "2026-08-12T19:45:44Z"
+        "asof": "2026-08-12T19:59:13Z"
       },
       "performance": {
         "closed_trades_count": 0,
@@ -2699,9 +2404,7 @@
         "open_positions_count": 4,
         "recent_trades_count": 0,
         "top_ticker": "PLTR",
-        "top_score": 81.515,
-        "open_long_count": 4,
-        "open_short_count": 0
+        "top_score": 81.515
       },
       "positioning": {
         "long_short_ratio": null,
@@ -2717,60 +2420,68 @@
       "recent_executions": [],
       "open_positions_live": [
         {
-          "ts_utc": "2026-08-12T19:45:44Z",
-          "broker_account": "Live Trading Account",
-          "broker_profile": "APM_REAL_ACCOUNT_SWING",
+          "ts_utc": "2026-08-10T14:01:34Z",
           "symbol": "AMZN",
           "side": "LONG",
           "qty": 6.0,
           "entry_px": 275.445,
-          "exit_px": 268.7864,
-          "current_px": 268.7864,
-          "R_realized": null,
-          "pnl_pct": -2.4173973025467803,
-          "entry_model": "Swing"
+          "exit_px": 267.29,
+          "current_px": 267.29,
+          "R_realized": -0.592131,
+          "pnl_pct": -2.960664,
+          "pnl_dollars": -48.93,
+          "entry_model": "Swing",
+          "reason": "OPEN",
+          "broker_account": "Live Trading Account",
+          "broker_profile": "APM_REAL_ACCOUNT_SWING"
         },
         {
-          "ts_utc": "2026-08-12T19:45:44Z",
-          "broker_account": "Live Trading Account",
-          "broker_profile": "APM_REAL_ACCOUNT_SWING",
+          "ts_utc": "2026-08-05T16:15:49Z",
           "symbol": "FCX",
           "side": "LONG",
           "qty": 13.0,
           "entry_px": 69.15,
-          "exit_px": 69.2,
-          "current_px": 69.2,
-          "R_realized": null,
-          "pnl_pct": 0.07230657989876667,
-          "entry_model": "Swing"
+          "exit_px": 69.19,
+          "current_px": 69.19,
+          "R_realized": 0.011569,
+          "pnl_pct": 0.057845,
+          "pnl_dollars": 0.52,
+          "entry_model": "Swing",
+          "reason": "OPEN",
+          "broker_account": "Live Trading Account",
+          "broker_profile": "APM_REAL_ACCOUNT_SWING"
         },
         {
-          "ts_utc": "2026-08-12T19:45:44Z",
-          "broker_account": "Live Trading Account",
-          "broker_profile": "APM_REAL_ACCOUNT_SWING",
+          "ts_utc": "2026-08-10T14:01:34Z",
           "symbol": "NVDA",
           "side": "LONG",
           "qty": 8.0,
           "entry_px": 221.86,
-          "exit_px": 222.26,
-          "current_px": 222.26,
-          "R_realized": null,
-          "pnl_pct": 0.18029387902279692,
-          "entry_model": "Swing"
+          "exit_px": 224.225,
+          "current_px": 224.225,
+          "R_realized": 0.213198,
+          "pnl_pct": 1.065988,
+          "pnl_dollars": 18.92,
+          "entry_model": "Swing",
+          "reason": "OPEN",
+          "broker_account": "Live Trading Account",
+          "broker_profile": "APM_REAL_ACCOUNT_SWING"
         },
         {
-          "ts_utc": "2026-08-12T19:45:44Z",
-          "broker_account": "Live Trading Account",
-          "broker_profile": "APM_REAL_ACCOUNT_SWING",
+          "ts_utc": "2026-08-05T16:15:50Z",
           "symbol": "XLV",
           "side": "LONG",
           "qty": 2.0,
           "entry_px": 163.8798,
-          "exit_px": 168.77,
-          "current_px": 168.77,
-          "R_realized": null,
-          "pnl_pct": 2.984016333922803,
-          "entry_model": "Swing"
+          "exit_px": 168.49,
+          "current_px": 168.49,
+          "R_realized": 0.626411,
+          "pnl_pct": 2.813159,
+          "pnl_dollars": 9.22,
+          "entry_model": "Swing",
+          "reason": "OPEN",
+          "broker_account": "Live Trading Account",
+          "broker_profile": "APM_REAL_ACCOUNT_SWING"
         }
       ],
       "equity_curve": [
@@ -2815,20 +2526,12 @@
           "performance_index": 99.46213047
         },
         {
-          "ts": "2026-08-12T19:45:43+00:00",
-          "equity": 7096.35,
-          "drawdown_pct": -1.4605,
-          "raw_equity": 7096.35,
-          "performance_equity": 2096.35,
-          "performance_index": 99.78850829
-        },
-        {
-          "ts": "2026-08-12T19:45:44+00:00",
-          "equity": 7096.35,
-          "drawdown_pct": -1.4605,
-          "raw_equity": 7096.35,
-          "performance_equity": 2096.35,
-          "performance_index": 99.78850829
+          "ts": "2026-08-12T19:59:13+00:00",
+          "equity": 7102.07,
+          "drawdown_pct": -1.1916,
+          "raw_equity": 7102.07,
+          "performance_equity": 2102.07,
+          "performance_index": 99.86894264
         }
       ],
       "drawdown_curve": [
@@ -2853,17 +2556,13 @@
           "drawdown_pct": -2.5514
         },
         {
-          "ts": "2026-08-12T19:45:43+00:00",
-          "drawdown_pct": -1.4605
-        },
-        {
-          "ts": "2026-08-12T19:45:44+00:00",
-          "drawdown_pct": -1.4605
+          "ts": "2026-08-12T19:59:13+00:00",
+          "drawdown_pct": -1.1916
         }
       ],
       "monthly_performance": [],
-      "updated_at": "2026-08-12T12:45:44.339452",
-      "published_at_utc": "2026-08-12T19:45:44Z"
+      "updated_at": "2026-08-12T12:59:13",
+      "published_at_utc": "2026-08-12T19:59:13Z"
     }
   },
   "public_reset_starts": {
@@ -2878,7 +2577,7 @@
     "current_month": "2026-08",
     "display_month": "August 2026",
     "execution_enabled": false,
-    "generated_at_utc": "2026-08-12T19:46:11Z",
+    "generated_at_utc": "2026-08-12T20:20:12Z",
     "months": [
       {
         "added_at_utc": "2026-07-23T17:22:32Z",
