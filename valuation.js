@@ -12,6 +12,15 @@ const EquityValuation = (() => {
   const money = (value, currency = "USD") => !finite(value) ? "Unavailable" : !/^[A-Z]{3}$/.test(currency) ? `${value.toFixed(2)} (currency unavailable)` : new Intl.NumberFormat("en-US", {style: "currency", currency, maximumFractionDigits: 2}).format(value);
   const pct = value => finite(value) ? `${(value * 100).toFixed(1)}%` : "Unavailable";
   const day = value => /^\d{4}-\d{2}-\d{2}/.test(String(value || "")) ? String(value).slice(0, 10) : "Not recorded";
+  const annualEpsAvailable = item => !!(available(item) && item.earnings_period === "annual" && /^[A-Z]{3}$/.test(item.currency) && item.unit === `${item.currency}/shares` && day(item.period_end) !== "Not recorded");
+  const annualEpsText = item => annualEpsAvailable(item) ? `${money(item.value, item.currency)} per share` : "Unavailable";
+  const annualPriceRatioAvailable = (item, eps, report) => !!(available(item) && annualEpsAvailable(eps) && eps.value > 0 && item.share_basis_verified === true && report.currency === eps.currency && finite(report.quote?.value) && report.quote.value > 0 && item.earnings_period_end === eps.period_end && item.quote_date === report.quote.date && Math.abs(item.value - report.quote.value / eps.value) <= 1e-10 * Math.max(1, Math.abs(item.value)));
+  function completeMissingGroups(report) {
+    const groups = report.missing_field_groups;
+    if (!groups || !Array.isArray(report.missing_fields) || !["source_inputs", "calculations", "optional_research"].every(key => Array.isArray(groups[key]))) return false;
+    const fields = ["source_inputs", "calculations", "optional_research"].flatMap(key => groups[key].map(item => item.field));
+    return fields.length === report.missing_fields.length && new Set(fields).size === fields.length && fields.every(field => report.missing_fields.includes(field));
+  }
   const label = value => String(value || "").replace(/blended_fair_value/g, "intrinsic_estimate").replace(/blended_margin_of_safety/g, "estimated_upside_to_intrinsic_value").replace(/_/g, " ").replace(/\./g, " · ");
   function filter(companies, query, sector = "", basis = "") {
     const q = String(query || "").trim().toLowerCase();
@@ -27,7 +36,7 @@ const EquityValuation = (() => {
     let sequence = 0;
     return {next: () => ++sequence, current: token => token === sequence};
   }
-  return {SCHEMA, finite, normalize, available, intrinsicAvailable, basisLabel, money, pct, day, label, filter, validateReport, newestRequest};
+  return {SCHEMA, finite, normalize, available, intrinsicAvailable, basisLabel, money, pct, day, label, annualEpsAvailable, annualEpsText, annualPriceRatioAvailable, completeMissingGroups, filter, validateReport, newestRequest};
 })();
 if (typeof module !== "undefined" && module.exports) module.exports = EquityValuation;
 
@@ -97,7 +106,7 @@ if (typeof document !== "undefined") (async () => {
     head.appendChild(values);
     const actions = el("div", "ev-actions");
     actions.appendChild(link("View SEC filings ↗", report.evidence.sec_filings_url, "ev-action"));
-    const download = link("Download this summary", `data/${entry.file}`, "ev-action"); download.download = entry.file; actions.appendChild(download);
+    const download = link("Download archived analysis summary", `data/${entry.file}`, "ev-action"); download.download = entry.file; actions.appendChild(download);
     const print = el("button", "ev-action", "Print report"); print.type = "button"; print.addEventListener("click", () => window.print()); actions.appendChild(print); head.appendChild(actions);
     fragment.appendChild(head);
 
@@ -107,13 +116,38 @@ if (typeof document !== "undefined") (async () => {
     if (report.valuation.reasons.length) { const box = el("div", "ev-gap-box"); const list = el("ul"); report.valuation.reasons.forEach(reason => list.appendChild(el("li", "", reason))); box.appendChild(list); conclusion.appendChild(box); }
     else if (!supported) para(conclusion, "Required financial history, financing or ownership evidence is incomplete, or the applicable model is not supported by the captured inputs. Review the missing fields and recorded assumptions below.", "ev-gap-box");
     if (relative) para(conclusion, "The relative-multiple estimate is a pricing comparison. It does not establish that the shares are intrinsically undervalued or overvalued.");
-    details(conclusion, `Unavailable inputs and calculations (${report.missing_fields.length})`, report.missing_fields.map(E.label));
-    details(conclusion, "Recorded model assumptions", report.valuation.assumptions);
-    details(conclusion, "Model limitations and warnings", report.valuation.warnings);
+    if (report.missing_fields.length) {
+      para(conclusion, "One missing or unreconciled input can withhold several calculations, including a value estimate, its scenario range and the implied upside. The counts below are archived flags, not independent data problems. Missing inputs are not treated as zero.");
+      para(conclusion, "These flags preserve the original archived analysis. They are not a fresh data check; a history flag can mean the captured series did not meet that calculation's requirements, rather than that no history exists.");
+      const groups = report.missing_field_groups;
+      const grouped = E.completeMissingGroups(report);
+      if (grouped) {
+        [["source_inputs", "Financial inputs and usable history"], ["calculations", "Unavailable calculations"], ["optional_research", "Optional research material"]].forEach(([key, title]) => {
+          details(conclusion, `${title} (${groups[key].length} archived flags)`, groups[key].map(item => `${item.label} [${item.field}]`));
+        });
+        if (groups.optional_research.length) para(conclusion, "Optional research material is listed separately. Its absence alone does not mean the available financial statements or every calculation are unusable.");
+      } else details(conclusion, `Original archived flags (${report.missing_fields.length})`, report.missing_fields.map(E.label));
+    }
+    details(conclusion, "Archived model assumptions", report.valuation.assumptions);
+    details(conclusion, "Archived model limitations and warnings", report.valuation.warnings);
     fragment.appendChild(conclusion);
 
     const fundamentals = section("Financial measures");
     para(fundamentals, `Latest annual financial period: ${E.day(report.financial_period_end)}. Provider ratios and financial-statement calculations can use different periods. Open the calculation notes for each measure's basis.`);
+    const annualEps = report.annual_diluted_eps;
+    const annualMeasure = el("div", "ev-annual-eps");
+    const epsGrid = el("dl", "ev-fundamentals");
+    const epsRow = el("div", "ev-fundamental"); epsRow.appendChild(el("dt", "", "Annual diluted EPS")); epsRow.appendChild(el("dd", "", E.annualEpsText(annualEps))); epsGrid.appendChild(epsRow);
+    const annualRatio = report.price_to_annual_diluted_eps;
+    const ratioRow = el("div", "ev-fundamental"); ratioRow.appendChild(el("dt", "", "Price / last fiscal-year diluted EPS")); ratioRow.appendChild(el("dd", "", E.annualPriceRatioAvailable(annualRatio, annualEps, report) ? `${annualRatio.value.toFixed(2)}×` : "Unavailable")); epsGrid.appendChild(ratioRow);
+    annualMeasure.appendChild(epsGrid);
+    if (E.annualEpsAvailable(annualEps)) {
+      para(annualMeasure, `Fiscal year: ${E.day(annualEps.period_start)} to ${E.day(annualEps.period_end)}. Unit: ${annualEps.unit}. Filed ${E.day(annualEps.filed_at)}. Annual EPS is not current trailing-twelve-month EPS.`);
+      para(annualMeasure, annualEps.note);
+      if (/^https:\/\/www\.sec\.gov\/Archives\/edgar\/data\//.test(annualEps.filing_url || "")) annualMeasure.appendChild(link("Annual EPS source filing ↗", annualEps.filing_url));
+    } else para(annualMeasure, "A matching annual EPS value, fiscal period, currency and filing source are not available in this summary.");
+    para(annualMeasure, annualRatio?.note || "The price / fiscal-year EPS comparison requires matching currency and a verified quoted-share basis. It is not current TTM P/E or a fair-value estimate.");
+    fundamentals.appendChild(annualMeasure);
     const grid = el("dl", "ev-fundamentals");
     Object.values(report.fundamentals).forEach(item => {
       const row = el("div", "ev-fundamental"); row.appendChild(el("dt", "", item.label));
@@ -167,7 +201,7 @@ if (typeof document !== "undefined") (async () => {
     const evidence = section("Dates and source record"); evidence.classList.add("ev-evidence");
     const dates = el("dl");
     [["Price observation", report.quote.date], ["Annual financial period", report.financial_period_end], ["Original collection (UTC)", report.collected_at], ["Screen decision (UTC)", index.decision_at], ["Report hash (SHA-256)", report.evidence.report_sha256]].forEach(([key, val]) => {dates.appendChild(el("dt", "", key)); dates.appendChild(el("dd", key.includes("SHA") ? "ev-hash" : "", val || "Not recorded"));}); evidence.appendChild(dates);
-    para(evidence, "This is a compact public summary. Raw provider payloads and private research working files are not included. Its report hash identifies the complete archived calculation used for verification.");
+    para(evidence, "This is a compact summary of archived analysis, with sourced annual observations shown separately. Raw provider payloads and private research working files are not included. The report hash identifies the original archived calculation, including its original flags; downloading this summary does not run or refresh that calculation.");
     const market = report.market_inputs;
     details(evidence, "Archived market assumptions", [`Risk-free rate: ${E.pct(market.risk_free_rate)} (${market.risk_free_source || "source unavailable"}).`, `Equity risk premium: ${E.pct(market.equity_risk_premium)} (${market.erp_source || "source unavailable"}).`, `Market-assumption capture: ${market.as_of || "not recorded"}. A configured fallback is a policy assumption, not an observed market fact.`]);
     fragment.appendChild(evidence);
