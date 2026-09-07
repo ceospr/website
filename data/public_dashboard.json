@@ -6836,18 +6836,43 @@
   "atlas_pulse_tracker": null,
   "atlas_pulse_tracker_status": {
     "status": "UNAVAILABLE",
-    "reason": "FRESH_SCREEN_IN_PROGRESS",
-    "public_message": "Fresh free-data review in progress for 503 S&P 500 securities. No current verified research basket is available. Prior unverified rankings and returns are withheld.",
-    "updated_at_utc": "2026-09-07T02:49:53.880007+00:00",
-    "research_only": true,
+    "public_message": "No publishable research basket: 0/503 companies have complete ranking evidence. Free-source collection: 503/503. Valuation, review and coverage requirements remain in force; top-five longs and shorts are withheld. Price observations: 2026-09-04.",
+    "reason": "PARTIAL_COLLECTION",
+    "updated_at_utc": "2026-09-07T04:01:31Z",
     "screen": {
-      "status": "COLLECTING",
+      "status": "PARTIAL_COLLECTION",
+      "generated_at_utc": "2026-09-07T04:01:31Z",
+      "decision_at_utc": "2026-09-07T04:01:31Z",
+      "screen_month": "2026-09",
       "universe_count": 503,
-      "collection_started_at_utc": "2026-09-07T02:48:07Z",
+      "requested_count": 503,
+      "collected_count": 503,
+      "scored_count": 0,
+      "valuation_available_count": 0,
+      "source_verified_count": 503,
+      "error_count": 0,
+      "collection_coverage_ratio": 1.0,
+      "coverage_ratio": 0.0,
+      "model_review_required_count": 97,
+      "coverage_gate_passed": false,
+      "evidence_gate_passed": true,
+      "candidate_gate_passed": false,
+      "current_review_gate_passed": true,
+      "report_binding_gate_passed": true,
+      "artifact_sha256": "f7a4c91da3bebcc759a7659a6ad7605758049db4e45a753a941ebd14c5a84a33",
+      "atlas_code_hash": "e814277fcc8a1854ea91497e4a75880b52b3c87901c7e1470e15e43dae81dc11",
+      "paid_services_enabled": false,
+      "research_only": true,
+      "execution_enabled": false,
+      "report_replays_verified": 503,
       "published_long_count": 0,
       "published_short_count": 0,
-      "paid_services_enabled": false,
-      "execution_enabled": false
+      "complete_risk_score_count": 10,
+      "analysis_mode": "CAPTURED_INPUT_REBUILD",
+      "source_collection_completed_at_utc": "2026-09-07T04:00:23.495505+00:00",
+      "quote_dates": [
+        "2026-09-04"
+      ]
     }
   }
 }
