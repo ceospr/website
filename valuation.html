@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Equity Valuation | Spinoza Research</title>
+  <meta name="description" content="Explore published company analysis from Spinoza Research. Search financial history, valuation assumptions, dated quotes and the evidence still needed to support an estimate.">
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png">
+  <link rel="apple-touch-icon" href="assets/logo-512.png">
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="valuation.css">
+  <script defer src="valuation.js"></script>
+</head>
+<body class="valuation-page">
+  <a class="ev-skip" href="#company-search">Skip to company search</a>
+  <header class="nav">
+    <div class="container nav-inner">
+      <a class="brand" href="index.html" aria-label="Spinoza Research home"><img src="assets/logo.png" alt="" class="logo-img"><span class="brand-name">Spinoza Research</span></a>
+      <nav class="nav-links" aria-label="Primary">
+        <a href="index.html#dashboard">Performance</a>
+        <a href="index.html#atlas-pulse">Research Portfolio</a>
+        <a href="research.html">Research</a>
+        <a href="valuation.html" aria-current="page">Equity Valuation</a>
+        <a href="index.html#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
+  <main id="main">
+    <section class="ev-hero">
+      <div class="container">
+        <p class="eyebrow">Published company analysis</p>
+        <h1>Equity Valuation</h1>
+        <p class="ev-intro">Examine the financial evidence behind a valuation. Search companies, compare recorded financial history, and review the assumptions and limitations of each estimate.</p>
+        <div class="ev-release" id="release-summary" aria-live="polite">Loading published research…</div>
+        <p class="ev-caption">Published observations, not live quotes. An unavailable estimate means the captured inputs do not support that calculation; it does not mean a business has no value.</p>
+      </div>
+    </section>
+    <section class="container ev-workspace" aria-label="Company research explorer">
+      <aside class="ev-browser" aria-label="Find a company">
+        <form id="search-form" role="search">
+          <label for="company-search">Company or ticker</label>
+          <div class="ev-search-row"><input id="company-search" name="q" type="search" placeholder="e.g. Apple or AAPL" autocomplete="off" maxlength="100"><button type="submit">Search</button></div>
+          <label for="sector-filter">Sector</label>
+          <select id="sector-filter"><option value="">All sectors</option></select>
+          <label for="basis-filter">Analysis available</label>
+          <select id="basis-filter"><option value="">All companies</option><option value="intrinsic">Intrinsic estimate</option><option value="relative">Relative comparison</option><option value="unavailable">Estimate unavailable</option></select>
+        </form>
+        <p id="search-status" class="ev-caption" role="status">Loading companies…</p>
+        <ul id="company-results" class="ev-company-list" aria-label="Search results"></ul>
+        <button id="more-results" class="ev-secondary" type="button" hidden>Show more companies</button>
+        <noscript><p>This searchable explorer requires JavaScript. You can inspect the <a href="data/valuation-index.json">published company index</a>.</p></noscript>
+      </aside>
+      <div id="report-panel" class="ev-report" aria-live="polite" aria-busy="true">
+        <div class="ev-empty"><h2>Explore a company</h2><p>Select a company to view its published analysis, dated financial inputs and source references.</p></div>
+      </div>
+    </section>
+    <section class="container ev-method" id="methodology">
+      <p class="eyebrow">Reading the analysis</p>
+      <h2>Evidence first. Estimates in context.</h2>
+      <div class="ev-method-grid">
+        <div><h3>Intrinsic estimates</h3><p>A supported operating model projects cash after operating costs and reinvestment, discounts those flows, and accounts for financing and ownership claims. The output depends on those assumptions. Banks, insurers and property businesses require applicable specialist inputs.</p></div>
+        <div><h3>Relative comparisons</h3><p>Historical or peer multiples show how comparable earnings have been priced. A lower relative price does not establish intrinsic value. Relative estimates remain separate from cash-flow estimates.</p></div>
+        <div><h3>Incomplete information</h3><p>Missing or conflicting inputs can withhold a value or risk score. A recorded zero is distinct from a blank. Model ranges are sensitivity scenarios, not statistical confidence intervals or probabilities of profit.</p></div>
+      </div>
+      <p class="ev-caption">This public summary is derived from archived reports whose calculations were replayed against their preserved inputs. Replay checks reproducibility; it does not independently verify every provider assertion or predict investment returns. Annual observations may incorporate later filings; this view is not a historical decision-time backtest.</p>
+    </section>
+  </main>
+  <footer class="footer"><div class="container footer-inner"><div>&copy; <span id="year">2026</span> Spinoza Research</div><a href="index.html#disclaimer">Research disclosures</a></div></footer>
+</body>
+</html>

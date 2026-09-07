@@ -1,0 +1,29 @@
+{
+  "schema_version": "spinoza.research.v1",
+  "updated_at": "2026-09-07T00:00:00Z",
+  "papers": [
+    {
+      "id": "token-utilization-pe",
+      "title": "The Token Utilization P/E",
+      "subtitle": "Screening for AI-driven margin expansion hiding inside depressed earnings",
+      "author": "Atlas Research",
+      "date": "2026-07-16",
+      "version": "0.1",
+      "pages": 4,
+      "category": "methods",
+      "status": "published",
+      "pdf": "papers/token-utilization-pe.pdf",
+      "abstract": "A proposed P/E adjustment for the margin expansion associated with AI adoption. The paper explains its earnings-sensitivity framework and adoption score, illustrates the approach with a simulated 400-stock universe, and discusses narrative and estimation risks. All exhibits use generated data; they are not a historical backtest or evidence of realized investment performance.",
+      "abstract_note": "Summary of the executive summary, methodology, and limitations; the document does not supply a separate abstract.",
+      "evidence_basis": "Illustrative simulation",
+      "tags": [
+        "AI adoption",
+        "Valuation",
+        "Earnings",
+        "Methodology"
+      ],
+      "sha256": "897445073df5e8bad08a6af22d4e0445030d6f72217441d0fc6fbb408cbe2377",
+      "bytes": 364868
+    }
+  ]
+}
