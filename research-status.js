@@ -5,15 +5,15 @@
   root.ResearchStatus = api;
 })(typeof globalThis !== "undefined" ? globalThis : this, function (root) {
   "use strict";
-  const SCREEN_HASH = "f7a4c91da3bebcc759a7659a6ad7605758049db4e45a753a941ebd14c5a84a33";
-  const CODE_HASH = "e814277fcc8a1854ea91497e4a75880b52b3c87901c7e1470e15e43dae81dc11";
-  const PUBLISHED_AT = "2026-09-07T04:01:31Z";
+  const SCREEN_HASH = "a1486a35a90ada5628c1fa4b7211e6cae5739d61c8c56a5e59eaec1cea03534e";
+  const CODE_HASH = "daef422149ab2e47118531b020a2671929ac4a65fd4a1c9f34dcb8d99d8e6498";
+  const PUBLISHED_AT = "2026-09-07T19:39:42Z";
   const COLLECTION_AT = "2026-09-07T04:00:23.495505+00:00";
   // Exact, already verified bytes: Git's LF blob and Windows' CRLF checkout.
   // These two files contain identical JSON. Do not accept arbitrary normalization or new publications.
   const ALLOWED_SHA256 = new Set([
-    "7ba176a5daa3ea7ac921a6df614693f3e6de65af100712430eae811ef81b93b5",
-    "d973fa6d74aedb9d6627f76785482b0acc381940d55744cd415252ca63ab6f7f"
+    "4fe4e834cc946064d00c473e9e6cbc2d81ee6108473ad50b6ee6e4c83ce7648f",
+    "9cd8ca5b9cc3aa4d9bf837bc337f11bc52dfaa38da7486142ae8128dfe0c42a3"
   ]);
   const object = value => value && typeof value === "object" && !Array.isArray(value);
   const quoteDatesMatch = value => Array.isArray(value) && value.length === 1 && value[0] === "2026-09-04";
