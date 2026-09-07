@@ -1,6 +1,6 @@
 {
-  "updated_at": "2026-09-07T11:31:48.420952",
-  "published_at_utc": "2026-09-07T18:31:48Z",
+  "updated_at": "2026-09-07T11:46:19.377905",
+  "published_at_utc": "2026-09-07T18:46:19Z",
   "profile": "LARGE",
   "strategy": "APM_SWING",
   "shadow_only": false,
@@ -73,7 +73,7 @@
         "provenance": "FIRST_OBSERVED_POST_FLOW"
       }
     ],
-    "asof": "2026-09-07T18:31:27Z",
+    "asof": "2026-09-07T18:46:02Z",
     "performance_equity": 2229.92,
     "performance_index": 101.66676276,
     "since_inception_return_pct": 1.66676276,
@@ -117,7 +117,7 @@
   "leaderboard": [
     {
       "ticker": "IBIT",
-      "timestamp": "2026-09-07T18:30:03Z",
+      "timestamp": "2026-09-07T18:45:06Z",
       "score": 83.818,
       "rank": 1,
       "relative_strength_score": 84.239,
@@ -166,7 +166,7 @@
       "earnings_decision": "CLEAR",
       "earnings_reason_code": "EARNINGS_WINDOW_CLEAR",
       "earnings_provider": "YFINANCE_CALENDARS_RANGE",
-      "earnings_lookup_timestamp_utc": "2026-09-07T18:31:20Z",
+      "earnings_lookup_timestamp_utc": "2026-09-07T18:45:57Z",
       "earnings_fetch_timestamp_utc": "2026-09-07T17:31:02Z",
       "earnings_cache_status": "HIT_FRESH_NEGATIVE",
       "earnings_cache_age_sessions": 1,
@@ -193,7 +193,7 @@
     },
     {
       "ticker": "NVDA",
-      "timestamp": "2026-09-07T18:30:03Z",
+      "timestamp": "2026-09-07T18:45:06Z",
       "score": 78.445,
       "rank": 2,
       "relative_strength_score": 86.689,
@@ -230,7 +230,7 @@
       "chase_score": 29.704,
       "chase_state": "OK",
       "chase_reason": "chase ok score=30 m1=0.3ATR m3=1.7ATR d20=1.5ATR davwap=1.9ATR range=0.84 run9=3 rollover=False",
-      "decision_ts": "2026-09-07T18:30:03Z",
+      "decision_ts": "2026-09-07T18:45:06Z",
       "close_ts": "",
       "security_type": "COMMON_STOCK",
       "sector": "Information Technology",
@@ -242,7 +242,7 @@
       "earnings_decision": "CLEAR",
       "earnings_reason_code": "EARNINGS_WINDOW_CLEAR",
       "earnings_provider": "YFINANCE_CALENDARS_RANGE",
-      "earnings_lookup_timestamp_utc": "2026-09-07T18:31:20Z",
+      "earnings_lookup_timestamp_utc": "2026-09-07T18:45:57Z",
       "earnings_fetch_timestamp_utc": "2026-09-07T17:31:02Z",
       "earnings_cache_status": "HIT_FRESH_NEGATIVE",
       "earnings_cache_age_sessions": 1,
@@ -269,7 +269,7 @@
     },
     {
       "ticker": "PFE",
-      "timestamp": "2026-09-07T18:30:03Z",
+      "timestamp": "2026-09-07T18:45:06Z",
       "score": 78.032,
       "rank": 3,
       "relative_strength_score": 77.131,
@@ -306,7 +306,7 @@
       "chase_score": 50.0,
       "chase_state": "RESET",
       "chase_reason": "chase reset score=50 m1=-0.6ATR m3=-0.2ATR d20=1.1ATR davwap=2.6ATR range=0.75 run9=29 rollover=True",
-      "decision_ts": "2026-09-07T18:30:03Z",
+      "decision_ts": "2026-09-07T18:45:06Z",
       "close_ts": "",
       "security_type": "UNVERIFIED",
       "sector": "",
@@ -318,7 +318,7 @@
       "earnings_decision": "CLEAR",
       "earnings_reason_code": "EARNINGS_WINDOW_CLEAR",
       "earnings_provider": "YFINANCE_CALENDARS_RANGE",
-      "earnings_lookup_timestamp_utc": "2026-09-07T18:31:19Z",
+      "earnings_lookup_timestamp_utc": "2026-09-07T18:45:56Z",
       "earnings_fetch_timestamp_utc": "2026-09-07T17:31:01Z",
       "earnings_cache_status": "HIT_FRESH_NEGATIVE",
       "earnings_cache_age_sessions": 1,
@@ -345,7 +345,7 @@
     },
     {
       "ticker": "JNJ",
-      "timestamp": "2026-09-07T18:30:03Z",
+      "timestamp": "2026-09-07T18:45:06Z",
       "score": 76.382,
       "rank": 4,
       "relative_strength_score": 77.244,
@@ -382,7 +382,7 @@
       "chase_score": 21.865,
       "chase_state": "RESET",
       "chase_reason": "chase reset score=22 m1=-0.6ATR m3=0.7ATR d20=1.2ATR davwap=1.8ATR range=0.77 run9=4 rollover=True",
-      "decision_ts": "2026-09-07T18:30:03Z",
+      "decision_ts": "2026-09-07T18:45:06Z",
       "close_ts": "",
       "security_type": "COMMON_STOCK",
       "sector": "Health Care",
@@ -394,7 +394,7 @@
       "earnings_decision": "CLEAR",
       "earnings_reason_code": "EARNINGS_WINDOW_CLEAR",
       "earnings_provider": "YFINANCE_CALENDARS_RANGE",
-      "earnings_lookup_timestamp_utc": "2026-09-07T18:31:24Z",
+      "earnings_lookup_timestamp_utc": "2026-09-07T18:46:00Z",
       "earnings_fetch_timestamp_utc": "2026-09-07T17:31:05Z",
       "earnings_cache_status": "HIT_FRESH_NEGATIVE",
       "earnings_cache_age_sessions": 1,
@@ -421,7 +421,7 @@
     },
     {
       "ticker": "CVX",
-      "timestamp": "2026-09-07T18:30:03Z",
+      "timestamp": "2026-09-07T18:45:06Z",
       "score": 74.474,
       "rank": 5,
       "relative_strength_score": 65.411,
@@ -458,7 +458,7 @@
       "chase_score": 44.857,
       "chase_state": "RESET",
       "chase_reason": "chase reset score=45 m1=-0.7ATR m3=-0.7ATR d20=1.5ATR davwap=2.7ATR range=0.81 run9=6 rollover=True",
-      "decision_ts": "2026-09-07T18:30:03Z",
+      "decision_ts": "2026-09-07T18:45:06Z",
       "close_ts": "",
       "security_type": "UNVERIFIED",
       "sector": "",
@@ -470,7 +470,7 @@
       "earnings_decision": "CLEAR",
       "earnings_reason_code": "EARNINGS_WINDOW_CLEAR",
       "earnings_provider": "YFINANCE_CALENDARS_RANGE",
-      "earnings_lookup_timestamp_utc": "2026-09-07T18:31:23Z",
+      "earnings_lookup_timestamp_utc": "2026-09-07T18:46:00Z",
       "earnings_fetch_timestamp_utc": "2026-09-04T13:32:12Z",
       "earnings_cache_status": "HIT_FRESH_NEGATIVE",
       "earnings_cache_age_sessions": 1,
@@ -497,7 +497,7 @@
     },
     {
       "ticker": "MSFT",
-      "timestamp": "2026-09-07T18:30:03Z",
+      "timestamp": "2026-09-07T18:45:06Z",
       "score": 73.399,
       "rank": 6,
       "relative_strength_score": 61.201,
@@ -534,7 +534,7 @@
       "chase_score": 25.0,
       "chase_state": "RESET",
       "chase_reason": "chase reset score=25 m1=-1.0ATR m3=-0.1ATR d20=0.9ATR davwap=2.4ATR range=0.56 run9=0 rollover=False",
-      "decision_ts": "2026-09-07T18:30:03Z",
+      "decision_ts": "2026-09-07T18:45:06Z",
       "close_ts": "",
       "security_type": "COMMON_STOCK",
       "sector": "Information Technology",
@@ -546,7 +546,7 @@
       "earnings_decision": "CLEAR",
       "earnings_reason_code": "EARNINGS_WINDOW_CLEAR",
       "earnings_provider": "YFINANCE_CALENDARS_RANGE",
-      "earnings_lookup_timestamp_utc": "2026-09-07T18:31:22Z",
+      "earnings_lookup_timestamp_utc": "2026-09-07T18:45:58Z",
       "earnings_fetch_timestamp_utc": "2026-09-07T17:31:03Z",
       "earnings_cache_status": "HIT_FRESH_NEGATIVE",
       "earnings_cache_age_sessions": 1,
@@ -573,7 +573,7 @@
     },
     {
       "ticker": "GOOGL",
-      "timestamp": "2026-09-07T18:30:03Z",
+      "timestamp": "2026-09-07T18:45:06Z",
       "score": 73.342,
       "rank": 7,
       "relative_strength_score": 77.015,
@@ -610,7 +610,7 @@
       "chase_score": 10.529,
       "chase_state": "RESET",
       "chase_reason": "chase reset score=11 m1=0.6ATR m3=-0.5ATR d20=0.7ATR davwap=1.4ATR range=0.77 run9=1 rollover=True",
-      "decision_ts": "2026-09-07T18:30:03Z",
+      "decision_ts": "2026-09-07T18:45:06Z",
       "close_ts": "",
       "security_type": "COMMON_STOCK",
       "sector": "Communication Services",
@@ -622,7 +622,7 @@
       "earnings_decision": "CLEAR",
       "earnings_reason_code": "EARNINGS_WINDOW_CLEAR",
       "earnings_provider": "YFINANCE_CALENDARS_RANGE",
-      "earnings_lookup_timestamp_utc": "2026-09-07T18:31:21Z",
+      "earnings_lookup_timestamp_utc": "2026-09-07T18:45:58Z",
       "earnings_fetch_timestamp_utc": "2026-09-07T17:31:03Z",
       "earnings_cache_status": "HIT_FRESH_NEGATIVE",
       "earnings_cache_age_sessions": 1,
@@ -649,7 +649,7 @@
     },
     {
       "ticker": "AAPL",
-      "timestamp": "2026-09-07T18:30:03Z",
+      "timestamp": "2026-09-07T18:45:06Z",
       "score": 71.777,
       "rank": 8,
       "relative_strength_score": 65.427,
@@ -686,7 +686,7 @@
       "chase_score": 10.0,
       "chase_state": "RESET",
       "chase_reason": "chase reset score=10 m1=-1.1ATR m3=-0.7ATR d20=0.4ATR davwap=0.6ATR range=0.64 run9=0 rollover=True",
-      "decision_ts": "2026-09-07T18:30:03Z",
+      "decision_ts": "2026-09-07T18:45:06Z",
       "close_ts": "",
       "security_type": "COMMON_STOCK",
       "sector": "Information Technology",
@@ -698,7 +698,7 @@
       "earnings_decision": "CLEAR",
       "earnings_reason_code": "EARNINGS_WINDOW_CLEAR",
       "earnings_provider": "YFINANCE_CALENDARS_RANGE",
-      "earnings_lookup_timestamp_utc": "2026-09-07T18:31:21Z",
+      "earnings_lookup_timestamp_utc": "2026-09-07T18:45:57Z",
       "earnings_fetch_timestamp_utc": "2026-09-07T17:31:03Z",
       "earnings_cache_status": "HIT_FRESH_NEGATIVE",
       "earnings_cache_age_sessions": 1,
@@ -725,7 +725,7 @@
     },
     {
       "ticker": "V",
-      "timestamp": "2026-09-07T18:30:03Z",
+      "timestamp": "2026-09-07T18:45:06Z",
       "score": 70.908,
       "rank": 9,
       "relative_strength_score": 64.541,
@@ -762,7 +762,7 @@
       "chase_score": 0.0,
       "chase_state": "RESET",
       "chase_reason": "chase reset score=0 m1=-0.6ATR m3=0.4ATR d20=0.3ATR davwap=1.0ATR range=0.62 run9=0 rollover=False",
-      "decision_ts": "2026-09-07T18:30:03Z",
+      "decision_ts": "2026-09-07T18:45:06Z",
       "close_ts": "",
       "security_type": "COMMON_STOCK",
       "sector": "Financials",
@@ -774,7 +774,7 @@
       "earnings_decision": "CLEAR",
       "earnings_reason_code": "EARNINGS_WINDOW_CLEAR",
       "earnings_provider": "YFINANCE_CALENDARS_RANGE",
-      "earnings_lookup_timestamp_utc": "2026-09-07T18:31:24Z",
+      "earnings_lookup_timestamp_utc": "2026-09-07T18:46:00Z",
       "earnings_fetch_timestamp_utc": "2026-09-07T17:31:06Z",
       "earnings_cache_status": "HIT_FRESH_NEGATIVE",
       "earnings_cache_age_sessions": 1,
@@ -801,7 +801,7 @@
     },
     {
       "ticker": "PLTR",
-      "timestamp": "2026-09-07T18:30:03Z",
+      "timestamp": "2026-09-07T18:45:06Z",
       "score": 69.304,
       "rank": 10,
       "relative_strength_score": 46.38,
@@ -838,7 +838,7 @@
       "chase_score": 3.696,
       "chase_state": "RESET",
       "chase_reason": "chase reset score=4 m1=-1.0ATR m3=-0.7ATR d20=0.2ATR davwap=1.5ATR range=0.38 run9=0 rollover=False",
-      "decision_ts": "2026-09-07T18:30:03Z",
+      "decision_ts": "2026-09-07T18:45:06Z",
       "close_ts": "",
       "security_type": "COMMON_STOCK",
       "sector": "Information Technology",
@@ -850,7 +850,7 @@
       "earnings_decision": "CLEAR",
       "earnings_reason_code": "EARNINGS_WINDOW_CLEAR",
       "earnings_provider": "YFINANCE_CALENDARS_RANGE",
-      "earnings_lookup_timestamp_utc": "2026-09-07T18:31:25Z",
+      "earnings_lookup_timestamp_utc": "2026-09-07T18:46:01Z",
       "earnings_fetch_timestamp_utc": "2026-09-04T13:32:13Z",
       "earnings_cache_status": "HIT_FRESH_NEGATIVE",
       "earnings_cache_age_sessions": 1,
@@ -877,7 +877,7 @@
     },
     {
       "ticker": "JPM",
-      "timestamp": "2026-09-07T18:30:03Z",
+      "timestamp": "2026-09-07T18:45:06Z",
       "score": 68.953,
       "rank": 11,
       "relative_strength_score": 60.228,
@@ -914,7 +914,7 @@
       "chase_score": 0.0,
       "chase_state": "RESET",
       "chase_reason": "chase reset score=0 m1=-0.6ATR m3=0.6ATR d20=0.4ATR davwap=0.3ATR range=0.51 run9=3 rollover=False",
-      "decision_ts": "2026-09-07T18:30:03Z",
+      "decision_ts": "2026-09-07T18:45:06Z",
       "close_ts": "",
       "security_type": "COMMON_STOCK",
       "sector": "Financials",
@@ -926,7 +926,7 @@
       "earnings_decision": "CLEAR",
       "earnings_reason_code": "EARNINGS_WINDOW_CLEAR",
       "earnings_provider": "YFINANCE_CALENDARS_RANGE",
-      "earnings_lookup_timestamp_utc": "2026-09-07T18:31:22Z",
+      "earnings_lookup_timestamp_utc": "2026-09-07T18:45:59Z",
       "earnings_fetch_timestamp_utc": "2026-09-04T13:32:11Z",
       "earnings_cache_status": "HIT_FRESH_NEGATIVE",
       "earnings_cache_age_sessions": 1,
@@ -953,7 +953,7 @@
     },
     {
       "ticker": "WMT",
-      "timestamp": "2026-09-07T18:30:03Z",
+      "timestamp": "2026-09-07T18:45:06Z",
       "score": 67.233,
       "rank": 12,
       "relative_strength_score": 52.899,
@@ -990,7 +990,7 @@
       "chase_score": 0.0,
       "chase_state": "RESET",
       "chase_reason": "chase reset score=0 m1=0.5ATR m3=-0.4ATR d20=0.3ATR davwap=0.7ATR range=0.66 run9=0 rollover=False",
-      "decision_ts": "2026-09-07T18:30:03Z",
+      "decision_ts": "2026-09-07T18:45:06Z",
       "close_ts": "",
       "security_type": "COMMON_STOCK",
       "sector": "Consumer Staples",
@@ -1002,7 +1002,7 @@
       "earnings_decision": "CLEAR",
       "earnings_reason_code": "EARNINGS_WINDOW_CLEAR",
       "earnings_provider": "YFINANCE_CALENDARS_RANGE",
-      "earnings_lookup_timestamp_utc": "2026-09-07T18:31:23Z",
+      "earnings_lookup_timestamp_utc": "2026-09-07T18:45:59Z",
       "earnings_fetch_timestamp_utc": "2026-09-07T17:31:04Z",
       "earnings_cache_status": "HIT_FRESH_NEGATIVE",
       "earnings_cache_age_sessions": 1,
@@ -1029,7 +1029,7 @@
     },
     {
       "ticker": "C",
-      "timestamp": "2026-09-07T18:30:03Z",
+      "timestamp": "2026-09-07T18:45:06Z",
       "score": 65.671,
       "rank": 13,
       "relative_strength_score": 50.939,
@@ -1066,7 +1066,7 @@
       "chase_score": 12.179,
       "chase_state": "OK",
       "chase_reason": "chase ok score=12 m1=-0.2ATR m3=1.9ATR d20=1.2ATR davwap=1.3ATR range=0.72 run9=3 rollover=False",
-      "decision_ts": "2026-09-07T18:30:03Z",
+      "decision_ts": "2026-09-07T18:45:06Z",
       "close_ts": "",
       "security_type": "COMMON_STOCK",
       "sector": "Financials",
@@ -1078,7 +1078,7 @@
       "earnings_decision": "CLEAR",
       "earnings_reason_code": "EARNINGS_WINDOW_CLEAR",
       "earnings_provider": "YFINANCE_CALENDARS_RANGE",
-      "earnings_lookup_timestamp_utc": "2026-09-07T18:31:20Z",
+      "earnings_lookup_timestamp_utc": "2026-09-07T18:45:57Z",
       "earnings_fetch_timestamp_utc": "2026-09-07T17:31:02Z",
       "earnings_cache_status": "HIT_FRESH_NEGATIVE",
       "earnings_cache_age_sessions": 1,
@@ -1105,7 +1105,7 @@
     },
     {
       "ticker": "TSLA",
-      "timestamp": "2026-09-07T18:30:03Z",
+      "timestamp": "2026-09-07T18:45:06Z",
       "score": 63.881,
       "rank": 14,
       "relative_strength_score": 62.712,
@@ -1142,7 +1142,7 @@
       "chase_score": 10.0,
       "chase_state": "RESET",
       "chase_reason": "chase reset score=10 m1=-1.5ATR m3=-0.1ATR d20=0.1ATR davwap=1.0ATR range=0.50 run9=0 rollover=True",
-      "decision_ts": "2026-09-07T18:30:03Z",
+      "decision_ts": "2026-09-07T18:45:06Z",
       "close_ts": "",
       "security_type": "COMMON_STOCK",
       "sector": "Consumer Discretionary",
@@ -1154,7 +1154,7 @@
       "earnings_decision": "CLEAR",
       "earnings_reason_code": "EARNINGS_WINDOW_CLEAR",
       "earnings_provider": "YFINANCE_CALENDARS_RANGE",
-      "earnings_lookup_timestamp_utc": "2026-09-07T18:31:24Z",
+      "earnings_lookup_timestamp_utc": "2026-09-07T18:46:00Z",
       "earnings_fetch_timestamp_utc": "2026-09-07T17:31:06Z",
       "earnings_cache_status": "HIT_FRESH_NEGATIVE",
       "earnings_cache_age_sessions": 1,
@@ -1181,7 +1181,7 @@
     },
     {
       "ticker": "BAC",
-      "timestamp": "2026-09-07T18:30:03Z",
+      "timestamp": "2026-09-07T18:45:06Z",
       "score": 63.455,
       "rank": 15,
       "relative_strength_score": 56.837,
@@ -1218,7 +1218,7 @@
       "chase_score": 0.0,
       "chase_state": "RESET",
       "chase_reason": "chase reset score=0 m1=-0.3ATR m3=0.6ATR d20=0.2ATR davwap=-0.0ATR range=0.38 run9=3 rollover=False",
-      "decision_ts": "2026-09-07T18:30:03Z",
+      "decision_ts": "2026-09-07T18:45:06Z",
       "close_ts": "",
       "security_type": "COMMON_STOCK",
       "sector": "Financials",
@@ -1230,7 +1230,7 @@
       "earnings_decision": "CLEAR",
       "earnings_reason_code": "EARNINGS_WINDOW_CLEAR",
       "earnings_provider": "YFINANCE_CALENDARS_RANGE",
-      "earnings_lookup_timestamp_utc": "2026-09-07T18:31:22Z",
+      "earnings_lookup_timestamp_utc": "2026-09-07T18:45:59Z",
       "earnings_fetch_timestamp_utc": "2026-09-04T13:32:08Z",
       "earnings_cache_status": "HIT_FRESH_NEGATIVE",
       "earnings_cache_age_sessions": 1,
@@ -1257,7 +1257,7 @@
     },
     {
       "ticker": "AMD",
-      "timestamp": "2026-09-07T18:30:03Z",
+      "timestamp": "2026-09-07T18:45:06Z",
       "score": 56.228,
       "rank": 16,
       "relative_strength_score": 38.293,
@@ -1294,7 +1294,7 @@
       "chase_score": 0.0,
       "chase_state": "RESET",
       "chase_reason": "chase reset score=0 m1=-1.2ATR m3=-1.0ATR d20=-0.1ATR davwap=0.1ATR range=0.52 run9=0 rollover=False",
-      "decision_ts": "2026-09-07T18:30:03Z",
+      "decision_ts": "2026-09-07T18:45:06Z",
       "close_ts": "",
       "security_type": "COMMON_STOCK",
       "sector": "Information Technology",
@@ -1306,7 +1306,7 @@
       "earnings_decision": "CLEAR",
       "earnings_reason_code": "EARNINGS_WINDOW_CLEAR",
       "earnings_provider": "YFINANCE_CALENDARS_RANGE",
-      "earnings_lookup_timestamp_utc": "2026-09-07T18:31:22Z",
+      "earnings_lookup_timestamp_utc": "2026-09-07T18:45:58Z",
       "earnings_fetch_timestamp_utc": "2026-09-07T17:31:04Z",
       "earnings_cache_status": "HIT_FRESH_NEGATIVE",
       "earnings_cache_age_sessions": 1,
@@ -1333,7 +1333,7 @@
     },
     {
       "ticker": "INTC",
-      "timestamp": "2026-09-07T18:30:03Z",
+      "timestamp": "2026-09-07T18:45:06Z",
       "score": 56.082,
       "rank": 17,
       "relative_strength_score": 48.444,
@@ -1370,7 +1370,7 @@
       "chase_score": 5.508,
       "chase_state": "RESET",
       "chase_reason": "chase reset score=6 m1=1.0ATR m3=1.6ATR d20=0.6ATR davwap=0.5ATR range=0.48 run9=2 rollover=False",
-      "decision_ts": "2026-09-07T18:30:03Z",
+      "decision_ts": "2026-09-07T18:45:06Z",
       "close_ts": "",
       "security_type": "COMMON_STOCK",
       "sector": "Information Technology",
@@ -1382,7 +1382,7 @@
       "earnings_decision": "CLEAR",
       "earnings_reason_code": "EARNINGS_WINDOW_CLEAR",
       "earnings_provider": "YFINANCE_CALENDARS_RANGE",
-      "earnings_lookup_timestamp_utc": "2026-09-07T18:31:19Z",
+      "earnings_lookup_timestamp_utc": "2026-09-07T18:45:56Z",
       "earnings_fetch_timestamp_utc": "2026-09-07T17:31:01Z",
       "earnings_cache_status": "HIT_FRESH_NEGATIVE",
       "earnings_cache_age_sessions": 1,
@@ -1409,7 +1409,7 @@
     },
     {
       "ticker": "MP",
-      "timestamp": "2026-09-07T18:30:03Z",
+      "timestamp": "2026-09-07T18:45:06Z",
       "score": 55.846,
       "rank": 18,
       "relative_strength_score": 67.304,
@@ -1446,7 +1446,7 @@
       "chase_score": 6.573,
       "chase_state": "RESET",
       "chase_reason": "chase reset score=7 m1=-0.2ATR m3=-0.2ATR d20=0.1ATR davwap=-0.8ATR range=0.78 run9=6 rollover=False",
-      "decision_ts": "2026-09-07T18:30:03Z",
+      "decision_ts": "2026-09-07T18:45:06Z",
       "close_ts": "",
       "security_type": "UNVERIFIED",
       "sector": "",
@@ -1458,7 +1458,7 @@
       "earnings_decision": "CLEAR",
       "earnings_reason_code": "EARNINGS_WINDOW_CLEAR",
       "earnings_provider": "YFINANCE_CALENDARS_RANGE",
-      "earnings_lookup_timestamp_utc": "2026-09-07T18:31:18Z",
+      "earnings_lookup_timestamp_utc": "2026-09-07T18:45:56Z",
       "earnings_fetch_timestamp_utc": "2026-09-07T17:30:58Z",
       "earnings_cache_status": "HIT_FRESH_NEGATIVE",
       "earnings_cache_age_sessions": 1,
@@ -1485,7 +1485,7 @@
     },
     {
       "ticker": "XOM",
-      "timestamp": "2026-09-07T18:30:03Z",
+      "timestamp": "2026-09-07T18:45:06Z",
       "score": 55.108,
       "rank": 19,
       "relative_strength_score": 66.88,
@@ -1522,7 +1522,7 @@
       "chase_score": 3.775,
       "chase_state": "RESET",
       "chase_reason": "chase reset score=4 m1=0.8ATR m3=1.5ATR d20=0.2ATR davwap=-0.1ATR range=0.65 run9=1 rollover=False",
-      "decision_ts": "2026-09-07T18:30:03Z",
+      "decision_ts": "2026-09-07T18:45:06Z",
       "close_ts": "",
       "security_type": "COMMON_STOCK",
       "sector": "Energy",
@@ -1534,7 +1534,7 @@
       "earnings_decision": "CLEAR",
       "earnings_reason_code": "EARNINGS_WINDOW_CLEAR",
       "earnings_provider": "YFINANCE_CALENDARS_RANGE",
-      "earnings_lookup_timestamp_utc": "2026-09-07T18:31:23Z",
+      "earnings_lookup_timestamp_utc": "2026-09-07T18:45:59Z",
       "earnings_fetch_timestamp_utc": "2026-09-04T13:32:11Z",
       "earnings_cache_status": "HIT_FRESH_NEGATIVE",
       "earnings_cache_age_sessions": 1,
@@ -1561,7 +1561,7 @@
     },
     {
       "ticker": "AMZN",
-      "timestamp": "2026-09-07T18:30:03Z",
+      "timestamp": "2026-09-07T18:45:06Z",
       "score": 54.915,
       "rank": 20,
       "relative_strength_score": 63.454,
@@ -1598,7 +1598,7 @@
       "chase_score": 0.0,
       "chase_state": "RESET",
       "chase_reason": "chase reset score=0 m1=-0.1ATR m3=0.6ATR d20=-0.2ATR davwap=-0.5ATR range=0.23 run9=0 rollover=False",
-      "decision_ts": "2026-09-07T18:30:03Z",
+      "decision_ts": "2026-09-07T18:45:06Z",
       "close_ts": "",
       "security_type": "COMMON_STOCK",
       "sector": "Consumer Discretionary",
@@ -1610,7 +1610,7 @@
       "earnings_decision": "CLEAR",
       "earnings_reason_code": "EARNINGS_WINDOW_CLEAR",
       "earnings_provider": "YFINANCE_CALENDARS_RANGE",
-      "earnings_lookup_timestamp_utc": "2026-09-07T18:31:21Z",
+      "earnings_lookup_timestamp_utc": "2026-09-07T18:45:58Z",
       "earnings_fetch_timestamp_utc": "2026-09-07T17:31:03Z",
       "earnings_cache_status": "HIT_FRESH_NEGATIVE",
       "earnings_cache_age_sessions": 1,
@@ -1989,11 +1989,11 @@
     "consecutive_risk_off_runs": 0,
     "consecutive_derisk_runs": 0,
     "consecutive_switch_runs": 0,
-    "ts_utc": "2026-09-07T18:30:03Z",
+    "ts_utc": "2026-09-07T18:45:06Z",
     "reason": "APM_BEAR_DEFENSE score=9.5; shorts=0/20; participation=0.00; long_loss_risk=95.0"
   },
   "broker_exposure_audit": {
-    "ts_utc": "2026-09-07T18:30:03Z",
+    "ts_utc": "2026-09-07T18:45:06Z",
     "status": "OK",
     "positions": [
       {
@@ -2107,9 +2107,9 @@
         "classification": "APM_MANAGED",
         "management_level": "FULL_DYNAMIC",
         "reason": "exact stock/SPY/mandatory-factor context loaded",
-        "record_age_minutes": 1.41,
+        "record_age_minutes": 0.94,
         "record_source": "TWELVE_DATA_NORMAL_MANAGEMENT_REFRESH",
-        "record_timestamp_utc": "2026-09-07T18:30:03Z",
+        "record_timestamp_utc": "2026-09-07T18:45:06Z",
         "factor_pair": [
           "XLB",
           "IYM"
@@ -2132,9 +2132,9 @@
         "classification": "APM_MANAGED",
         "management_level": "FULL_DYNAMIC",
         "reason": "exact stock/SPY/mandatory-factor context loaded",
-        "record_age_minutes": 1.41,
+        "record_age_minutes": 0.94,
         "record_source": "TWELVE_DATA_NORMAL_MANAGEMENT_REFRESH",
-        "record_timestamp_utc": "2026-09-07T18:30:03Z",
+        "record_timestamp_utc": "2026-09-07T18:45:06Z",
         "factor_pair": [
           "XLK",
           "IGV"
@@ -2157,9 +2157,9 @@
         "classification": "APM_MANAGED",
         "management_level": "FULL_DYNAMIC",
         "reason": "exact stock/SPY/mandatory-factor context loaded",
-        "record_age_minutes": 1.41,
+        "record_age_minutes": 0.94,
         "record_source": "TWELVE_DATA_NORMAL_MANAGEMENT_REFRESH",
-        "record_timestamp_utc": "2026-09-07T18:30:03Z",
+        "record_timestamp_utc": "2026-09-07T18:45:06Z",
         "factor_pair": [
           "XLV",
           "IHI"
@@ -2182,9 +2182,9 @@
         "classification": "APM_MANAGED",
         "management_level": "FULL_DYNAMIC",
         "reason": "exact stock/SPY/mandatory-factor context loaded",
-        "record_age_minutes": 1.41,
+        "record_age_minutes": 0.94,
         "record_source": "TWELVE_DATA_NORMAL_MANAGEMENT_REFRESH",
-        "record_timestamp_utc": "2026-09-07T18:30:03Z",
+        "record_timestamp_utc": "2026-09-07T18:45:06Z",
         "factor_pair": [
           "XLY",
           "XRT"
@@ -2203,10 +2203,10 @@
     "normal_scheduler_entries": "DISABLED",
     "legacy_signal_health_universe": 20,
     "guardian_network_acquisition": false,
-    "updated_at_utc": "2026-09-07T18:31:27Z"
+    "updated_at_utc": "2026-09-07T18:46:02Z"
   },
   "live_account_balance_check": {
-    "checked_at_utc": "2026-09-07T18:31:26Z",
+    "checked_at_utc": "2026-09-07T18:46:02Z",
     "source": "ALPACA_LIVE",
     "snapshot_ok": true,
     "account_balance": 7229.92,
@@ -2967,7 +2967,7 @@
   ],
   "open_positions_live": [
     {
-      "ts_utc": "2026-09-07T18:31:27Z",
+      "ts_utc": "2026-09-07T18:46:02Z",
       "broker_account": "Live Trading Account",
       "broker_profile": "APM_REAL_ACCOUNT_SWING",
       "symbol": "BG",
@@ -2981,7 +2981,7 @@
       "entry_model": "Swing"
     },
     {
-      "ts_utc": "2026-09-07T18:31:27Z",
+      "ts_utc": "2026-09-07T18:46:02Z",
       "broker_account": "Live Trading Account",
       "broker_profile": "APM_REAL_ACCOUNT_SWING",
       "symbol": "C",
@@ -2995,7 +2995,7 @@
       "entry_model": "Swing"
     },
     {
-      "ts_utc": "2026-09-07T18:31:27Z",
+      "ts_utc": "2026-09-07T18:46:02Z",
       "broker_account": "Live Trading Account",
       "broker_profile": "APM_REAL_ACCOUNT_SWING",
       "symbol": "CF",
@@ -3009,7 +3009,7 @@
       "entry_model": "Swing"
     },
     {
-      "ts_utc": "2026-09-07T18:31:27Z",
+      "ts_utc": "2026-09-07T18:46:02Z",
       "broker_account": "Live Trading Account",
       "broker_profile": "APM_REAL_ACCOUNT_SWING",
       "symbol": "GEN",
@@ -3023,7 +3023,7 @@
       "entry_model": "Swing"
     },
     {
-      "ts_utc": "2026-09-07T18:31:27Z",
+      "ts_utc": "2026-09-07T18:46:02Z",
       "broker_account": "Live Trading Account",
       "broker_profile": "APM_REAL_ACCOUNT_SWING",
       "symbol": "RVTY",
@@ -3037,7 +3037,7 @@
       "entry_model": "Swing"
     },
     {
-      "ts_utc": "2026-09-07T18:31:27Z",
+      "ts_utc": "2026-09-07T18:46:02Z",
       "broker_account": "Live Trading Account",
       "broker_profile": "APM_REAL_ACCOUNT_SWING",
       "symbol": "TJX",
@@ -3756,7 +3756,7 @@
       "drawdown_pct": -9.3808
     },
     {
-      "ts": "2026-09-07T18:31:27",
+      "ts": "2026-09-07T18:46:02",
       "equity": 7229.92,
       "raw_equity": 7229.92,
       "performance_equity": 2229.92,
@@ -3857,7 +3857,7 @@
       "drawdown_pct": -9.3808
     },
     {
-      "ts": "2026-09-07T18:31:27",
+      "ts": "2026-09-07T18:46:02",
       "drawdown_pct": -9.5573
     }
   ],
@@ -4316,7 +4316,7 @@
   "strategy_lanes": [
     "APM_REAL_ACCOUNT_SWING"
   ],
-  "source_updated_at_max": "2026-09-07T11:31:27.998278",
+  "source_updated_at_max": "2026-09-07T11:46:02.873441",
   "broker_accounts": {
     "apm_swing": {
       "label": "Live Trading Account",
@@ -4357,7 +4357,7 @@
           "provenance": "FIRST_OBSERVED_POST_FLOW"
         }
       ],
-      "asof": "2026-09-07T18:31:27Z"
+      "asof": "2026-09-07T18:46:02Z"
     }
   },
   "account_views": {
@@ -4404,7 +4404,7 @@
             "provenance": "FIRST_OBSERVED_POST_FLOW"
           }
         ],
-        "asof": "2026-09-07T18:31:27Z"
+        "asof": "2026-09-07T18:46:02Z"
       },
       "performance": {
         "closed_trades_count": 30,
@@ -5520,7 +5520,7 @@
       ],
       "open_positions_live": [
         {
-          "ts_utc": "2026-09-07T18:31:27Z",
+          "ts_utc": "2026-09-07T18:46:02Z",
           "broker_account": "Live Trading Account",
           "broker_profile": "APM_REAL_ACCOUNT_SWING",
           "symbol": "BG",
@@ -5534,7 +5534,7 @@
           "entry_model": "Swing"
         },
         {
-          "ts_utc": "2026-09-07T18:31:27Z",
+          "ts_utc": "2026-09-07T18:46:02Z",
           "broker_account": "Live Trading Account",
           "broker_profile": "APM_REAL_ACCOUNT_SWING",
           "symbol": "C",
@@ -5548,7 +5548,7 @@
           "entry_model": "Swing"
         },
         {
-          "ts_utc": "2026-09-07T18:31:27Z",
+          "ts_utc": "2026-09-07T18:46:02Z",
           "broker_account": "Live Trading Account",
           "broker_profile": "APM_REAL_ACCOUNT_SWING",
           "symbol": "CF",
@@ -5562,7 +5562,7 @@
           "entry_model": "Swing"
         },
         {
-          "ts_utc": "2026-09-07T18:31:27Z",
+          "ts_utc": "2026-09-07T18:46:02Z",
           "broker_account": "Live Trading Account",
           "broker_profile": "APM_REAL_ACCOUNT_SWING",
           "symbol": "GEN",
@@ -5576,7 +5576,7 @@
           "entry_model": "Swing"
         },
         {
-          "ts_utc": "2026-09-07T18:31:27Z",
+          "ts_utc": "2026-09-07T18:46:02Z",
           "broker_account": "Live Trading Account",
           "broker_profile": "APM_REAL_ACCOUNT_SWING",
           "symbol": "RVTY",
@@ -5590,7 +5590,7 @@
           "entry_model": "Swing"
         },
         {
-          "ts_utc": "2026-09-07T18:31:27Z",
+          "ts_utc": "2026-09-07T18:46:02Z",
           "broker_account": "Live Trading Account",
           "broker_profile": "APM_REAL_ACCOUNT_SWING",
           "symbol": "TJX",
@@ -5790,7 +5790,7 @@
           "performance_index": 101.72793223
         },
         {
-          "ts": "2026-09-07T18:31:27+00:00",
+          "ts": "2026-09-07T18:46:02+00:00",
           "equity": 7229.92,
           "drawdown_pct": -9.5573,
           "raw_equity": 7229.92,
@@ -5798,7 +5798,7 @@
           "performance_index": 101.66676276
         },
         {
-          "ts": "2026-09-07T18:31:27+00:00",
+          "ts": "2026-09-07T18:46:02+00:00",
           "equity": 7229.92,
           "drawdown_pct": -9.5573,
           "raw_equity": 7229.92,
@@ -5900,17 +5900,17 @@
           "drawdown_pct": -9.3808
         },
         {
-          "ts": "2026-09-07T18:31:27+00:00",
+          "ts": "2026-09-07T18:46:02+00:00",
           "drawdown_pct": -9.5573
         },
         {
-          "ts": "2026-09-07T18:31:27+00:00",
+          "ts": "2026-09-07T18:46:02+00:00",
           "drawdown_pct": -9.5573
         }
       ],
       "monthly_performance": [],
-      "updated_at": "2026-09-07T11:31:27.998278",
-      "published_at_utc": "2026-09-07T18:31:27Z"
+      "updated_at": "2026-09-07T11:46:02.873441",
+      "published_at_utc": "2026-09-07T18:46:02Z"
     }
   },
   "public_reset_starts": {
