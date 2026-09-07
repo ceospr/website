@@ -146,7 +146,7 @@
             <div>
               <p class="eyebrow">KPM Atlas Pulse</p>
               <h2>Monthly Research Tracker</h2>
-              <p>Atlas selects the monthly research universe; APM supplies the scheduler marks used to track each name from its frozen added price.</p>
+              <p>Atlas selects the research basket. Free daily prices track each name from its first completed close after publication. Estimated net returns require corporate-action and dated cost evidence.</p>
             </div>
             <div class="atlas-status">
               <span>Tracker status</span>
@@ -161,7 +161,7 @@
                 <div>
                   <span class="atlas-side-label">Long sleeve</span>
                   <h3 id="atlas_long_title">Spinoza Research Top 5 Longs</h3>
-                  <p>Positive when a selected stock rises above its monthly added price.</p>
+                  <p>Estimated total reference return after documented distributions and assumed costs.</p>
                 </div>
                 <strong id="atlas_long_return" class="atlas-sleeve-return">-</strong>
               </div>
@@ -172,9 +172,9 @@
                       <th>Rank</th>
                       <th>Ticker</th>
                       <th>Company / Sector</th>
-                      <th>Added</th>
+                      <th>Reference entry</th>
                       <th>Current</th>
-                      <th>Return Since Added</th>
+                      <th>Estimated net return</th>
                     </tr>
                   </thead>
                   <tbody id="atlas_long_body">
@@ -189,7 +189,7 @@
                 <div>
                   <span class="atlas-side-label">Short sleeve</span>
                   <h3 id="atlas_short_title">Spinoza Research Top 5 Shorts</h3>
-                  <p>Positive when a selected stock falls below its monthly added price.</p>
+                  <p>Estimated short reference return after distributions owed and assumed execution, financing and borrow costs.</p>
                 </div>
                 <strong id="atlas_short_return" class="atlas-sleeve-return">-</strong>
               </div>
@@ -200,9 +200,9 @@
                       <th>Rank</th>
                       <th>Ticker</th>
                       <th>Company / Sector</th>
-                      <th>Added</th>
+                      <th>Reference entry</th>
                       <th>Current</th>
-                      <th>Return Since Added</th>
+                      <th>Estimated net return</th>
                     </tr>
                   </thead>
                   <tbody id="atlas_short_body">
@@ -214,8 +214,8 @@
           </div>
 
           <div class="atlas-footnote">
-            <strong id="atlas_combined_return">Combined equal-weight tracker: -</strong>
-            <span>Research-only performance geometry. No position size, order, borrow availability, financing, fees, slippage, or broker execution is represented.</span>
+            <strong id="atlas_combined_return">Combined estimated net reference return: Unavailable</strong>
+            <span>Research reference scenarios, not realized fund performance or executable fills. Missing evidence remains unavailable; no borrow availability, capacity, margin or execution claim is made.</span>
           </div>
         </section>
       </div>
@@ -497,13 +497,55 @@
         .replace(/"/g, "&quot;")
         .replace(/'/g, "&#039;");
     }
+    function atlasNumber(value){
+      return typeof value === "number" && Number.isFinite(value) ? value : null;
+    }
+    function atlasMoney(value){
+      const result = atlasNumber(value);
+      return result === null ? "Unavailable" : fMoney(result);
+    }
     function atlasReturnMarkup(value){
-      const result = toFiniteOrNull(value);
-      if (result === null) return '<span class="return-neutral">-</span>';
+      const result = atlasNumber(value);
+      if (result === null) return '<span class="return-neutral">Unavailable</span>';
       const cls = result > 0 ? "return-positive" : (result < 0 ? "return-negative" : "return-neutral");
       return `<span class="${cls}">${result > 0 ? "+" : ""}${fPct(result, 2)}</span>`;
     }
-    function renderAtlasRows(rows, bodyId){
+    function atlasRowHasCurrentMark(row, now){
+      const stamp = Date.parse(row && (row.current_price_as_of_utc || row.current_bar_period_end_utc));
+      return row && row.mark_status === "VALID_REFERENCE_MARK" && atlasNumber(row.current_price) !== null
+        && Number.isFinite(stamp) && stamp <= now.getTime() && now.getTime() - stamp <= 4 * 86400000;
+    }
+    function atlasRowHasNetEvidence(row, now){
+      return atlasRowHasCurrentMark(row, now) && row.return_status === "ESTIMATED_NET_REFERENCE_RETURN"
+        && atlasNumber(row.added_price) !== null && row.added_price > 0
+        && atlasNumber(row.estimated_net_return_pct) !== null;
+    }
+    function atlasRowsShareInterval(rows, expected){
+      if (!Array.isArray(rows) || rows.length !== expected) return false;
+      const intervals = rows.map(row => [
+        Date.parse(row.added_price_as_of_utc || row.added_bar_period_end_utc),
+        Date.parse(row.current_price_as_of_utc || row.current_bar_period_end_utc),
+      ]);
+      return intervals.every(([entry, exit]) => Number.isFinite(entry) && Number.isFinite(exit)
+        && entry <= exit && entry === intervals[0][0] && exit === intervals[0][1]);
+    }
+    function clearAtlasPulseTracker(message){
+      setText("atlas_tracker_status", message || "Tracker data unavailable");
+      setText("atlas_tracker_updated", "");
+      setText("atlas_long_title", "Spinoza Research Top 5 Longs");
+      setText("atlas_short_title", "Spinoza Research Top 5 Shorts");
+      for (const id of ["atlas_long_return", "atlas_short_return"]){
+        const element = document.getElementById(id);
+        if (element) element.innerHTML = atlasReturnMarkup(null);
+      }
+      const combined = document.getElementById("atlas_combined_return");
+      if (combined) combined.innerHTML = `Combined estimated net reference return: ${atlasReturnMarkup(null)}`;
+      for (const id of ["atlas_long_body", "atlas_short_body"]){
+        const body = document.getElementById(id);
+        if (body) body.innerHTML = '<tr><td colspan="6" class="empty">Verified current tracker data unavailable.</td></tr>';
+      }
+    }
+    function renderAtlasRows(rows, bodyId, now){
       const body = document.getElementById(bodyId);
       if (!body) return;
       if (!Array.isArray(rows) || !rows.length){
@@ -517,54 +559,69 @@
           <td>${escapeHtml(row.rank ?? "")}</td>
           <td><strong class="atlas-ticker">${escapeHtml(row.symbol || "")}</strong></td>
           <td><span class="atlas-company">${company}</span><small class="atlas-sector">${sector}</small></td>
-          <td>${fMoney(row.added_price)}</td>
-          <td>${fMoney(row.current_price)}</td>
-          <td>${atlasReturnMarkup(row.return_pct)}</td>
+          <td>${atlasMoney(row.added_price)}<small>${escapeHtml(row.added_price_date || row.added_price_as_of_utc || "Awaiting reference close")}</small></td>
+          <td>${atlasMoney(atlasRowHasCurrentMark(row, now) ? row.current_price : null)}<small>${escapeHtml(row.current_price_date || row.current_price_as_of_utc || "Date unavailable")}</small></td>
+          <td>${atlasReturnMarkup(atlasRowHasNetEvidence(row, now) ? row.estimated_net_return_pct : null)}</td>
         </tr>`;
       }).join("");
     }
-    function renderAtlasPulseTracker(tracker){
+    function renderAtlasPulseTracker(tracker, now = new Date()){
+      const generated = Date.parse(tracker && tracker.generated_at_utc);
+      if (!tracker || tracker.schema_version !== "spinoza.atlas_pulse_tracker.v2"
+          || tracker.research_only !== true || tracker.execution_enabled !== false){
+        clearAtlasPulseTracker("Legacy or unverified tracker — returns withheld");
+        return;
+      }
+      if (!Number.isFinite(generated) || generated > now.getTime() || now.getTime() - generated > 4 * 86400000){
+        clearAtlasPulseTracker("Tracker source is stale or unavailable");
+        return;
+      }
       const months = Array.isArray(tracker && tracker.months) ? tracker.months : [];
       const currentMonth = String((tracker && tracker.current_month) || "");
-      const active = months.find((month) => String(month.screen_month || "") === currentMonth) || months[months.length - 1];
-      if (!active){
-        setText("atlas_tracker_status", "Data unavailable");
+      const active = months.find((month) => String(month.screen_month || "") === currentMonth);
+      if (!active || currentMonth !== now.toISOString().slice(0, 7)
+          || active.evidence_status !== "PROSPECTIVE_REFERENCE_TRACKER" || active.promotion_eligible !== false){
+        clearAtlasPulseTracker("Verified current-month research data unavailable");
         return;
       }
       const label = String(active.display_month || tracker.display_month || "Current Month");
       setText("atlas_long_title", `Spinoza Research Top 5 Longs for ${label}`);
       setText("atlas_short_title", `Spinoza Research Top 5 Shorts for ${label}`);
-      const longReturn = atlasReturnMarkup(active.long_sleeve_return_pct);
-      const shortReturn = atlasReturnMarkup(active.short_sleeve_return_pct);
-      const combinedReturn = atlasReturnMarkup(active.combined_equal_weight_return_pct);
+      const longsComplete = atlasRowsShareInterval(active.longs, 5) && active.longs.every(row => atlasRowHasNetEvidence(row, now));
+      const shortsComplete = atlasRowsShareInterval(active.shorts, 5) && active.shorts.every(row => atlasRowHasNetEvidence(row, now));
+      const allComplete = longsComplete && shortsComplete && atlasRowsShareInterval([...active.longs, ...active.shorts], 10)
+        && active.return_status === "ESTIMATED_NET_REFERENCE_RETURNS";
+      const longReturn = atlasReturnMarkup(longsComplete ? active.long_sleeve_return_pct : null);
+      const shortReturn = atlasReturnMarkup(shortsComplete ? active.short_sleeve_return_pct : null);
+      const combinedReturn = atlasReturnMarkup(allComplete ? active.combined_equal_weight_return_pct : null);
       const longEl = document.getElementById("atlas_long_return");
       const shortEl = document.getElementById("atlas_short_return");
       const combinedEl = document.getElementById("atlas_combined_return");
       if (longEl) longEl.innerHTML = longReturn;
       if (shortEl) shortEl.innerHTML = shortReturn;
-      if (combinedEl) combinedEl.innerHTML = `Combined equal-weight tracker: ${combinedReturn}`;
+      if (combinedEl) combinedEl.innerHTML = `Combined estimated net reference return: ${combinedReturn}`;
       setText(
         "atlas_tracker_status",
-        `${Number(active.available_marks) || 0}/${Number(active.expected_marks) || 10} marks · ${String(active.mark_status || "PARTIAL")}`
+        `${[...(active.longs || []), ...(active.shorts || [])].filter(row => atlasRowHasCurrentMark(row, now)).length}/10 current reference marks · ${allComplete ? "Complete net reference evidence" : "Return evidence incomplete"}`
       );
       setText("atlas_tracker_updated", `Updated ${fUpdatedAt(tracker.generated_at_utc || active.mark_as_of_utc)}`);
-      renderAtlasRows(active.longs, "atlas_long_body");
-      renderAtlasRows(active.shorts, "atlas_short_body");
+      renderAtlasRows(active.longs, "atlas_long_body", now);
+      renderAtlasRows(active.shorts, "atlas_short_body", now);
     }
     async function loadAtlasPulseTracker(){
       try{
         const dashboardResponse = await fetch("data/public_dashboard.json?tracker_ts=" + Date.now(), { cache: "no-store" });
         if (!dashboardResponse.ok) throw new Error("HTTP " + dashboardResponse.status);
         const dashboard = await dashboardResponse.json();
-        let tracker = dashboard.atlas_pulse_tracker;
-        if (!tracker){
-          const trackerResponse = await fetch("data/atlas_pulse_tracker.json?ts=" + Date.now(), { cache: "no-store" });
-          if (!trackerResponse.ok) throw new Error("HTTP " + trackerResponse.status);
-          tracker = await trackerResponse.json();
+        if ((dashboard.atlas_pulse_tracker_status || {}).status === "UNAVAILABLE" || !dashboard.atlas_pulse_tracker){
+          const status = dashboard.atlas_pulse_tracker_status || {};
+          clearAtlasPulseTracker(status.public_message || "Verified current tracker data unavailable");
+          if (status.updated_at_utc) setText("atlas_tracker_updated", `Checked ${fUpdatedAt(status.updated_at_utc)}`);
+          return;
         }
-        renderAtlasPulseTracker(tracker);
+        renderAtlasPulseTracker(dashboard.atlas_pulse_tracker);
       }catch(e){
-        setText("atlas_tracker_status", "Tracker data unavailable");
+        clearAtlasPulseTracker("Tracker data unavailable");
       }
     }
     function signedDrawdownPct(v){
