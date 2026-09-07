@@ -57,7 +57,7 @@
     <section id="atlas-pulse" class="section section-tight"><div class="container"><section class="panel atlas-panel">
       <div class="panel-head atlas-panel-head">
         <div><p class="eyebrow">Equity research</p><h2>Research Portfolio</h2></div>
-        <div class="atlas-status" role="status" aria-live="polite"><span>Publication status</span><strong id="atlas_tracker_status">Loading published status…</strong><small id="atlas_tracker_updated"></small></div>
+        <div class="atlas-status" role="status" aria-live="polite"><span>Basket publication date</span><strong id="atlas_tracker_status">Loading…</strong><small id="atlas_tracker_updated"></small></div>
       </div>
       <div class="atlas-sleeves">
           <article class="atlas-sleeve atlas-sleeve-long">
@@ -246,8 +246,8 @@
       return intervals.every(([entry, exit]) => Number.isFinite(entry) && Number.isFinite(exit)
         && entry <= exit && entry === intervals[0][0] && exit === intervals[0][1]);
     }
-    function clearAtlasPulseTracker(message){
-      setText("atlas_tracker_status", message || "Tracker data unavailable");
+    function clearAtlasPulseTracker(){
+      setText("atlas_tracker_status", "Publication date unavailable");
       setText("atlas_tracker_updated", "");
       setText("atlas_long_title", "Top 5 Long Candidates");
       setText("atlas_short_title", "Top 5 Short Candidates");
@@ -286,11 +286,11 @@
       const generated = Date.parse(tracker && tracker.generated_at_utc);
       if (!tracker || tracker.schema_version !== "spinoza.atlas_pulse_tracker.v2"
           || tracker.research_only !== true || tracker.execution_enabled !== false){
-        clearAtlasPulseTracker("Legacy or unverified tracker — returns withheld");
+        clearAtlasPulseTracker();
         return;
       }
       if (!Number.isFinite(generated) || generated > now.getTime() || now.getTime() - generated > 4 * 86400000){
-        clearAtlasPulseTracker("Tracker source is stale or unavailable");
+        clearAtlasPulseTracker();
         return;
       }
       const months = Array.isArray(tracker && tracker.months) ? tracker.months : [];
@@ -298,7 +298,7 @@
       const active = months.find((month) => String(month.screen_month || "") === currentMonth);
       if (!active || currentMonth !== now.toISOString().slice(0, 7)
           || active.evidence_status !== "PROSPECTIVE_REFERENCE_TRACKER" || active.promotion_eligible !== false){
-        clearAtlasPulseTracker("Verified current-month research data unavailable");
+        clearAtlasPulseTracker();
         return;
       }
       const label = String(active.display_month || tracker.display_month || "Current Month");
@@ -317,11 +317,10 @@
       if (longEl) longEl.innerHTML = longReturn;
       if (shortEl) shortEl.innerHTML = shortReturn;
       if (combinedEl) combinedEl.innerHTML = `Combined estimated net reference return: ${combinedReturn}`;
-      setText(
-        "atlas_tracker_status",
-        `${[...(active.longs || []), ...(active.shorts || [])].filter(row => atlasRowHasCurrentMark(row, now)).length}/10 current reference marks · ${allComplete ? "Complete net reference evidence" : "Return evidence incomplete"}`
-      );
-      setText("atlas_tracker_updated", `Updated ${fUpdatedAt(tracker.generated_at_utc || active.mark_as_of_utc)}`);
+      // A screen generation or price-refresh date is not a website publication date.
+      // The current public feed does not carry the coordinator's verified publication receipt.
+      setText("atlas_tracker_status", "Publication date unavailable");
+      setText("atlas_tracker_updated", "");
       renderAtlasRows(active.longs, "atlas_long_body", now);
       renderAtlasRows(active.shorts, "atlas_short_body", now);
     }
@@ -331,19 +330,16 @@
         if (!dashboardResponse.ok) throw new Error("HTTP " + dashboardResponse.status);
         const dashboard = await dashboardResponse.json();
         if ((dashboard.atlas_pulse_tracker_status || {}).status === "UNAVAILABLE" || !dashboard.atlas_pulse_tracker){
-          const status = dashboard.atlas_pulse_tracker_status || {};
-          clearAtlasPulseTracker(status.public_message || "Verified current tracker data unavailable");
-          if (status.updated_at_utc) setText("atlas_tracker_updated", `Checked ${fUpdatedAt(status.updated_at_utc)}`);
+          clearAtlasPulseTracker();
           const publishedStatus = await ResearchStatus.load();
           if (publishedStatus){
-            setText("atlas_tracker_status", publishedStatus.text);
-            setText("atlas_tracker_updated", `Published ${fUpdatedAt(publishedStatus.updatedAt)}`);
+            setText("atlas_tracker_status", "Not yet published");
           }
           return;
         }
         renderAtlasPulseTracker(dashboard.atlas_pulse_tracker);
       }catch(e){
-        clearAtlasPulseTracker("Tracker data unavailable");
+        clearAtlasPulseTracker();
       }
     }
     function signedDrawdownPct(v){
