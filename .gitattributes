@@ -1,3 +1,4 @@
 # Public report integrity is verified against the exact published bytes.
 data/valuation-*.json -text
 papers/*.pdf binary
+data/research-candidates.json -text

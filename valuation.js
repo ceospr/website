@@ -33,8 +33,9 @@ const EquityValuation = (() => {
       (!sector || c.sector === sector) && (!basis || (basis === "intrinsic" && c.intrinsic_available) ||
       (basis === "relative" && c.relative_available) || (basis === "unavailable" && !c.intrinsic_available && !c.relative_available)));
   }
-  function validateReport(report, entry) {
+  function validateReport(report, entry, expectedReportHash = null) {
     if (report.schema_version !== SCHEMA || report.symbol !== entry.symbol || !report.valuation || !report.evidence || report.evidence.replay_verified !== true || !Array.isArray(report.annual_history)) throw new Error("Published report does not match the selected company.");
+    if (expectedReportHash !== null && (!/^[a-f0-9]{64}$/.test(expectedReportHash) || report.evidence.report_sha256 !== expectedReportHash)) throw new Error("The company report has changed since this research list was published. Open the current company analysis through Equity Valuation; it is a different research record.");
     return report;
   }
   function newestRequest() {
@@ -260,7 +261,7 @@ if (typeof document !== "undefined") (async () => {
     activeController?.abort(); activeController = new AbortController();
     renderResults(); reportPanel.setAttribute("aria-busy", "true");
     const loading = el("div", "ev-empty"); loading.appendChild(el("h2", "", `Loading ${entry.symbol}`)); para(loading, "Opening the published company report…"); reportPanel.replaceChildren(loading);
-    if (updateUrl) {const url = new URL(location.href); url.searchParams.set("q", entry.symbol); url.searchParams.delete("symbol"); history.replaceState({}, "", url);}
+    if (updateUrl) {const url = new URL(location.href); url.searchParams.set("q", entry.symbol); url.searchParams.delete("symbol"); url.searchParams.delete("report_sha256"); history.replaceState({}, "", url);}
     try {
       let report = cache.get(entry.symbol);
       if (!report) {
@@ -274,6 +275,8 @@ if (typeof document !== "undefined") (async () => {
         report = E.validateReport(JSON.parse(new TextDecoder().decode(bytes)), entry); cache.set(entry.symbol, report);
       }
       if (!sequence.current(ticket)) return;
+      const requested = new URL(location.href).searchParams;
+      E.validateReport(report, entry, requested.has("report_sha256") ? requested.get("report_sha256") : null);
       renderReport(report, entry); document.title = `${entry.symbol} — Equity Valuation | Spinoza Research`;
     } catch (error) {
       if (!sequence.current(ticket) || error.name === "AbortError") return;

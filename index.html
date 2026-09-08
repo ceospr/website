@@ -10,14 +10,16 @@
   <link rel="apple-touch-icon" href="assets/logo-512.png">
   <link rel="stylesheet" href="style.css">
   <link rel="stylesheet" href="research.css">
+  <link rel="stylesheet" href="research-candidates.css">
   <script defer src="research.js"></script>
+  <script defer src="research-candidates.js"></script>
 </head>
 <body>
   <a class="skip-link" href="#dashboard">Skip to content</a>
   <header class="nav"><div class="container nav-inner">
     <a class="brand" href="index.html" aria-label="Spinoza Research home"><img src="assets/logo.svg" alt="" class="logo-img"><span class="brand-name">Spinoza Research</span></a>
     <nav class="nav-links" aria-label="Primary">
-      <a href="#dashboard" aria-current="page">Performance</a><a href="#atlas-pulse">Research Portfolio</a><a href="research.html">Research</a><a href="valuation.html">Equity Valuation</a><a href="#contact">Contact</a>
+      <a href="#dashboard" aria-current="page">Performance</a><a href="#atlas-pulse">Research Candidates</a><a href="research.html">Research</a><a href="valuation.html">Equity Valuation</a><a href="#contact">Contact</a>
     </nav>
   </div></header>
   <main id="top">
@@ -54,21 +56,45 @@
       <details class="method-note"><summary>Calculation methodology</summary><p id="monthly_performance_note">Loading the recorded return methodology…</p></details>
     </section></div></section>
 
-    <section id="atlas-pulse" class="section section-tight"><div class="container"><section class="panel atlas-panel">
+    <section id="atlas-pulse" class="section section-tight"><div class="container"><section class="panel atlas-panel" aria-labelledby="research_candidates_heading">
       <div class="panel-head atlas-panel-head">
-        <div><p class="eyebrow">Equity research</p><h2>Research Portfolio</h2></div>
+        <div><p class="eyebrow">Equity research</p><h2 id="research_candidates_heading">Research Candidates</h2><p>Up to 5 individually qualified candidates on each side.</p></div>
+        <div class="candidate-status" role="status" aria-live="polite"><strong id="research_candidates_status">Loading research publication…</strong><small id="research_candidates_date"></small></div>
+      </div>
+      <p id="research_candidates_coverage" class="candidate-coverage"></p>
+      <div class="atlas-sleeves">
+        <article class="atlas-sleeve atlas-sleeve-long">
+          <div class="atlas-sleeve-head"><div><span class="atlas-side-label">Long research</span><h3>Long Candidates</h3></div><span class="candidate-count" id="research_candidates_long_count"></span></div>
+          <div class="table-wrap atlas-table-wrap" tabindex="0" role="region" aria-label="Individually qualified long research candidates">
+            <table class="atlas-table candidate-table"><thead><tr><th>Rank</th><th>Company</th><th>Recorded price</th><th>Model estimate</th><th>Value / price gap</th><th>Risk indicator</th><th>Evidence score</th></tr></thead><tbody id="research_candidates_long_body"><tr><td colspan="7" class="empty">Loading verified research candidates…</td></tr></tbody></table>
+          </div>
+        </article>
+        <article class="atlas-sleeve atlas-sleeve-short">
+          <div class="atlas-sleeve-head"><div><span class="atlas-side-label">Short research</span><h3>Short Candidates</h3></div><span class="candidate-count" id="research_candidates_short_count"></span></div>
+          <div class="table-wrap atlas-table-wrap" tabindex="0" role="region" aria-label="Individually qualified short research candidates">
+            <table class="atlas-table candidate-table"><thead><tr><th>Rank</th><th>Company</th><th>Recorded price</th><th>Model estimate</th><th>Value / price gap</th><th>Risk indicator</th><th>Evidence score</th></tr></thead><tbody id="research_candidates_short_body"><tr><td colspan="7" class="empty">Loading verified research candidates…</td></tr></tbody></table>
+          </div>
+        </article>
+      </div>
+      <details class="method-note candidate-method"><summary>Selection and interpretation</summary><p>Ranks use 50% valuation, 30% risk and 20% evidence within the qualified screen, with a $126 recorded-price ceiling and at most two companies per sector on each side. A smaller list reflects the individual requirements and diversification limits. The full trading basket also has universe-coverage and basket-size requirements.</p><p>The value / price gap is the conditional model estimate divided by the recorded price, minus one. It is not a realized or expected investment return. Higher risk indicators reflect greater measured accounting and price risk; an evidence score measures input completeness, not the probability that an estimate is correct.</p><p>Research lists do not authorize orders. Trading eligibility is checked separately. After the stated eligibility deadline, the dated list remains available as archived research and requires a new screen before it can be treated as current.</p></details>
+      <noscript><p class="candidate-coverage">JavaScript is required to verify and display the current research publication.</p></noscript>
+    </section></div></section>
+
+    <section id="research-return-tracker" class="section section-tight"><div class="container"><section class="panel atlas-panel">
+      <div class="panel-head atlas-panel-head">
+        <div><p class="eyebrow">Published basket history</p><h2>Research Return Tracker</h2><p class="research-tracker-note">Reference returns require a separately verified, complete monthly basket.</p></div>
         <div class="atlas-status" role="status" aria-live="polite"><span>Basket publication date</span><strong id="atlas_tracker_status">Loading…</strong><small id="atlas_tracker_updated"></small></div>
       </div>
       <div class="atlas-sleeves">
           <article class="atlas-sleeve atlas-sleeve-long">
-            <div class="atlas-sleeve-head"><div><span class="atlas-side-label">Long research</span><h3 id="atlas_long_title">Top 5 Long Candidates</h3></div><strong id="atlas_long_return" class="atlas-sleeve-return">Unavailable</strong></div>
+            <div class="atlas-sleeve-head"><div><span class="atlas-side-label">Long basket</span><h3 id="atlas_long_title">Long Reference Basket</h3></div><strong id="atlas_long_return" class="atlas-sleeve-return">Unavailable</strong></div>
             <div class="table-wrap atlas-table-wrap" tabindex="0" role="region" aria-label="Long research candidates">
               <table class="atlas-table"><thead><tr><th>Rank</th><th>Ticker</th><th>Company / sector</th><th>Reference entry</th><th>Current</th><th>Estimated net return</th></tr></thead>
               <tbody id="atlas_long_body"><tr><td colspan="6" class="empty">Loading published research status…</td></tr></tbody></table>
             </div>
           </article>
           <article class="atlas-sleeve atlas-sleeve-short">
-            <div class="atlas-sleeve-head"><div><span class="atlas-side-label">Short research</span><h3 id="atlas_short_title">Top 5 Short Candidates</h3></div><strong id="atlas_short_return" class="atlas-sleeve-return">Unavailable</strong></div>
+            <div class="atlas-sleeve-head"><div><span class="atlas-side-label">Short basket</span><h3 id="atlas_short_title">Short Reference Basket</h3></div><strong id="atlas_short_return" class="atlas-sleeve-return">Unavailable</strong></div>
             <div class="table-wrap atlas-table-wrap" tabindex="0" role="region" aria-label="Short research candidates">
               <table class="atlas-table"><thead><tr><th>Rank</th><th>Ticker</th><th>Company / sector</th><th>Reference entry</th><th>Current</th><th>Estimated net return</th></tr></thead>
               <tbody id="atlas_short_body"><tr><td colspan="6" class="empty">Loading published research status…</td></tr></tbody></table>
@@ -125,7 +151,6 @@
   </main>
   <footer class="footer"><div class="container footer-inner"><span>&copy; <span id="year"></span> Spinoza Research</span><div><a href="research.html">Research</a><a href="valuation.html">Equity Valuation</a><a href="#disclaimer">Disclosures</a></div></div></footer>
   <script src="monthly-performance.js"></script>
-  <script src="research-status.js"></script>
   <script>
     const INTRADAY_PUBLIC_LABEL = "Intraday Portfolio";
     const SWING_PUBLIC_LABEL = "Equity Portfolio";
@@ -247,10 +272,10 @@
         && entry <= exit && entry === intervals[0][0] && exit === intervals[0][1]);
     }
     function clearAtlasPulseTracker(){
-      setText("atlas_tracker_status", "Publication date unavailable");
+      setText("atlas_tracker_status", "No verified basket publication");
       setText("atlas_tracker_updated", "");
-      setText("atlas_long_title", "Top 5 Long Candidates");
-      setText("atlas_short_title", "Top 5 Short Candidates");
+      setText("atlas_long_title", "Long Reference Basket");
+      setText("atlas_short_title", "Short Reference Basket");
       for (const id of ["atlas_long_return", "atlas_short_return"]){
         const element = document.getElementById(id);
         if (element) element.innerHTML = atlasReturnMarkup(null);
@@ -302,8 +327,8 @@
         return;
       }
       const label = String(active.display_month || tracker.display_month || "Current Month");
-      setText("atlas_long_title", `Top 5 Long Candidates · ${label}`);
-      setText("atlas_short_title", `Top 5 Short Candidates · ${label}`);
+      setText("atlas_long_title", `Long Reference Basket · ${label}`);
+      setText("atlas_short_title", `Short Reference Basket · ${label}`);
       const longsComplete = atlasRowsShareInterval(active.longs, 5) && active.longs.every(row => atlasRowHasNetEvidence(row, now));
       const shortsComplete = atlasRowsShareInterval(active.shorts, 5) && active.shorts.every(row => atlasRowHasNetEvidence(row, now));
       const allComplete = longsComplete && shortsComplete && atlasRowsShareInterval([...active.longs, ...active.shorts], 10)
@@ -331,10 +356,6 @@
         const dashboard = await dashboardResponse.json();
         if ((dashboard.atlas_pulse_tracker_status || {}).status === "UNAVAILABLE" || !dashboard.atlas_pulse_tracker){
           clearAtlasPulseTracker();
-          const publishedStatus = await ResearchStatus.load();
-          if (publishedStatus){
-            setText("atlas_tracker_status", "Not yet published");
-          }
           return;
         }
         renderAtlasPulseTracker(dashboard.atlas_pulse_tracker);
