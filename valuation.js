@@ -7,8 +7,13 @@ const EquityValuation = (() => {
   const finite = value => typeof value === "number" && Number.isFinite(value);
   const normalize = value => String(value || "").trim().toUpperCase().replace(/[.-]([ABC])$/, ".$1");
   const available = value => value && ["ok", "estimated"].includes(value.status) && finite(value.value);
-  const intrinsicAvailable = report => ["operating_dcf", "financial_residual_income", "reit_nav"].includes(report.valuation.basis) && report.valuation.review_required === false && !report.valuation.model_disagreement && available(report.valuation.intrinsic);
-  const basisLabel = basis => ({operating_dcf: "Operating cash-flow model", financial_residual_income: "Financial-company model", reit_nav: "Property valuation model", relative_only: "Relative comparison only"}[basis] || "Estimate unavailable");
+  const policyVerified = (report, version) => report.valuation.model?.version === version && report.valuation.model?.policy_verified === true;
+  const intrinsicAvailable = report => ["operating_dcf", "financial_residual_income", "reit_nav", "common_equity_distribution"].includes(report.valuation.basis) && report.valuation.review_required === false && !report.valuation.model_disagreement && available(report.valuation.intrinsic) && (report.valuation.basis !== "common_equity_distribution" || policyVerified(report, "common_equity_distribution_v1"));
+  const incomeAvailable = report => report.valuation.basis === "reit_dividend_income" && report.valuation.review_required === false && policyVerified(report, "reit_dividend_income_v1") && available(report.valuation.income_scenario);
+  const basisLabel = basis => ({operating_dcf: "Operating cash-flow model", financial_residual_income: "Financial-company model", reit_nav: "Property valuation model", common_equity_distribution: "Common-equity distribution model", reit_dividend_income: "Dividend-income scenario", relative_only: "Relative comparison only"}[basis] || "Estimate unavailable");
+  const modelExplanation = report => report.valuation.basis === "common_equity_distribution" ? "The model starts with three sourced annual diluted common EPS observations. It normalizes those earnings, retains part to fund assumed growth, and discounts the remaining distributions at cost of equity. Growth and reinvestment returns follow the archived standard policy; they are not measured payout capacity or analyst approval. Financing and ownership claims are already reflected in common earnings and are not deducted again." : report.valuation.basis === "reit_dividend_income" ? "This scenario capitalizes sourced annual common dividends without growth. It does not appraise property NAV, retained assets or total equity value; it cannot establish that the stock is overvalued or support a short conclusion." : "The estimate depends on the archived operating assumptions, financing adjustments and source classifications. It is not a target date, probability or recommendation.";
+  const riskAvailable = report => finite(report.risk?.score) && !report.risk.missing?.length && (!report.risk.model || (report.risk.model.version === "research_risk_indicator_v1" && report.risk.model.policy_verified === true && report.risk.components.filter(c => c.status !== "not_applicable").length >= 3 && report.risk.components.filter(c => c.status !== "not_applicable").every(c => ["ok", "estimated"].includes(c.status) && finite(c.score))));
+  const parameterLines = values => Object.entries(values || {}).map(([key, value]) => `${key.replace(/_/g, " ")}: ${typeof value === "object" && value !== null ? JSON.stringify(value) : value ?? "Unavailable"}`);
   const money = (value, currency = "USD") => !finite(value) ? "Unavailable" : !/^[A-Z]{3}$/.test(currency) ? `${value.toFixed(2)} (currency unavailable)` : new Intl.NumberFormat("en-US", {style: "currency", currency, maximumFractionDigits: 2}).format(value);
   const pct = value => finite(value) ? `${(value * 100).toFixed(1)}%` : "Unavailable";
   const day = value => /^\d{4}-\d{2}-\d{2}/.test(String(value || "")) ? String(value).slice(0, 10) : "Not recorded";
@@ -36,7 +41,7 @@ const EquityValuation = (() => {
     let sequence = 0;
     return {next: () => ++sequence, current: token => token === sequence};
   }
-  return {SCHEMA, finite, normalize, available, intrinsicAvailable, basisLabel, money, pct, day, label, annualEpsAvailable, annualEpsText, annualPriceRatioAvailable, completeMissingGroups, filter, validateReport, newestRequest};
+  return {SCHEMA, finite, normalize, available, intrinsicAvailable, incomeAvailable, basisLabel, modelExplanation, riskAvailable, parameterLines, money, pct, day, label, annualEpsAvailable, annualEpsText, annualPriceRatioAvailable, completeMissingGroups, filter, validateReport, newestRequest};
 })();
 if (typeof module !== "undefined" && module.exports) module.exports = EquityValuation;
 
@@ -59,6 +64,7 @@ if (typeof document !== "undefined") (async () => {
   const details = (parent, title, lines) => {
     if (!lines.length) return;
     const node = el("details", "ev-details"); node.appendChild(el("summary", "", title));
+    node.style.overflowWrap = "anywhere";
     const list = el("ul", "ev-small-list"); lines.forEach(line => list.appendChild(el("li", "", line)));
     node.appendChild(list); parent.appendChild(node);
   };
@@ -103,6 +109,7 @@ if (typeof document !== "undefined") (async () => {
     kpi("Intrinsic scenario range", supported && E.finite(report.valuation.low) && E.finite(report.valuation.high) ? `${E.money(report.valuation.low, report.currency)} – ${E.money(report.valuation.high, report.currency)}` : "Unavailable", "Sensitivity range; not a confidence interval", !(supported && E.finite(report.valuation.low) && E.finite(report.valuation.high)));
     const relative = E.available(report.valuation.relative);
     kpi("Relative-multiple estimate", relative ? E.money(report.valuation.relative.value, report.currency) : "Unavailable", "Comparison with historical / peer pricing", !relative);
+    if (E.incomeAvailable(report)) kpi("Dividend-income scenario per share", E.money(report.valuation.income_scenario.value, report.currency), "Capitalized common dividends; not property NAV or total equity value");
     head.appendChild(values);
     const actions = el("div", "ev-actions");
     actions.appendChild(link("View SEC filings ↗", report.evidence.sec_filings_url, "ev-action"));
@@ -110,19 +117,24 @@ if (typeof document !== "undefined") (async () => {
     const print = el("button", "ev-action", "Print report"); print.type = "button"; print.addEventListener("click", () => window.print()); actions.appendChild(print); head.appendChild(actions);
     fragment.appendChild(head);
 
-    const conclusion = section(supported ? "Understanding the estimate" : "Why no intrinsic estimate is shown");
-    para(conclusion, supported ? "The estimate depends on the archived operating assumptions, financing adjustments and source classifications. It is not a target date, probability or recommendation." : "The published analysis does not contain a supported intrinsic estimate for this company. The recorded stock price and any relative comparison remain separate observations.");
+    const incomeOnly = report.valuation.basis === "reit_dividend_income";
+    const conclusion = section(incomeOnly ? "Understanding the income scenario" : supported ? "Understanding the estimate" : "Why no intrinsic estimate is shown");
+    para(conclusion, supported || incomeOnly ? E.modelExplanation(report) : "The published analysis does not contain a supported intrinsic estimate for this company. The recorded stock price and any relative comparison remain separate observations.");
+    if (report.valuation.basis === "common_equity_distribution") para(conclusion, "The detailed operating cash-flow method remains a separate model with its own financing and capital-reconciliation requirements. Its unavailable inputs do not become zero and do not invalidate a complete distribution-policy estimate. This policy has not established investment performance.");
     if (report.valuation.review_required) para(conclusion, "A model review or reconciliation remains required.", "ev-notice");
     if (report.valuation.reasons.length) { const box = el("div", "ev-gap-box"); const list = el("ul"); report.valuation.reasons.forEach(reason => list.appendChild(el("li", "", reason))); box.appendChild(list); conclusion.appendChild(box); }
-    else if (!supported) para(conclusion, "Required financial history, financing or ownership evidence is incomplete, or the applicable model is not supported by the captured inputs. Review the missing fields and recorded assumptions below.", "ev-gap-box");
+    else if (!supported && !incomeOnly) para(conclusion, "Required observations, share units or model assumptions are incomplete or unsupported by the captured inputs. Review the model's recorded reasons below; missing optional calculations need not be blockers for the selected model.", "ev-gap-box");
     if (relative) para(conclusion, "The relative-multiple estimate is a pricing comparison. It does not establish that the shares are intrinsically undervalued or overvalued.");
+    const additionalDiagnostics = report.diagnostic_scope === "additional_diagnostics_and_detailed_model_inputs";
+    const coverage = report.decision_input_coverage;
+    if (coverage?.requirements?.length) details(conclusion, `Selected-model decision requirements (${coverage.available_count}/${coverage.required_count} available)`, [...coverage.requirements.map(item => `${E.label(item.key)}: ${item.available ? "Available" : "Unavailable"}`), coverage.note || "Input coverage is not a probability of accuracy or investment success."]);
     if (report.missing_fields.length) {
-      para(conclusion, "One missing or unreconciled input can withhold several calculations, including a value estimate, its scenario range and the implied upside. The counts below are archived flags, not independent data problems. Missing inputs are not treated as zero.");
+      para(conclusion, additionalDiagnostics ? "Additional diagnostics and detailed-model inputs: these archived flags cover other calculations, including detailed operating cash flow, relative pricing, TTM metrics and optional research. They are not a list of prerequisites for this distribution-policy estimate. Any current model blockers are stated above; required risk-indicator gaps are stated in the risk section. Missing values remain unknown." : "One missing or unreconciled input can withhold several calculations, including a value estimate, its scenario range and the implied upside. The counts below are archived flags, not independent data problems. Missing inputs are not treated as zero.");
       para(conclusion, "These flags preserve the original archived analysis. They are not a fresh data check; a history flag can mean the captured series did not meet that calculation's requirements, rather than that no history exists.");
       const groups = report.missing_field_groups;
       const grouped = E.completeMissingGroups(report);
       if (grouped) {
-        [["source_inputs", "Financial inputs and usable history"], ["calculations", "Unavailable calculations"], ["optional_research", "Optional research material"]].forEach(([key, title]) => {
+        [["source_inputs", additionalDiagnostics ? "Additional financial inputs and histories" : "Financial inputs and usable history"], ["calculations", additionalDiagnostics ? "Additional unavailable calculations" : "Unavailable calculations"], ["optional_research", "Optional research material"]].forEach(([key, title]) => {
           details(conclusion, `${title} (${groups[key].length} archived flags)`, groups[key].map(item => `${item.label} [${item.field}]`));
         });
         if (groups.optional_research.length) para(conclusion, "Optional research material is listed separately. Its absence alone does not mean the available financial statements or every calculation are unusable.");
@@ -131,6 +143,34 @@ if (typeof document !== "undefined") (async () => {
     details(conclusion, "Archived model assumptions", report.valuation.assumptions);
     details(conclusion, "Archived model limitations and warnings", report.valuation.warnings);
     fragment.appendChild(conclusion);
+
+    const model = report.valuation.model;
+    if (model) {
+      const policy = section("Model inputs and distribution policy");
+      para(policy, `Model: ${model.version}. Policy hash: ${model.policy_sha256}. Standardized assumptions; not a company-specific analyst approval.`, "ev-caption ev-hash").style.overflowWrap = "anywhere";
+      details(policy, "Resolved assumptions used in this estimate", E.parameterLines(model.resolved_assumptions));
+      details(policy, "Complete archived model policy", E.parameterLines(model.policy));
+      if (model.annual_common_observations?.length) {
+        para(policy, `Source basis: ${model.observation_basis}. Annual observations remain distinct from current trailing-twelve-month earnings.`);
+        const wrap = el("div", "ev-table-wrap"); const table = el("table", "ev-table"); const header = el("tr");
+        ["Fiscal year", "Common amount per share", "Unit", "Filed", "Source"].forEach(title => header.appendChild(el("th", "", title)));
+        const thead = el("thead"); thead.appendChild(header); table.appendChild(thead); const body = el("tbody");
+        model.annual_common_observations.forEach(point => {
+          const row = el("tr"); [point.period_end, E.money(point.value, report.currency), point.unit, point.filed_at].forEach(value => row.appendChild(el("td", "", value || "Unavailable")));
+          const source = el("td"); if (/^https:\/\/www\.sec\.gov\/Archives\/edgar\/data\//.test(point.filing_url || "")) source.appendChild(link("SEC filing", point.filing_url)); row.appendChild(source); body.appendChild(row);
+        }); table.appendChild(body); wrap.appendChild(table); policy.appendChild(wrap);
+      }
+      if (model.annual_forecasts?.length) {
+        const wrap = el("div", "ev-table-wrap"); const table = el("table", "ev-table"); const header = el("tr");
+        ["Model year", "Common EPS", "Retained per share", "Distribution per share", "Next-year growth"].forEach(title => header.appendChild(el("th", "", title)));
+        const thead = el("thead"); thead.appendChild(header); table.appendChild(thead); const body = el("tbody");
+        model.annual_forecasts.forEach(point => { const row = el("tr"); [point.year, E.money(point.common_eps, report.currency), E.money(point.retained_earnings_per_share, report.currency), E.money(point.distribution_per_share, report.currency), E.pct(point.next_year_growth)].forEach(value => row.appendChild(el("td", "", value))); body.appendChild(row); });
+        table.appendChild(body); wrap.appendChild(table); policy.appendChild(wrap);
+        para(policy, `Terminal distributions contribute ${E.pct(model.central_case?.terminal_present_value_fraction)} of the scenario value. Growth funding uses the stated marginal-return assumption; the terminal return equals cost of equity.`);
+      }
+      details(policy, `Archived sensitivity scenarios (${model.scenarios?.length || 0})`, (model.scenarios || []).map((scenario, i) => `Scenario ${i + 1}: ${E.money(scenario.per_share_value, report.currency)} per share. ${E.parameterLines(scenario).join("; ")}`));
+      fragment.appendChild(policy);
+    }
 
     const fundamentals = section("Financial measures");
     para(fundamentals, `Latest annual financial period: ${E.day(report.financial_period_end)}. Provider ratios and financial-statement calculations can use different periods. Open the calculation notes for each measure's basis.`);
@@ -192,8 +232,15 @@ if (typeof document !== "undefined") (async () => {
       yearSelect.addEventListener("change", showSources); showSources(); annual.appendChild(sourceDetails);
     } fragment.appendChild(annual);
 
-    const risk = section("Risk evidence");
-    para(risk, E.finite(report.risk.score) ? `Recorded model risk score: ${report.risk.score.toFixed(1)} / 100. This is a scoring rule, not a probability of loss.` : "Composite risk score unavailable. Missing adverse information is not treated as zero risk.");
+    const risk = section(report.risk.model ? "Research risk indicator" : "Risk evidence");
+    para(risk, E.riskAvailable(report) ? `Recorded research indicator: ${report.risk.score.toFixed(1)} / 100. ${report.risk.label || ""} This is a scoring rule, not a probability of loss.` : "Composite research indicator unavailable. Missing adverse information is not treated as zero risk.");
+    if (report.risk.model) {
+      para(risk, "Fixed business-category accounting and adjusted-price proxies. This is not a complete debt, liquidity, regulatory-capital or investment-readiness assessment. Scores across business categories have not been calibrated against investment outcomes.");
+      details(risk, "Indicator policy and fixed weights", [`Model: ${report.risk.model.version}; category: ${report.risk.model.business_kind}; policy hash: ${report.risk.model.policy_sha256}.`, ...E.parameterLines(report.risk.model.fixed_weights), ...E.parameterLines(report.risk.model.policy)]);
+      details(risk, "Accounting observations used", E.parameterLines(report.risk.model.financial_observations));
+      details(risk, "Adjusted-price observation window", E.parameterLines(report.risk.model.price_observation));
+    }
+    details(risk, "Indicator limitations and warnings", report.risk.warnings || []);
     if (report.risk.missing.length) para(risk, `Required components unavailable: ${report.risk.missing.map(E.label).join(", ")}.`);
     details(risk, "Component evidence", report.risk.components.map(item => `${item.label}: ${E.finite(item.score) ? `${item.score.toFixed(1)} / 100` : item.status === "not_applicable" ? "not applicable" : "unavailable"}. ${item.explanation}`));
     fragment.appendChild(risk);
